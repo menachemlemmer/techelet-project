@@ -1,0 +1,67 @@
+---
+import MolViewer from './MolViewer.astro';
+---
+<div class="mol-3d-outer">
+    <div class="mol-guide">
+      <span>Drag to rotate</span>
+      <span>Scroll to zoom</span>
+      <span>Find the flat central C=C bond — the chromophore</span>
+      <span>Note the symmetric butterfly shape</span>
+    </div>
+    <div class="mol-3d-wrap">
+      <MolViewer divId="mol-plant-ind" sdfPath="/data/molecules/ind.sdf" />
+    </div>
+  </div>
+  <hr class="mol-divider" />
+  <div class="flat-label">
+    Key structural features — same molecule as shown in 3D above
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.7rem;margin:.5rem 0">
+    <div style="background:#0a100a;border:1.5px solid #e8c000;border-radius:6px;padding:.7rem;text-align:center">
+      <div style="font-family:var(--ff-mono);font-size:.6rem;color:#e8c000;margin-bottom:.3rem">
+        CHROMOPHORE
+      </div>
+      <div style="font-size:1.6rem;font-family:'Courier New',monospace;color:#e8c000;font-weight:700">
+        C=C
+      </div>
+      <div style="font-size:.7rem;color:#8a8060;margin-top:.3rem">
+        center of molecule
+        <br />
+        source of blue color
+      </div>
+    </div>
+    <div style="background:#080a20;border:1.5px solid #4488ff;border-radius:6px;padding:.7rem;text-align:center">
+      <div style="font-family:var(--ff-mono);font-size:.6rem;color:#6a8aff;margin-bottom:.3rem">
+        H-BOND DONOR
+      </div>
+      <div style="font-size:1.6rem;font-family:'Courier New',monospace;color:#4488ff;font-weight:700">
+        N–H
+      </div>
+      <div style="font-size:.7rem;color:#6a7090;margin-top:.3rem">
+        ×2, one per half
+        <br />
+        causes insolubility
+      </div>
+    </div>
+    <div style="background:#200808;border:1.5px solid #ff6666;border-radius:6px;padding:.7rem;text-align:center">
+      <div style="font-family:var(--ff-mono);font-size:.6rem;color:#ff7060;margin-bottom:.3rem">
+        H-BOND ACCEPTOR
+      </div>
+      <div style="font-size:1.6rem;font-family:'Courier New',monospace;color:#ff6666;font-weight:700">
+        C=O
+      </div>
+      <div style="font-size:.7rem;color:#907070;margin-top:.3rem">
+        ×2, one per half
+        <br />
+        causes insolubility
+      </div>
+    </div>
+  </div>
+  <hr class="mol-divider" style="margin:.8rem 0" />
+  <div class="flat-label">Full flat structure — key features annotated</div>
+  <img src="/diagrams/m3/indigotin-flat-annotated.svg" alt="Indigotin Flat Annotated" style="width:100%;display:block;border-radius:6px" />
+  <div class="dp-cap">
+    The flat diagram shows the complete indigotin structure with all key groups
+    highlighted: the C=C chromophore (gold, center), the N-H hydrogen bond
+    donors (blue, circled), and the C=O carbonyl acceptors (red, circled).
+  </div>

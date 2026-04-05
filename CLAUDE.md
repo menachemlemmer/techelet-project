@@ -8,6 +8,12 @@ An interactive multi-movement shiur on the chemistry of tekhelet, built with Ast
 - `npm run build` — Build static site to dist/
 - `npm run preview` — Preview built site
 
+## Workflow
+
+- Always run `npm run build` after making changes to verify no errors
+- MDX is fragile — unclosed tags, missing blank lines between paragraphs, and stray JSX syntax will break builds
+- If a build fails, read the error to find the file and line, fix it, and rebuild before moving on
+
 ## Project Structure
 
 ```
@@ -26,6 +32,8 @@ src/components/                 # Astro components for content types
 src/lib/navigation.ts           # Navigation helpers (prev/next, sidebar data)
 src/styles/                     # CSS: tokens.css, base.css, components.css
 
+public/diagrams/                # SVG diagram files (m1/, m3/, m4/)
+public/images/                  # Extracted images (plant photos, shell)
 public/data/molecules/          # SDF files for 3D molecular viewers
 docs/original_ref/              # Original monolithic HTML + reference doc
 ```
@@ -36,108 +44,196 @@ Each section is an MDX file with YAML frontmatter:
 
 ```yaml
 ---
-sectionNum: "§ 1"              # Display number in sidebar and header
-title: "The Chain"             # Section title
+sectionNum: "§ 1"              # Short form for sidebar ("§ 1", "Intro", "M4 · §1")
+title: "The Chain"             # Full title for page header
+navTitle: "The Chain"          # Short title for sidebar (defaults to title if omitted)
+headerNum: "Opening · § 1"    # Full section number for page header (defaults to sectionNum)
 subtitle: "Menachot 43b · ..." # Optional subtitle
 movement: "opening"            # Folder name — groups sections in sidebar
 movementLabel: "Opening"       # Display label for the movement
 order: 1                       # Global sort order (0-21)
 editingNotes: "..."            # Optional notes about editing status
 needs3Dmol: true               # Set true if section uses MolViewer
+hideHeader: true               # Set true to suppress the standard section header
 ---
 ```
 
-The body is MDX — markdown with embedded Astro components and raw HTML.
+## MDX Formatting Rules
 
-## Components
+MDX processes content as markdown + JSX. These rules MUST be followed to avoid rendering bugs.
 
-Import from `@components/` in MDX files. Only import what you use.
+### Paragraphs
 
-### AramaicBlock
-Hebrew/Aramaic citations with translation.
+Write prose as plain text. Blank lines create paragraph breaks. No `<p>` tags needed.
+
 ```mdx
-import AramaicBlock from '@components/AramaicBlock.astro'
+First paragraph text here.
 
+Second paragraph text here.
+```
+
+**CRITICAL:** Every line within the same paragraph must be consecutive — no blank lines. A blank line ALWAYS means a new paragraph.
+
+### Inline HTML
+
+Inline elements (`<span>`, `<b>`, `<em>`) must be on the SAME LINE as the surrounding text. If an inline element is separated by a blank line, MDX treats it as a block element and breaks the layout.
+
+WRONG:
+```mdx
+The cascade begins immediately.
+
+<span style="color:var(--muted)">
+  [Note about something.]
+</span>
+```
+
+RIGHT:
+```mdx
+The cascade begins immediately. <span style="color:var(--muted)">[Note about something.]</span>
+```
+
+### Inline Hebrew
+
+Use `<span class="heb-inline">` on the same line as surrounding text:
+
+```mdx
+The word <span class="heb-inline">תְּכֵלֶת</span> refers to the blue dye.
+```
+
+### Components
+
+All components are globally available — NO import statements needed. Components are registered in `src/pages/[...slug].astro` via the `components` prop.
+
+### Component content rules
+
+Content inside component tags must NOT have blank lines. Blank lines inside a component cause MDX to insert `<p>` tags, breaking the layout.
+
+WRONG:
+```mdx
+<TermDef word="Chromophore">
+  First part of definition.
+
+  Second part of definition.
+</TermDef>
+```
+
+RIGHT:
+```mdx
+<TermDef word="Chromophore">First part of definition.
+Second part of definition.</TermDef>
+```
+
+Or for short definitions:
+```mdx
+<TermDef word="Chromophore">The part of a molecule responsible for absorbing visible light.</TermDef>
+```
+
+### Raw HTML blocks
+
+**Do NOT put raw HTML layout blocks (divs with styles, grids, etc.) directly in MDX files.** MDX will process text content inside them as markdown, inserting `<p>` tags that break layouts.
+
+Instead, create an Astro component in `src/components/` and use it in the MDX. The component renders its HTML directly without markdown processing.
+
+See existing examples: `EnzymeCascade.astro`, `ResistGrid.astro`, `ThresholdDiagram.astro`, etc.
+
+### What IS safe as raw HTML in MDX
+
+- Self-closing tags on one line: `<img src="..." alt="..." />`
+- Simple wrappers with no text content: `<div class="some-class"></div>`
+- The `<br/>` tag
+
+## Components Reference
+
+### Content Components (globally available)
+
+**AramaicBlock** — Hebrew/Aramaic citations with translation
+```mdx
 <AramaicBlock segments={[
-  {
-    hebrew: "תַּנְיָא, הָיָה רַבִּי מֵאִיר אוֹמֵר...",
-    translation: "It was taught: Rabbi Meir would say..."
-  },
-  {
-    hebrew: "Second passage...",
-    translation: "Second translation..."
-  }
+  { hebrew: "Hebrew text...", translation: "English translation..." }
 ]} />
 ```
-Multiple segments are separated by a gold divider line.
+- Multiple segments are separated by a gold divider
+- Omit `translation` for Hebrew-only blocks (e.g. Rashi glosses)
+- Use `style` on a segment for custom styling: `{ hebrew: "...", style: "font-size:.85em;color:#c8a040;" }`
 
-### Callout
-Colored callout boxes.
+**Callout** — Colored callout boxes
 ```mdx
-import Callout from '@components/Callout.astro'
-
 <Callout type="gold"><b>Key point.</b> Explanation text.</Callout>
-<Callout type="thesis"><b>Author position.</b> Dark background style.</Callout>
 ```
 Types: `gold`, `blue`, `violet`, `green`, `red`, `thesis`
 
-### TermDef
-Term definition boxes.
+**TermDef** — Term definition boxes
 ```mdx
-import TermDef from '@components/TermDef.astro'
-
-<TermDef word="Chromophore">Definition text with <b>formatting</b>.</TermDef>
+<TermDef word="Chromophore">Definition text.</TermDef>
 ```
 
-### SubHead
-Sub-section headings.
+**SubHead** — Sub-section headings
 ```mdx
-import SubHead from '@components/SubHead.astro'
-
 <SubHead text="Part 1 — Color: the chromophore" />
 ```
 
-### DiagramPanel
-Wrapper for SVG diagrams with number, title, and caption.
+**DiagramPanel** — Wrapper for diagrams with number, title, caption
 ```mdx
-import DiagramPanel from '@components/DiagramPanel.astro'
-
-<DiagramPanel num="Diagram 5" title="Lapis lazuli spectrum" caption="Caption text...">
-  <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg">
-    <!-- SVG content -->
-  </svg>
+<DiagramPanel num="Diagram 5" title="Lapis lazuli spectrum" caption="Caption...">
+  <img src="/diagrams/m1/d05-lapis-spectrum.svg" alt="..." style="width:100%;display:block;border-radius:6px" />
 </DiagramPanel>
 ```
 
-### MolViewer
-3D molecular viewer using 3Dmol.js. Loads lazily when scrolled into view.
+**MolViewer** — 3D molecular viewer (lazy-loading)
 ```mdx
-import MolViewer from '@components/MolViewer.astro'
-
 <MolViewer divId="mol-ind" sdfPath="/data/molecules/ind.sdf" />
 <MolViewer divId="mol-mbi" sdfPath="/data/molecules/mbi.sdf" hasBromine={true} />
 ```
 
-### Inline HTML
-Body paragraphs and inline Hebrew use raw HTML directly:
+**ImageTextGrid** — Image on left, text on right
 ```mdx
-<p class="bt">Text with <span class="heb-inline">תְּכֵלֶת</span> inline Hebrew.</p>
+<ImageTextGrid imageSrc="/images/murex-shell.png" imageAlt="..." caption="Caption text">
+Prose text here — this IS processed as markdown, so paragraphs work normally.
+</ImageTextGrid>
 ```
+
+**TermWithImage** — Term definition with image
+```mdx
+<TermWithImage imageSrc="/images/woad-plant.jpg" imageAlt="..." word="Woad" definition="HTML definition text..." />
+```
+
+### Layout Components (fixed content, no props)
+
+These encapsulate complex HTML layouts that would break if placed directly in MDX:
+
+- `EnzymeCascade` — Diagram 8 step flow
+- `DimerGrid` — Diagram 9 dimerization table
+- `MoleculeShowcase` — Diagram 10 three-molecule 3D grid
+- `FlatMolComparison` — Diagram 10b flat structure comparison
+- `BromineShield` — Diagram 11 two-panel comparison
+- `ResistGrid` — Resistance comparison grid
+- `ThresholdDiagram` — Diagram 12 threshold bar
+- `PtilProcessSteps` — Ptil process step flow
+- `PhotostabilityComparison` — Diagram 13 comparison
+- `PtilThreshold` — Diagram 14 threshold
+- `TwoKeysComparison` — Diagram 4 two-keys
+- `ZidermanPaths` — Two-path comparison
+- `ZidermanLevers` — Two-lever comparison
+- `ZidermanThreshold` — Ziderman threshold bar
+
+Usage: `<EnzymeCascade />` (inside a `<DiagramPanel>` wrapper when appropriate)
 
 ## Routing
 
-Each MDX file becomes a page at `/{movement}/{section-slug}`. For example:
-- `src/content/sections/opening/the-chain.mdx` → `/opening/the-chain`
-- `src/content/sections/the-chemistry/plant-indigo.mdx` → `/the-chemistry/plant-indigo`
+Each MDX file becomes a page at `/{movement}/{section-slug}`:
+- `opening/the-chain.mdx` → `/opening/the-chain`
+- `the-chemistry/plant-indigo.mdx` → `/the-chemistry/plant-indigo`
 
-Navigation (sidebar, prev/next) is automatic based on the `order` field in frontmatter.
+Navigation (sidebar, prev/next) is automatic based on the `order` field.
 
 ## Adding a New Section
 
 1. Create an MDX file in the appropriate movement folder
-2. Add frontmatter with the correct `order` number (adjust other sections if inserting)
-3. Write content using the components above
-4. The section appears automatically in the sidebar and navigation
+2. Add frontmatter with correct `order` (adjust others if inserting)
+3. Write prose as plain text with blank lines between paragraphs
+4. Use components for special elements — no imports needed
+5. For complex HTML layouts, create a component in `src/components/`
+6. Run `npm run build` to verify
 
 ## Design System
 
@@ -148,10 +244,13 @@ CSS custom properties in `src/styles/tokens.css`:
 - `--mbi` (#5b2d8a) — 6-bromoindigo violet
 - `--dbi` (#7a2060) — dibromoindigo purple
 
-Fonts: EB Garamond (display/body), Noto Serif Hebrew (Hebrew text), Courier New (mono).
+Fonts: EB Garamond (display/body), Noto Serif Hebrew (Hebrew), Courier New (mono).
 
 ## Do NOT
 
-- Modify `src/styles/` without understanding the full CSS — styles are interdependent
-- Change the `order` numbering without updating ALL affected sections
-- Remove the `movement` or `movementLabel` fields — they drive sidebar grouping
+- Put raw HTML layout blocks directly in MDX — create components instead
+- Put blank lines inside component tags — it breaks rendering
+- Separate inline HTML elements from their surrounding text with blank lines
+- Modify `src/styles/` without understanding the full CSS
+- Change `order` numbering without updating ALL affected sections
+- Remove `movement` or `movementLabel` — they drive sidebar grouping

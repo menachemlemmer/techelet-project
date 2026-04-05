@@ -1,0 +1,30 @@
+---
+/**
+ * A two-column grid with an image on the left and text content on the right.
+ * Used for murex shell photo, plant images, etc.
+ */
+interface Props {
+  imageSrc: string;
+  imageAlt: string;
+  caption?: string;
+  imageWidth?: string;
+}
+const { imageSrc, imageAlt, caption, imageWidth = '160px' } = Astro.props;
+---
+<div style={`display:grid;grid-template-columns:${imageWidth} 1fr;gap:1.2rem;margin-bottom:1.4rem;align-items:start`}>
+  <div>
+    <img
+      src={imageSrc}
+      alt={imageAlt}
+      style="width:100%;border-radius:var(--radius);border:1px solid var(--border);display:block"
+    />
+    {caption && (
+      <div style="font-family:var(--ff-body);font-size:0.72rem;color:var(--muted);margin-top:4px;text-align:center;font-style:italic">
+        {caption}
+      </div>
+    )}
+  </div>
+  <div>
+    <slot />
+  </div>
+</div>

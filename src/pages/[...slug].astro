@@ -5,6 +5,34 @@ import SectionHead from '../components/SectionHead.astro';
 import NavButtons from '../components/NavButtons.astro';
 import { getNavContext, type NavItem } from '../lib/navigation';
 
+// Content components — provided globally to all MDX files via <Content components={...} />
+import AramaicBlock from '../components/AramaicBlock.astro';
+import Callout from '../components/Callout.astro';
+import TermDef from '../components/TermDef.astro';
+import SubHead from '../components/SubHead.astro';
+import DiagramPanel from '../components/DiagramPanel.astro';
+import MolViewer from '../components/MolViewer.astro';
+import ImageTextGrid from '../components/ImageTextGrid.astro';
+import EnzymeCascade from '../components/EnzymeCascade.astro';
+import DimerGrid from '../components/DimerGrid.astro';
+import MoleculeShowcase from '../components/MoleculeShowcase.astro';
+import FlatMolComparison from '../components/FlatMolComparison.astro';
+import BromineShield from '../components/BromineShield.astro';
+import ResistGrid from '../components/ResistGrid.astro';
+import ThresholdDiagram from '../components/ThresholdDiagram.astro';
+import TermWithImage from '../components/TermWithImage.astro';
+import PtilProcessSteps from '../components/PtilProcessSteps.astro';
+import PhotostabilityComparison from '../components/PhotostabilityComparison.astro';
+import PtilThreshold from '../components/PtilThreshold.astro';
+import TwoKeysComparison from '../components/TwoKeysComparison.astro';
+import ZidermanPaths from '../components/ZidermanPaths.astro';
+import ZidermanLevers from '../components/ZidermanLevers.astro';
+import ZidermanThreshold from '../components/ZidermanThreshold.astro';
+import VatDyeingSteps from '../components/VatDyeingSteps.astro';
+import PhScale from '../components/PhScale.astro';
+import PlantIndigoViewer from '../components/PlantIndigoViewer.astro';
+import MbiAggregateComparison from '../components/MbiAggregateComparison.astro';
+
 export async function getStaticPaths() {
   const sections = await getCollection('sections');
   return sections.map(entry => ({
@@ -26,7 +54,7 @@ const { sections, prev, next } = await getNavContext(entry.id);
     />
   )}
 
-  <Content />
+  <Content components={{ AramaicBlock, Callout, TermDef, SubHead, DiagramPanel, MolViewer, ImageTextGrid, EnzymeCascade, DimerGrid, MoleculeShowcase, FlatMolComparison, BromineShield, ResistGrid, ThresholdDiagram, TermWithImage, PtilProcessSteps, PhotostabilityComparison, PtilThreshold, TwoKeysComparison, ZidermanPaths, ZidermanLevers, ZidermanThreshold, VatDyeingSteps, PhScale, PlantIndigoViewer, MbiAggregateComparison }} />
 
   <NavButtons
     prev={prev ? { href: `/${prev.id}`, label: `${prev.sectionNum} — ${prev.navTitle}` } : undefined}

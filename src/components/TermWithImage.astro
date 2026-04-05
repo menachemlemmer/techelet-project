@@ -1,0 +1,18 @@
+---
+interface Props {
+  imageSrc: string;
+  imageAlt: string;
+  word: string;
+  definition: string;
+}
+const { imageSrc, imageAlt, word, definition } = Astro.props;
+---
+<div class="term-with-image">
+  <div class="term-img-slot">
+    <img class="term-img" src={imageSrc} alt={imageAlt} />
+  </div>
+  <div class="term-content">
+    <span class="term-w">{word}</span>
+    <span class="term-d" set:html={definition} />
+  </div>
+</div>

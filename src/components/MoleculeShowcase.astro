@@ -1,0 +1,64 @@
+---
+import MolViewer from './MolViewer.astro';
+---
+<div class="mol-grid">
+  <div class="mol-card">
+    <div class="mol-viewer-wrap">
+      <MolViewer divId="mol-ind" sdfPath="/data/molecules/ind.sdf" showGuide={false} />
+    </div>
+    <div class="mol-body">
+      <div class="mol-name color-ind">Indigotin (IND)</div>
+      <div class="mol-abbr">No bromine · CID 10215 · C₁₆H₁₀N₂O₂</div>
+      <div class="mol-chip" style="background:var(--ind)">
+        Blue — 600–620nm
+      </div>
+      <div class="mol-note">
+        The kala ilan molecule. No bromine — no additional shield against
+        bacterial reduction. Drag to rotate · scroll to zoom.
+      </div>
+    </div>
+  </div>
+  <div class="mol-card">
+    <div class="mol-viewer-wrap">
+      <MolViewer
+        divId="mol-mbi"
+        sdfPath="/data/molecules/mbi.sdf"
+        hasBromine={true}
+        showGuide={false}
+      />
+    </div>
+    <div class="mol-body">
+      <div class="mol-name color-mbi">6-Bromoindigo (MBI)</div>
+      <div class="mol-abbr">One bromine · C₁₆H₉BrN₂O₂ · MW 341</div>
+      <div class="mol-chip" style="background:var(--mbi)">
+        Blue-Violet — 607nm
+      </div>
+      <div class="mol-note">
+        Ziderman's tekhelet compound. One Br (large orange sphere, left ring).
+        Thermochromic: violet → blue at 60°C.
+      </div>
+    </div>
+  </div>
+  <div class="mol-card">
+    <div class="mol-viewer-wrap">
+      <MolViewer
+        divId="mol-dbi"
+        sdfPath="/data/molecules/dbi.sdf"
+        hasBromine={true}
+        bgColor="#0d0a1e"
+        showGuide={false}
+      />
+    </div>
+    <div class="mol-body">
+      <div class="mol-name color-dbi">6,6&#x2032;-Dibromoindigo (DBI)</div>
+      <div class="mol-abbr">Two bromines · CID 177057 · C₁₆H₈Br₂N₂O₂</div>
+      <div class="mol-chip" style="background:var(--dbi)">
+        Purple-Red — 590nm
+      </div>
+      <div class="mol-note">
+        Tyrian purple / argaman. Two Br atoms — one on each benzene ring,
+        symmetrical.
+      </div>
+    </div>
+  </div>
+</div>

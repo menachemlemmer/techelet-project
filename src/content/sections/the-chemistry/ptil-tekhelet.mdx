@@ -7,109 +7,64 @@ movementLabel: The Chemistry
 order: 15
 navTitle: Ptil Tekhelet
 ---
-import SubHead from '@components/SubHead.astro';
-import Callout from '@components/Callout.astro';
-import DiagramPanel from '@components/DiagramPanel.astro';
 
-<p class="bt">Ptil Tekhelet's reconstruction of the ancient process was discovered by accident.
+Ptil Tekhelet's reconstruction of the ancient process was discovered by accident.
 When Prof. Otto Elsner of Shenkar College worked with murex extract indoors, the result
 was purple. A batch exposed to sunlight came out blue. Investigation revealed that
 ultraviolet light, acting on the dye under specific conditions, was stripping bromine atoms
-from the molecule and converting it to indigotin.</p>
+from the molecule and converting it to indigotin.
 
 <SubHead text="The process sequence" />
 
-<div class="steps">
-  <div class="step-box"><div class="step-title">Extract gland fluid</div><div class="step-sub">IND + MBI + DBI mixture · oxidized · insoluble</div></div>
-  <div class="step-arr">→</div>
-  <div class="step-box" style="background:#e8f8e8;border-color:var(--green)"><div class="step-title" style="color:var(--green)">Chemical vat reduction</div><div class="step-sub">Sodium dithionite (Na₂S₂O₄) + alkali → leuco forms</div></div>
-  <div class="step-arr">→</div>
-  <div class="step-box" style="background:#fff8e0;border-color:var(--gold)"><div class="step-title" style="color:#7a6010">UV / sunlight</div><div class="step-sub">Photodebromination of leuco forms in solution</div></div>
-  <div class="step-arr">→</div>
-  <div class="step-box" style="background:#e8f0ff;border-color:var(--ind)"><div class="step-title" style="color:var(--ind)">Leuco-indigotin</div><div class="step-sub">Br removed · colorless · soluble</div></div>
-  <div class="step-arr">→</div>
-  <div class="step-box" style="background:#dde8ff;border-color:var(--accent)"><div class="step-title" style="color:var(--accent)">Dye wool · air</div><div class="step-sub">Indigotin oxidizes in fiber · blue · permanent</div></div>
-</div>
+<PtilProcessSteps />
 
 <Callout type="green">
-<b>Note on the reduction step:</b> Ptil uses <em>chemical</em> reduction — sodium dithionite
-(Na₂S₂O₄), a modern chemical reducing agent — not bacterial fermentation. The two-key
-bacterial vat described in §1 is the ancient natural process. Ptil's modern reconstruction
-uses a faster, more controllable chemical method that achieves the same result:
-converting the insoluble colored dye to its soluble colorless leuco form.
+  <b>Note on the reduction step:</b> Ptil uses <em>chemical</em> reduction —
+  sodium dithionite (Na₂S₂O₄), a modern chemical reducing agent — not bacterial
+  fermentation. The two-key bacterial vat described in §1 is the ancient natural
+  process. Ptil's modern reconstruction uses a faster, more controllable
+  chemical method that achieves the same result: converting the insoluble
+  colored dye to its soluble colorless leuco form.
 </Callout>
 
 <SubHead text="Why photodebromination requires the leuco form" />
 
-<p class="bt">This is not a technical detail — it is chemically essential, and it connects
-directly to the §1 principle about color and photostability.</p>
+This is not a technical detail — it is chemically essential, and it connects
+directly to the §1 principle about color and photostability.
 
-<DiagramPanel num="Diagram 13" title="Oxidized DBI vs. Leuco DBI — why one is photostable and the other is not" caption="The paradox: the same property that gives the dye its color (the chromophore) also makes it photostable. Strip the color (leuco form) and you remove that protection. Ptil's process exploits this by reducing first, then exposing to UV. Sequence is everything.">
-<div class="two-col">
-  <div class="key-box" style="background:#f0f8f0;border:2px solid var(--green)">
-    <div class="key-title" style="color:var(--green)">Oxidized DBI (colored) — photostable</div>
-    <div class="key-body">
-      The fully intact C=C chromophore creates an efficient system for handling incoming
-      photons. Wavelengths in the orange-red range are absorbed and their energy is
-      dissipated as heat — harmlessly, without breaking any bonds. The blue-violet
-      wavelengths that create the color are reflected back to the eye before they
-      penetrate the molecule at all.<br/><br/>
-      Neither absorbed nor reflected photons reach the C–Br bond with sufficient
-      energy to break it. The color itself acts as a shield for the bromine.<br/><br/>
-      <b>Result: bromine protected. Cannot be debrominated by UV.</b>
-    </div>
-  </div>
-  <div class="key-box" style="background:#fff8e8;border:2px solid var(--gold)">
-    <div class="key-title" style="color:#7a6010">Leuco DBI (colorless) — photolabile</div>
-    <div class="key-body">
-      The C=C has been broken. The extended conjugation that made the molecule an efficient
-      photon-handler is disrupted. The molecule is now colorless and transparent —
-      it neither absorbs nor reflects the UV range.<br/><br/>
-      UV photons pass through the colorless liquid solution intact, reaching the C–Br bond
-      directly. The bond breaks. Bromine departs as a bromide ion (Br⁻). This is
-      permanent — the C–Br bond is destroyed, not temporarily disrupted.<br/><br/>
-      <b>Result: bromine vulnerable. Debromination occurs rapidly.</b>
-    </div>
-  </div>
-</div>
+<DiagramPanel
+  num="Diagram 13"
+  title="Oxidized DBI vs. Leuco DBI — why one is photostable and the other is not"
+  caption="The paradox: the same property that gives the dye its color (the chromophore) also makes it photostable. Strip the color (leuco form) and you remove that protection. Ptil's process exploits this by reducing first, then exposing to UV. Sequence is everything."
+>
+  <PhotostabilityComparison />
 </DiagramPanel>
 
 <SubHead text="What ends up in the fiber" />
 
-<p class="bt">After photodebromination and re-oxidation in the fiber, the molecule locked
+After photodebromination and re-oxidation in the fiber, the molecule locked
 in the wool is <b>indigotin</b> — the same molecule as kala ilan. HPLC analysis of
 Ptil-dyed wool confirms indigotin as the dominant compound. The bromine is gone.
 It departed during photodebromination as bromide ions (Br⁻) dissolved in the vat liquid.
 Any trace bromide ions remaining in the wool are not part of the dye molecule —
 they are free ions with no covalent bond to the indigoid chromophore and no relevance
-to the halachic or chemical question.</p>
+to the halachic or chemical question.
 
-<DiagramPanel num="Diagram 14 — Threshold" title="Where Ptil's product falls on the threshold diagram" caption="Ptil's product — indigotin — sits on the same side of the threshold as kala ilan. It has no bromine shield. Under the conditions of Talmudic Test 1, it is expected to behave identically to plant indigo. We will examine the implications of this in Movement 4.">
-<div class="threshold-diagram">
-  <div style="font-family:var(--ff-mono);font-size:.65rem;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.8rem">Stripping resistance</div>
-  <div style="display:flex;align-items:center;gap:0;margin:.5rem 0 1.2rem">
-    <div style="flex:2;height:28px;background:linear-gradient(to right,var(--ind),#4444aa);border-radius:4px 0 0 4px;display:flex;align-items:center;padding:0 8px;position:relative">
-      <span style="font-family:var(--ff-body);font-size:.78rem;color:white;font-weight:600">IND</span>
-      <div style="position:absolute;top:-24px;right:8px;font-family:var(--ff-mono);font-size:.62rem;color:#ef4444;white-space:nowrap">← Ptil product is here</div>
-    </div>
-    <div style="width:4px;height:44px;background:var(--gold2)"></div>
-    <div style="flex:2;height:28px;background:linear-gradient(to right,#4444aa,var(--mbi));display:flex;align-items:center;padding:0 8px">
-      <span style="font-family:var(--ff-body);font-size:.78rem;color:white;font-weight:600">MBI</span>
-    </div>
-    <div style="flex:1;height:28px;background:linear-gradient(to right,var(--mbi),var(--dbi));border-radius:0 4px 4px 0;display:flex;align-items:center;padding:0 8px">
-      <span style="font-family:var(--ff-body);font-size:.78rem;color:white;font-weight:600">DBI</span>
-    </div>
-  </div>
-</div>
+<DiagramPanel
+  num="Diagram 14 — Threshold"
+  title="Where Ptil's product falls on the threshold diagram"
+  caption="Ptil's product — indigotin — sits on the same side of the threshold as kala ilan. It has no bromine shield. Under the conditions of Talmudic Test 1, it is expected to behave identically to plant indigo. We will examine the implications of this in Movement 4."
+>
+  <PtilThreshold />
 </DiagramPanel>
 
 <Callout type="violet">
-<b>Ptil's argument</b> does not rest on the chemistry of the final product but on the
-authenticity of the source and the process. The Torah requires murex trunculus —
-and Ptil's process demonstrably uses murex trunculus. The Talmud itself states that
-only God can tell the difference between tekhelet and kala ilan by sight alone,
-which Ptil takes as confirmation that the final product is visually — and perhaps
-chemically — near-identical to plant indigo. On the halachic question this is
-sufficient. On the historical reconstruction question, it is this shiur's position
-that it is not.
+  <b>Ptil's argument</b> does not rest on the chemistry of the final product but
+  on the authenticity of the source and the process. The Torah requires murex
+  trunculus — and Ptil's process demonstrably uses murex trunculus. The Talmud
+  itself states that only God can tell the difference between tekhelet and kala
+  ilan by sight alone, which Ptil takes as confirmation that the final product
+  is visually — and perhaps chemically — near-identical to plant indigo. On the
+  halachic question this is sufficient. On the historical reconstruction
+  question, it is this shiur's position that it is not.
 </Callout>

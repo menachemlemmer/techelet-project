@@ -6,164 +6,71 @@ movement: "the-chemistry"
 movementLabel: "The Chemistry"
 order: 16
 ---
-import TermDef from '@components/TermDef.astro';
-import SubHead from '@components/SubHead.astro';
-import Callout from '@components/Callout.astro';
-import DiagramPanel from '@components/DiagramPanel.astro';
 
-<p class="bt">Ziderman's approach asks a different question: what if the ancient dyers
+Ziderman's approach asks a different question: what if the ancient dyers
 never needed to strip the bromine at all? What if the authentic tekhelet color was
 achieved through a property of the MBI molecule itself — one that requires no UV,
-no photodebromination, and no destruction of the bromine bond?</p>
+no photodebromination, and no destruction of the bromine bond?
 
-<p class="bt">The answer is the thermochromic shift: a physical rearrangement of MBI
+The answer is the thermochromic shift: a physical rearrangement of MBI
 molecular aggregates inside the fiber that permanently changes the absorbed wavelength
 — and therefore the perceived color — from violet to blue, triggered by nothing more
-than mild heat in water.</p>
+than mild heat in water.
 
 <SubHead text="What thermochromism is — precisely" />
 
-<TermDef word="Thermochromism">The ability of a substance to change color in response to temperature —
-without any change in chemical structure. The molecule before and after heating is
-identical: same atoms, same bonds, same molecular formula. What changes is the
-<em>physical arrangement</em> of the molecules relative to each other on the fiber surface.
-Different arrangements absorb different wavelengths. Different wavelengths mean different colors.</TermDef>
+<TermDef word="Thermochromism">
+  The ability of a substance to change color in response to temperature —
+  without any change in chemical structure. The molecule before and after
+  heating is identical: same atoms, same bonds, same molecular formula. What
+  changes is the
+  <em>physical arrangement</em> of the molecules relative to each other on the
+  fiber surface. Different arrangements absorb different wavelengths. Different
+  wavelengths mean different colors.
+</TermDef>
+This is crucial and bears emphasis: the thermochromic shift in MBI is
+<b>not a chemical reaction</b>. No bonds are broken. No atoms are added or
+removed. The bromine remains covalently attached to the benzene ring throughout.
+HPLC analysis of MBI-dyed wool before and after heating confirms this: the
+molecule extracted from the wool is chemically identical before and after. Only
+the arrangement of its molecular aggregates has changed.
 
-<p class="bt">This is crucial and bears emphasis: the thermochromic shift in MBI is
-<b>not a chemical reaction</b>. No bonds are broken. No atoms are added or removed.
-The bromine remains covalently attached to the benzene ring throughout.
-HPLC analysis of MBI-dyed wool before and after heating confirms this: the molecule
-extracted from the wool is chemically identical before and after. Only the arrangement
-of its molecular aggregates has changed.</p>
-
-<DiagramPanel num="Diagram 15" title="The thermochromic shift — disordered aggregates (violet) → ordered aggregates (blue)" caption="Same MBI molecules. Same chemistry. Same bromine. Same C=C. Only the geometric arrangement of the aggregates on the fiber surface changes. Disordered large aggregates absorb at ~530nm → appear violet. Ordered columns absorb at ~620nm → appear blue. The shift is irreversible: once the ordered arrangement is achieved, cooling does not restore the disordered state. The color change is permanent.">
-<div class="two-col">
-  <div style="background:#f5f0ff;border:2px solid var(--mbi);border-radius:var(--radius);padding:1rem;text-align:center;display:flex;flex-direction:column">
-    <div style="font-family:var(--ff-disp);font-size:.95rem;font-weight:600;color:var(--mbi);margin-bottom:.7rem">BEFORE HEATING — metastable</div>
-    <div style="display:flex;flex-wrap:wrap;gap:3px;justify-content:center;margin:.6rem 0;height:56px;align-items:center;align-content:center">
-      <div style="width:30px;height:12px;background:var(--mbi);border-radius:3px;opacity:.82;transform:rotate(14deg)"></div>
-      <div style="width:30px;height:12px;background:var(--mbi);border-radius:3px;opacity:.82;transform:rotate(-18deg)"></div>
-      <div style="width:30px;height:12px;background:var(--mbi);border-radius:3px;opacity:.82;transform:rotate(6deg)"></div>
-      <div style="width:30px;height:12px;background:var(--mbi);border-radius:3px;opacity:.82;transform:rotate(-11deg)"></div>
-      <div style="width:30px;height:12px;background:var(--mbi);border-radius:3px;opacity:.82;transform:rotate(20deg)"></div>
-      <div style="width:30px;height:12px;background:var(--mbi);border-radius:3px;opacity:.82;transform:rotate(-7deg)"></div>
-      <div style="width:30px;height:12px;background:var(--mbi);border-radius:3px;opacity:.82;transform:rotate(16deg)"></div>
-      <div style="width:30px;height:12px;background:var(--mbi);border-radius:3px;opacity:.82;transform:rotate(-4deg)"></div>
-    </div>
-    <div style="font-family:var(--ff-mono);font-size:.7rem;color:var(--muted)">Disordered stacking — large aggregates</div>
-    <div style="font-family:var(--ff-body);font-size:.8rem;color:var(--muted);margin:.3rem 0">Absorbs ~530nm</div>
-    <div style="flex:1"></div>
-    <div style="height:22px;background:var(--mbi);border-radius:4px;margin-top:.5rem;display:flex;align-items:center;justify-content:center">
-      <span style="color:white;font-family:var(--ff-body);font-size:.8rem">Appears VIOLET</span>
-    </div>
-    <div style="font-family:var(--ff-mono);font-size:.65rem;color:var(--muted);margin-top:.4rem">Bromine: intact ✓ &nbsp; C=C: intact ✓</div>
-  </div>
-  <div style="background:#eff6ff;border:2px solid var(--ind);border-radius:var(--radius);padding:1rem;text-align:center;display:flex;flex-direction:column">
-    <div style="font-family:var(--ff-disp);font-size:.95rem;font-weight:600;color:var(--ind);margin-bottom:.7rem">AFTER 60°C in water — stable</div>
-    <div style="display:flex;gap:3px;justify-content:center;margin:.6rem 0;height:56px;align-items:center">
-      <div style="width:12px;height:32px;background:var(--ind);border-radius:3px;opacity:.88"></div>
-      <div style="width:12px;height:32px;background:var(--ind);border-radius:3px;opacity:.88"></div>
-      <div style="width:12px;height:32px;background:var(--ind);border-radius:3px;opacity:.88"></div>
-      <div style="width:12px;height:32px;background:var(--ind);border-radius:3px;opacity:.88"></div>
-      <div style="width:12px;height:32px;background:var(--ind);border-radius:3px;opacity:.88"></div>
-      <div style="width:12px;height:32px;background:var(--ind);border-radius:3px;opacity:.88"></div>
-      <div style="width:12px;height:32px;background:var(--ind);border-radius:3px;opacity:.88"></div>
-      <div style="width:12px;height:32px;background:var(--ind);border-radius:3px;opacity:.88"></div>
-    </div>
-    <div style="font-family:var(--ff-mono);font-size:.7rem;color:var(--muted)">Ordered columns — smaller aggregates</div>
-    <div style="font-family:var(--ff-body);font-size:.8rem;color:var(--muted);margin:.3rem 0">Absorbs ~620nm</div>
-    <div style="flex:1"></div>
-    <div style="height:22px;background:var(--ind);border-radius:4px;margin-top:.5rem;display:flex;align-items:center;justify-content:center">
-      <span style="color:white;font-family:var(--ff-body);font-size:.8rem">Appears BLUE</span>
-    </div>
-    <div style="font-family:var(--ff-mono);font-size:.65rem;color:var(--muted);margin-top:.4rem">Bromine: intact ✓ &nbsp; C=C: intact ✓</div>
-  </div>
-</div>
-<div style="text-align:center;margin:.5rem 0;font-size:1.4rem">⬇ 60°C in water · irreversible ⬇</div>
+<DiagramPanel
+  num="Diagram 15"
+  title="The thermochromic shift — disordered aggregates (violet) → ordered aggregates (blue)"
+  caption="Same MBI molecules. Same chemistry. Same bromine. Same C=C. Only the geometric arrangement of the aggregates on the fiber surface changes. Disordered large aggregates absorb at ~530nm → appear violet. Ordered columns absorb at ~620nm → appear blue. The shift is irreversible: once the ordered arrangement is achieved, cooling does not restore the disordered state. The color change is permanent."
+>
+  <MbiAggregateComparison />
 </DiagramPanel>
 
 <SubHead text="Two logically distinct paths to the thermochromic result" />
 
-<div class="two-col">
-  <div class="key-box" style="background:#f0f8ff;border:2px solid var(--ind)">
-    <div class="key-title" style="color:var(--ind)">Path 1 — Precursor-direct</div>
-    <div class="key-body">
-      <b>1.</b> Crush young snails immediately<br/>
-      <b>2.</b> Apply gland fluid to wool before air oxidation completes<br/>
-      <b>3.</b> Oxidation occurs directly inside the fiber — IND/MBI/DBI formed in place<br/>
-      <b>4.</b> Young snail selection → MBI-rich composition<br/>
-      <b>5.</b> Heat to 60°C in water → thermochromic shift → blue<br/><br/>
-      No vat. No bacterial reduction. The precursor oxidizes inside the fiber itself.
-      This is a chemically coherent path and may represent the most ancient practice.
-    </div>
-  </div>
-  <div class="key-box" style="background:#f5f0ff;border:2px solid var(--mbi)">
-    <div class="key-title" style="color:var(--mbi)">Path 2 — Vat without UV</div>
-    <div class="key-body">
-      <b>1.</b> Extract and oxidize dye from young MBI-rich snails<br/>
-      <b>2.</b> Standard alkaline bacterial vat — leuco MBI forms<br/>
-      <b>3.</b> Wool immersed — leuco MBI enters fiber<br/>
-      <b>4.</b> Exposure to air — MBI oxidizes back in fiber (appears violet)<br/>
-      <b>5.</b> Heat to 60°C in water → thermochromic shift → blue<br/><br/>
-      Standard vat chemistry, no UV step. Bromine remains intact throughout.
-      This is Ziderman's current documented methodology.
-    </div>
-  </div>
-</div>
+<ZidermanPaths />
 
 <Callout type="blue">
-<b>In both paths: the bromine is never removed.</b> Whether the precursor oxidizes
-directly in the fiber (Path 1) or the leuco form oxidizes inside the fiber (Path 2),
-the final compound is MBI with its C–Br bond covalently intact. The bromine shield
-is fully preserved. This is the fundamental chemical difference between Ziderman
-and Ptil.
+  <b>In both paths: the bromine is never removed.</b> Whether the precursor
+  oxidizes directly in the fiber (Path 1) or the leuco form oxidizes inside the
+  fiber (Path 2), the final compound is MBI with its C–Br bond covalently
+  intact. The bromine shield is fully preserved. This is the fundamental
+  chemical difference between Ziderman and Ptil.
 </Callout>
 
 <SubHead text="Color control: two practical levers" />
 
-<div class="two-col">
-  <div style="background:var(--faint);border:1.5px solid var(--border);border-radius:var(--radius);padding:1rem">
-    <div style="font-family:var(--ff-disp);font-size:.95rem;font-weight:600;color:var(--accent);margin-bottom:.5rem">Lever 1 — Snail selection</div>
-    <div style="font-family:var(--ff-body);font-size:.88rem;color:var(--ink);line-height:1.68">
-      Younger, smaller snails produce a higher ratio of MBI relative to DBI.
-      Both precursor types are present in all snails — the ratio differs by sex,
-      age, and season. Selecting for younger snails at the sourcing stage
-      increases the MBI content of the dye before any processing begins.
-    </div>
-  </div>
-  <div style="background:var(--faint);border:1.5px solid var(--border);border-radius:var(--radius);padding:1rem">
-    <div style="font-family:var(--ff-disp);font-size:.95rem;font-weight:600;color:var(--accent);margin-bottom:.5rem">Lever 2 — Temperature</div>
-    <div style="font-family:var(--ff-body);font-size:.88rem;color:var(--ink);line-height:1.68">
-      60°C in water activates MBI thermochromism → shifts toward blue.<br/>
-      100°C (full boiling) activates DBI thermochromism → shifts toward red-purple.<br/>
-      Temperature selectively activates one compound's shift while leaving the other
-      relatively unchanged — giving precise color control at the finishing stage.
-    </div>
-  </div>
-</div>
+<ZidermanLevers />
 
-<DiagramPanel num="Diagram 16 — Threshold" title="Where Ziderman's product falls on the threshold diagram" caption="Ziderman's product — MBI with intact bromine — sits above the test threshold. It has the bromine shield. Under the conditions of Talmudic Test 1, it is expected to survive. And under the conditions of Test 2 (the sourdough test), it is expected to respond thermochromically. We examine both tests in Movement 4.">
-<div class="threshold-diagram">
-  <div style="font-family:var(--ff-mono);font-size:.65rem;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.8rem">Stripping resistance</div>
-  <div style="display:flex;align-items:center;gap:0;margin:.5rem 0 1.2rem">
-    <div style="flex:2;height:28px;background:linear-gradient(to right,var(--ind),#4444aa);border-radius:4px 0 0 4px;display:flex;align-items:center;padding:0 8px">
-      <span style="font-family:var(--ff-body);font-size:.78rem;color:white;font-weight:600">IND</span>
-    </div>
-    <div style="width:4px;height:44px;background:var(--gold2)"></div>
-    <div style="flex:2;height:28px;background:linear-gradient(to right,#4444aa,var(--mbi));display:flex;align-items:center;padding:0 8px;position:relative">
-      <span style="font-family:var(--ff-body);font-size:.78rem;color:white;font-weight:600">MBI</span>
-      <div style="position:absolute;top:-24px;left:8px;font-family:var(--ff-mono);font-size:.62rem;color:#4ade80;white-space:nowrap">← Ziderman product is here</div>
-    </div>
-    <div style="flex:1;height:28px;background:linear-gradient(to right,var(--mbi),var(--dbi));border-radius:0 4px 4px 0;display:flex;align-items:center;padding:0 8px">
-      <span style="font-family:var(--ff-body);font-size:.78rem;color:white;font-weight:600">DBI</span>
-    </div>
-  </div>
-</div>
+<DiagramPanel
+  num="Diagram 16 — Threshold"
+  title="Where Ziderman's product falls on the threshold diagram"
+  caption="Ziderman's product — MBI with intact bromine — sits above the test threshold. It has the bromine shield. Under the conditions of Talmudic Test 1, it is expected to survive. And under the conditions of Test 2 (the sourdough test), it is expected to respond thermochromically. We examine both tests in Movement 4."
+>
+  <ZidermanThreshold />
 </DiagramPanel>
 
 <Callout type="green">
-<b>What ends up in the fiber:</b> MBI with bromine intact. HPLC of Ziderman-process
-wool confirms MBI as the dominant compound. The bromine shield is fully preserved.
-The thermochromic response is present. Both of these properties map directly onto
-the Talmudic testing methodology — as we will now show.
+  <b>What ends up in the fiber:</b> MBI with bromine intact. HPLC of
+  Ziderman-process wool confirms MBI as the dominant compound. The bromine
+  shield is fully preserved. The thermochromic response is present. Both of
+  these properties map directly onto the Talmudic testing methodology — as we
+  will now show.
 </Callout>

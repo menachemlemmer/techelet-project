@@ -4,17 +4,20 @@ interface Props {
   sdfPath: string;
   hasBromine?: boolean;
   bgColor?: string;
+  showGuide?: boolean;
 }
-const { divId, sdfPath, hasBromine = false, bgColor } = Astro.props;
+const { divId, sdfPath, hasBromine = false, bgColor, showGuide = true } = Astro.props;
 ---
 <div class="mol-3d-outer">
   <div class="mol-3d-wrap">
     <div id={divId}></div>
     <div id={`${divId}-loading`} class="mol-loading">Loading 3D model…</div>
   </div>
-  <div class="mol-guide">
-    <span>Drag</span> rotate <span>Scroll</span> zoom <span>Right-drag</span> pan
-  </div>
+  {showGuide && (
+    <div class="mol-guide">
+      <span>Drag</span> rotate <span>Scroll</span> zoom <span>Right-drag</span> pan
+    </div>
+  )}
 </div>
 
 <script define:vars={{ divId, sdfPath, hasBromine, bgColor }}>

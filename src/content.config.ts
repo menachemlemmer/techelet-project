@@ -2,7 +2,7 @@ import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 const sections = defineCollection({
-  loader: glob({ pattern: '**/*.mdx', base: './src/content/sections' }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/sections' }),
   schema: z.object({
     sectionNum: z.string(),       // Short form for sidebar ("§ 1", "Intro", "M4 · §1")
     title: z.string(),             // Full title for page header

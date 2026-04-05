@@ -165,12 +165,35 @@ body {
   padding-bottom: 5px;
   margin: 2rem 0 1rem;
 }
-.bt {
+.bt,
+#content > p,
+#content > div > div > p {
   font-family: var(--ff-body);
   font-size: clamp(0.95rem, 1.6vw, 1.05rem);
   color: var(--ink);
   line-height: 1.82;
   margin: 0 0 1.1rem;
+}
+/* Inherit text color from parent in dark containers */
+#content .callout.thesis p,
+#content .aramaic-block p,
+#content [style*="background:#1a1208"] p,
+#content [style*="background:#2a1a08"] p {
+  color: inherit;
+}
+/* Reset paragraph styles inside compact component layouts */
+#content .steps p,
+#content .cpd-card p,
+#content .mol-card p,
+#content .resist-card p,
+#content .ing-card p,
+#content .dp p,
+#content .key-box p,
+#content .ph-region p {
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  color: inherit;
 }
 .heb-inline {
   font-family: var(--ff-heb);

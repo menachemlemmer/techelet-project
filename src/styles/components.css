@@ -248,7 +248,7 @@
 ═══════════════════════════════════════════════════ */
 .steps {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 0;
   flex-wrap: wrap;
   margin: 0.9rem 0;
@@ -276,6 +276,7 @@
 }
 .step-arr {
   flex-shrink: 0;
+  align-self: center;
   padding: 0 4px;
   font-size: 1rem;
   color: var(--gold);
