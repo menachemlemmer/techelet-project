@@ -1,0 +1,39 @@
+/* ═══════════════════════════════════════════════════
+   DESIGN TOKENS — CSS custom properties (colors, fonts, layout values)
+   Extracted from tekhelet_chemistry_v5_9_8.html
+═══════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════════════ */
+:root {
+  --bg:      #f7f4ee;
+  --paper:   #fefcf8;
+  --dark:    #1a1208;
+  --ink:     #2a1e0e;
+  --muted:   #7a6a50;
+  --faint:   #ece5d4;
+  --border:  #d0c4a8;
+  --accent:  #1a4a8a;
+  --gold:    #b8860b;
+  --gold2:   #d4a020;
+
+  /* Semantic dye colors — used consistently everywhere */
+  --ind:     #1e5fa8;   /* IND — indigotin — blue */
+  --mbi:     #5b2d8a;   /* MBI — 6-bromoindigo — violet */
+  --dbi:     #7a2060;   /* DBI — dibromoindigo — purple */
+  --leuco:   #9a8a30;   /* Leuco form — yellow-green */
+  --br-col:  #7a3800;   /* Bromine — brown-orange */
+
+  --green:   #1a6a2a;
+  --crimson: #a01818;
+  --teal:    #0a6060;
+
+  --ff-disp: 'EB Garamond', 'Palatino Linotype', Palatino, serif;
+  --ff-body: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --ff-mono: 'Courier New', Courier, monospace;
+  --ff-heb:  'Noto Serif Hebrew', 'Frank Ruhl Libre', 'David', serif;
+
+  --sidebar-w: 210px;
+  --radius: 8px;
+}

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 680 500" xmlns="http://www.w3.org/2000/svg">
+<rect width="680" height="500" fill="#f6f2ea" rx="8"/>
+<defs>
+  <marker id="d17a" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <polygon points="0 0,8 3,0 6" fill="#6a5a30"/>
+  </marker>
+</defs>
+
+
+<text x="170" y="24" text-anchor="middle" fill="#1a5a1a" font-size="12.5" font-weight="bold" font-family="Georgia,serif">Path A — Precursor Model</text>
+<text x="510" y="24" text-anchor="middle" fill="#7a3a00" font-size="12.5" font-weight="bold" font-family="Georgia,serif">Path B — Reduction Vat</text>
+<line x1="340" y1="30" x2="340" y2="432" stroke="#c0aa70" stroke-width="1" stroke-dasharray="5,4"/>
+
+
+<rect x="16" y="34" width="260" height="54" rx="5" fill="#fff" stroke="#2a7a2a" stroke-width="1.8"/>
+<text x="146" y="55" text-anchor="middle" fill="#0a200a" font-size="11" font-weight="bold" font-family="Georgia,serif">Dam hachilazon</text>
+<text x="146" y="73" text-anchor="middle" fill="#1a4a1a" font-size="9.5" font-family="Georgia,serif">fresh tyrindoxyl — soluble, colorless</text>
+
+<rect x="404" y="34" width="260" height="54" rx="5" fill="#dce8f8" stroke="#1a4a9a" stroke-width="1.8"/>
+<text x="534" y="55" text-anchor="middle" fill="#051030" font-size="11" font-weight="bold" font-family="Georgia,serif">Dam hachilazon</text>
+<text x="534" y="73" text-anchor="middle" fill="#1a306a" font-size="9.5" font-family="Georgia,serif">oxidized brominated indigotin — blue</text>
+
+<line x1="146" y1="90" x2="146" y2="108" stroke="#6a5a30" stroke-width="1.8" marker-end="url(#d17a)"/>
+<line x1="534" y1="90" x2="534" y2="108" stroke="#6a5a30" stroke-width="1.8" marker-end="url(#d17a)"/>
+
+
+<rect x="16" y="112" width="260" height="54" rx="5" fill="#fff" stroke="#5a3a8a" stroke-width="1.8"/>
+<text x="146" y="133" text-anchor="middle" fill="#1a0a2a" font-size="11" font-weight="bold" font-family="Georgia,serif">Sammanin — alum</text>
+<text x="146" y="151" text-anchor="middle" fill="#3a1a6a" font-size="9.5" font-family="Georgia,serif">opens wool fiber · low pH</text>
+
+<rect x="404" y="112" width="260" height="54" rx="5" fill="#fff" stroke="#8a4a00" stroke-width="1.8"/>
+<text x="534" y="133" text-anchor="middle" fill="#2a1000" font-size="11" font-weight="bold" font-family="Georgia,serif">Sammanin — alum + alkali</text>
+<text x="534" y="151" text-anchor="middle" fill="#5a2800" font-size="9.5" font-family="Georgia,serif">lye or equivalent · high pH</text>
+
+<line x1="146" y1="168" x2="146" y2="186" stroke="#6a5a30" stroke-width="1.8" marker-end="url(#d17a)"/>
+<line x1="534" y1="168" x2="534" y2="186" stroke="#6a5a30" stroke-width="1.8" marker-end="url(#d17a)"/>
+
+
+<rect x="16" y="190" width="260" height="54" rx="5" fill="#fff" stroke="#5a3a8a" stroke-width="1.8"/>
+<text x="146" y="211" text-anchor="middle" fill="#1a0a2a" font-size="11" font-weight="bold" font-family="Georgia,serif">Yora — precursor bath</text>
+<text x="146" y="229" text-anchor="middle" fill="#3a1a6a" font-size="9.5" font-family="Georgia,serif">heat · low pH · dye enters directly</text>
+
+<rect x="404" y="190" width="260" height="54" rx="5" fill="#fff" stroke="#8a4a00" stroke-width="1.8"/>
+<text x="534" y="211" text-anchor="middle" fill="#2a1000" font-size="11" font-weight="bold" font-family="Georgia,serif">Yora — reduction vat</text>
+<text x="534" y="229" text-anchor="middle" fill="#5a2800" font-size="9.5" font-family="Georgia,serif">heat · alkaline · bacteria · 12 days</text>
+
+<line x1="146" y1="246" x2="146" y2="264" stroke="#6a5a30" stroke-width="1.8" marker-end="url(#d17a)"/>
+<line x1="534" y1="246" x2="534" y2="264" stroke="#6a5a30" stroke-width="1.8" marker-end="url(#d17a)"/>
+
+
+<rect x="16" y="268" width="260" height="54" rx="5" fill="#fff" stroke="#5a3a8a" stroke-width="1.8"/>
+<text x="146" y="289" text-anchor="middle" fill="#1a0a2a" font-size="11" font-weight="bold" font-family="Georgia,serif">Wool enters vat</text>
+<text x="146" y="307" text-anchor="middle" fill="#3a1a6a" font-size="9.5" font-family="Georgia,serif">dye bonds to fiber</text>
+
+<rect x="404" y="268" width="260" height="54" rx="5" fill="#fff" stroke="#8a4a00" stroke-width="1.8"/>
+<text x="534" y="289" text-anchor="middle" fill="#2a1000" font-size="11" font-weight="bold" font-family="Georgia,serif">Wool enters vat</text>
+<text x="534" y="307" text-anchor="middle" fill="#5a2800" font-size="9.5" font-family="Georgia,serif">leuco dye bonds · re-oxidizes in fiber</text>
+
+
+<line x1="146" y1="324" x2="146" y2="362" stroke="#6a5a30" stroke-width="1.8"/>
+<line x1="534" y1="324" x2="534" y2="362" stroke="#6a5a30" stroke-width="1.8"/>
+<line x1="146" y1="362" x2="340" y2="362" stroke="#6a5a30" stroke-width="1.8"/>
+<line x1="534" y1="362" x2="340" y2="362" stroke="#6a5a30" stroke-width="1.8"/>
+<line x1="340" y1="362" x2="340" y2="384" stroke="#6a5a30" stroke-width="1.8" marker-end="url(#d17a)"/>
+
+
+<rect x="192" y="390" width="296" height="56" rx="5" fill="#dce8f8" stroke="#1a4a9a" stroke-width="2.5"/>
+<text x="340" y="414" text-anchor="middle" fill="#051030" font-size="13" font-weight="bold" font-family="Georgia,serif">תְּכֵלֶת — Tekhelet</text>
+<text x="340" y="433" text-anchor="middle" fill="#1a306a" font-size="9.5" font-family="Georgia,serif">blue · lightfast · brominated indigoid</text>
+
+</svg>

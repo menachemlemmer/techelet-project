@@ -1,0 +1,24 @@
+---
+sectionNum: Movement I · § 1
+title: What Is Color?
+movement: light-and-color
+movementLabel: Light & Color
+order: 5
+subtitle: Wavelength · Frequency · The visible spectrum
+---
+import TermDef from '@components/TermDef.astro';
+import DiagramPanel from '@components/DiagramPanel.astro';
+
+<p class="bt">Color is not a property of objects. It is a property of light. Specifically, color is a wavelength of electromagnetic radiation that falls within the range our eyes can detect. Different wavelengths of light produce different color sensations in the eye.</p>
+
+<TermDef word="Wavelength">Light travels as a wave — an oscillating electromagnetic field moving through space. The wavelength is the distance from one wave crest to the next. It is measured in nanometers (nm) — billionths of a meter. Shorter wavelength = the wave oscillates more rapidly. Longer wavelength = the wave oscillates more slowly.</TermDef>
+
+<TermDef word="Frequency">The number of wave cycles passing a fixed point per second. Frequency and wavelength are directly related: shorter wavelength = higher frequency. Higher frequency means more energy per photon. Violet light has shorter wavelength and higher energy than red light. This energy difference is what makes violet and red light interact differently with matter — and why they appear as different colors.</TermDef>
+
+<DiagramPanel num="Diagram 1" title="Wavelength and frequency — what a light wave looks like" caption="Two light waves moving at the same speed. The violet/blue wave completes many more cycles — shorter wavelength, higher frequency, higher energy. The red wave is more spread out — longer wavelength, lower frequency, lower energy. Our eyes interpret these different wavelengths as different colors.">
+<img src="/diagrams/m1/d01-wavelength.svg" alt="Wavelength and frequency of light waves" style="width:100%;display:block;border-radius:6px" />
+</DiagramPanel>
+
+<DiagramPanel num="Diagram 2" title="The visible spectrum — each color is a wavelength" caption="The complete visible spectrum, from 380nm (violet) to 700nm (red). Each color is a specific wavelength of electromagnetic radiation. Our eyes contain three types of cone cells, each sensitive to a different range of wavelengths — their combined signals produce our perception of color.">
+<img src="/diagrams/m1/d02-spectrum.svg" alt="The visible light spectrum" style="width:100%;display:block;border-radius:6px" />
+</DiagramPanel>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 680 680" xmlns="http://www.w3.org/2000/svg">
+<rect width="680" height="680" fill="#f6f2ea" rx="8"/>
+<defs>
+  <marker id="d18a" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <polygon points="0 0,8 3,0 6" fill="#6a5a30"/>
+  </marker>
+</defs>
+
+
+<rect x="130" y="14" width="420" height="52" rx="5" fill="#fff" stroke="#9a8a50" stroke-width="1.5"/>
+<text x="340" y="34" text-anchor="middle" fill="#1a1000" font-size="12" font-weight="bold" font-family="Georgia,serif">Blue thread to authenticate</text>
+<text x="340" y="52" text-anchor="middle" fill="#5a4820" font-size="10" font-family="Georgia,serif">Color alone is inconclusive — the two blues are identical to the eye</text>
+
+<line x1="340" y1="66" x2="340" y2="88" stroke="#6a5a30" stroke-width="1.8" marker-end="url(#d18a)"/>
+
+
+<rect x="20" y="92" width="640" height="86" rx="5" fill="#e8edf8" stroke="#3040a0" stroke-width="1.8"/>
+<text x="340" y="112" text-anchor="middle" fill="#0a0a30" font-size="12" font-weight="bold" font-family="Georgia,serif">Test 1 — Rav Yitzchak bar Rav Yehuda</text>
+<text x="340" y="131" text-anchor="middle" fill="#7a5a10" font-size="11" font-family="serif">מַגְבְּיָא גִּילָא · מַיָּא דְּשַׁבְלִילְתָּא · מֵימֵי רַגְלַיִם בֶּן אַרְבָּעִים יוֹם</text>
+<text x="340" y="149" text-anchor="middle" fill="#30305a" font-size="9.5" font-family="Georgia,serif">Alum · fenugreek water · 40-day fermented urine · soak overnight</text>
+<text x="340" y="166" text-anchor="middle" fill="#404080" font-size="9" font-style="italic" font-family="Georgia,serif">Controlled reduction environment — two-key bath probing the bromine shield</text>
+
+
+<line x1="340" y1="178" x2="340" y2="196" stroke="#6a5a30" stroke-width="1.8"/>
+<line x1="148" y1="196" x2="532" y2="196" stroke="#6a5a30" stroke-width="1.8"/>
+<line x1="148" y1="196" x2="148" y2="208" stroke="#6a5a30" stroke-width="1.8"/>
+<line x1="532" y1="196" x2="532" y2="208" stroke="#6a5a30" stroke-width="1.8"/>
+
+
+<text x="148" y="222" text-anchor="middle" fill="#7a5a10" font-size="10.5" font-family="serif">לָא אִיפְּרֵד חֲזוּתַיהּ</text>
+<text x="148" y="236" text-anchor="middle" fill="#5a4010" font-size="9" font-family="Georgia,serif">color holds</text>
+<text x="532" y="222" text-anchor="middle" fill="#7a5a10" font-size="10.5" font-family="serif">אִיפְּרֵד חֲזוּתַיהּ</text>
+<text x="532" y="236" text-anchor="middle" fill="#5a4010" font-size="9" font-family="Georgia,serif">color separates</text>
+
+<line x1="148" y1="240" x2="148" y2="254" stroke="#6a5a30" stroke-width="1.8" marker-end="url(#d18a)"/>
+<line x1="532" y1="240" x2="532" y2="254" stroke="#6a5a30" stroke-width="1.8" marker-end="url(#d18a)"/>
+
+
+<rect x="20" y="258" width="256" height="78" rx="5" fill="#e8f4e8" stroke="#2a7a2a" stroke-width="2"/>
+<text x="148" y="279" text-anchor="middle" fill="#0a1e0a" font-size="12" font-weight="bold" font-family="Georgia,serif">&#x2713; כְּשֵׁרָה — Valid</text>
+<text x="148" y="297" text-anchor="middle" fill="#1a4a1a" font-size="9.5" font-family="Georgia,serif">Bromine shield resisted stripping</text>
+<text x="148" y="313" text-anchor="middle" fill="#2a5a2a" font-size="9" font-style="italic" font-family="Georgia,serif">Definitively authentic</text>
+<text x="148" y="328" text-anchor="middle" fill="#2a5a2a" font-size="9" font-style="italic" font-family="Georgia,serif">No further testing required</text>
+
+
+<rect x="404" y="258" width="256" height="78" rx="5" fill="#fdf0e0" stroke="#9a5010" stroke-width="2"/>
+<text x="532" y="279" text-anchor="middle" fill="#1e0a00" font-size="12" font-weight="bold" font-family="Georgia,serif">Inconclusive</text>
+<text x="532" y="297" text-anchor="middle" fill="#5a3000" font-size="9.5" font-family="Georgia,serif">Dye stripped — but bath calibration</text>
+<text x="532" y="313" text-anchor="middle" fill="#5a3000" font-size="9.5" font-family="Georgia,serif">may have been too aggressive</text>
+<text x="532" y="328" text-anchor="middle" fill="#6a4010" font-size="9" font-style="italic" font-family="Georgia,serif">Proceed to Test 2</text>
+
+<line x1="532" y1="336" x2="532" y2="358" stroke="#6a5a30" stroke-width="1.8" marker-end="url(#d18a)"/>
+
+
+<rect x="348" y="362" width="312" height="86" rx="5" fill="#e8edf8" stroke="#3040a0" stroke-width="1.8"/>
+<text x="504" y="382" text-anchor="middle" fill="#0a0a30" font-size="12" font-weight="bold" font-family="Georgia,serif">Test 2 — Rav Adda</text>
+<text x="504" y="401" text-anchor="middle" fill="#7a5a10" font-size="11" font-family="serif">חֲמִירָא אַרְכְּסָא דִּשְׂעָרֵי</text>
+<text x="504" y="419" text-anchor="middle" fill="#30305a" font-size="9.5" font-family="Georgia,serif">Thick barley sourdough · baked inside</text>
+<text x="504" y="436" text-anchor="middle" fill="#404080" font-size="9" font-style="italic" font-family="Georgia,serif">Acid + heat — probing the DBI thermochromic threshold</text>
+
+
+<line x1="504" y1="448" x2="504" y2="466" stroke="#6a5a30" stroke-width="1.8"/>
+<line x1="420" y1="466" x2="588" y2="466" stroke="#6a5a30" stroke-width="1.8"/>
+<line x1="420" y1="466" x2="420" y2="478" stroke="#6a5a30" stroke-width="1.8"/>
+<line x1="588" y1="466" x2="588" y2="478" stroke="#6a5a30" stroke-width="1.8"/>
+
+
+<text x="420" y="492" text-anchor="middle" fill="#7a5a10" font-size="10.5" font-family="serif">אִישְׁתַּנַּאי לִמְעַלְּיוּתָא</text>
+<text x="420" y="506" text-anchor="middle" fill="#5a4010" font-size="9" font-family="Georgia,serif">color improved</text>
+<text x="588" y="492" text-anchor="middle" fill="#7a5a10" font-size="10.5" font-family="serif">אִישְׁתַּנַּאי לִגְרִיעוּתָא</text>
+<text x="588" y="506" text-anchor="middle" fill="#5a4010" font-size="9" font-family="Georgia,serif">color degraded</text>
+
+<line x1="420" y1="510" x2="420" y2="524" stroke="#6a5a30" stroke-width="1.8" marker-end="url(#d18a)"/>
+<line x1="588" y1="510" x2="588" y2="524" stroke="#6a5a30" stroke-width="1.8" marker-end="url(#d18a)"/>
+
+
+<rect x="348" y="528" width="148" height="84" rx="5" fill="#e8f4e8" stroke="#2a7a2a" stroke-width="2"/>
+<text x="422" y="549" text-anchor="middle" fill="#0a1e0a" font-size="12" font-weight="bold" font-family="Georgia,serif">&#x2713; כְּשֵׁרָה</text>
+<text x="422" y="567" text-anchor="middle" fill="#1a4a1a" font-size="9.5" font-family="Georgia,serif">DBI thermochromic</text>
+<text x="422" y="582" text-anchor="middle" fill="#1a4a1a" font-size="9.5" font-family="Georgia,serif">shift confirmed</text>
+<text x="422" y="600" text-anchor="middle" fill="#2a5a2a" font-size="9" font-style="italic" font-family="Georgia,serif">Bromine intact</text>
+
+
+<rect x="516" y="528" width="148" height="84" rx="5" fill="#f8e8e8" stroke="#8a1a1a" stroke-width="2"/>
+<text x="590" y="549" text-anchor="middle" fill="#1e0a0a" font-size="12" font-weight="bold" font-family="Georgia,serif">&#x2717; פְּסוּלָה</text>
+<text x="590" y="567" text-anchor="middle" fill="#5a1a1a" font-size="9.5" font-family="Georgia,serif">No DBI — color only</text>
+<text x="590" y="582" text-anchor="middle" fill="#5a1a1a" font-size="9.5" font-family="Georgia,serif">degraded under heat</text>
+<text x="590" y="600" text-anchor="middle" fill="#6a2a2a" font-size="9" font-style="italic" font-family="Georgia,serif">Plant indigo</text>
+
+</svg>

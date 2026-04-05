@@ -1,0 +1,18 @@
+---
+interface Props {
+  num?: string;
+  title?: string;
+  caption?: string;
+}
+
+const { num, title, caption } = Astro.props;
+---
+
+<div class="dp">
+  {num && <div class="dp-num">{num}</div>}
+  {title && <div class="dp-title">{title}</div>}
+  <div class="svg-wrap">
+    <slot />
+  </div>
+  {caption && <div class="dp-cap">{caption}</div>}
+</div>

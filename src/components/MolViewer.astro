@@ -1,0 +1,73 @@
+---
+interface Props {
+  divId: string;
+  sdfPath: string;
+  hasBromine?: boolean;
+  bgColor?: string;
+}
+const { divId, sdfPath, hasBromine = false, bgColor } = Astro.props;
+---
+<div class="mol-3d-outer">
+  <div class="mol-3d-wrap">
+    <div id={divId}></div>
+    <div id={`${divId}-loading`} class="mol-loading">Loading 3D model…</div>
+  </div>
+  <div class="mol-guide">
+    <span>Drag</span> rotate <span>Scroll</span> zoom <span>Right-drag</span> pan
+  </div>
+</div>
+
+<script define:vars={{ divId, sdfPath, hasBromine, bgColor }}>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        observer.disconnect();
+        loadMolecule();
+      }
+    });
+  });
+
+  const el = document.getElementById(divId);
+  if (el) observer.observe(el);
+
+  async function loadMolecule() {
+    // Ensure 3Dmol is loaded
+    if (typeof $3Dmol === 'undefined') {
+      const script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.0.1/3Dmol-min.js';
+      script.onload = () => doRender();
+      document.head.appendChild(script);
+    } else {
+      doRender();
+    }
+  }
+
+  function doRender() {
+    fetch(sdfPath)
+      .then(r => r.text())
+      .then(sdfData => {
+        const bg = bgColor || (hasBromine ? '#0d0a1e' : '#080f1c');
+        const v = $3Dmol.createViewer(document.getElementById(divId), {
+          backgroundColor: bg, antialias: true
+        });
+        const elemColors = {
+          C: '#909090', N: '#3366dd', O: '#dd2222', H: '#ffffff', Br: '#c07030'
+        };
+        const colMap = { prop: 'elem', map: elemColors };
+        v.addModel(sdfData, 'sdf');
+        v.setStyle({}, {
+          stick: { radius: 0.12, colorscheme: colMap },
+          sphere: { scale: 0.24, colorscheme: colMap }
+        });
+        if (hasBromine) {
+          v.setStyle({ elem: 'Br' }, {
+            sphere: { radius: 0.62, color: '#c07030', opacity: 1.0 },
+            stick: { radius: 0.20, color: '#c07030', opacity: 1.0 }
+          });
+        }
+        v.zoomTo(); v.zoom(0.78); v.rotate(15, 'x'); v.rotate(-20, 'y'); v.render();
+        const loadEl = document.getElementById(divId + '-loading');
+        if (loadEl) loadEl.style.opacity = '0';
+      });
+  }
+</script>

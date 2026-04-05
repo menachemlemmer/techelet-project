@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg">
+<rect width="700" height="360" fill="#f5f0e8" rx="6"/>
+<line x1="234" y1="16" x2="234" y2="348" stroke="#c8b898" stroke-width="1" stroke-dasharray="4,4"/>
+<line x1="468" y1="16" x2="468" y2="348" stroke="#c8b898" stroke-width="1" stroke-dasharray="4,4"/>
+
+
+<text x="117" y="34" text-anchor="middle" fill="#1a1208" font-size="12" font-weight="bold" font-family="Georgia,serif">WHITE SURFACE</text>
+<text x="117" y="50" text-anchor="middle" fill="#6a5a48" font-size="9" font-family="Georgia,serif">white light arrives ↓</text>
+<line x1="75" y1="52" x2="75" y2="102" stroke="#5020a0" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="87" y1="52" x2="87" y2="102" stroke="#1040c0" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="99" y1="52" x2="99" y2="102" stroke="#0898a8" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="111" y1="52" x2="111" y2="102" stroke="#208030" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="123" y1="52" x2="123" y2="102" stroke="#a89000" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="135" y1="52" x2="135" y2="102" stroke="#c04808" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="147" y1="52" x2="147" y2="102" stroke="#a81010" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="159" y1="52" x2="159" y2="102" stroke="#600808" stroke-width="2.2" stroke-linecap="round"/>
+
+<rect x="52" y="104" width="130" height="34" rx="4" fill="#e8e0d0" stroke="#b0a888" stroke-width="1.5"/>
+<text x="117" y="126" text-anchor="middle" fill="#1a1208" font-size="10" font-weight="bold" font-family="Georgia,serif">white surface</text>
+<line x1="75" y1="104" x2="47" y2="60" stroke="#5020a0" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="87" y1="104" x2="67" y2="60" stroke="#1040c0" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="99" y1="104" x2="87" y2="60" stroke="#0898a8" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="111" y1="104" x2="107" y2="60" stroke="#208030" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="123" y1="104" x2="127" y2="60" stroke="#a89000" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="135" y1="104" x2="147" y2="60" stroke="#c04808" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="147" y1="104" x2="167" y2="60" stroke="#a81010" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="159" y1="104" x2="187" y2="60" stroke="#600808" stroke-width="2.2" stroke-linecap="round"/>
+
+<text x="117" y="188" text-anchor="middle" fill="#6a5a48" font-size="9" font-style="italic" font-family="Georgia,serif">— nothing absorbed —</text>
+<ellipse cx="117" cy="268" rx="22" ry="13" fill="#f8f0e0" stroke="#a09080" stroke-width="1.5"/>
+<circle cx="117" cy="268" r="9" fill="#c0b898"/>
+<circle cx="117" cy="268" r="5" fill="#080808"/>
+<circle cx="120" cy="265" r="1.5" fill="white" opacity="0.8"/>
+<text x="117" y="302" text-anchor="middle" fill="#1a1208" font-size="11" font-weight="bold" font-family="Georgia,serif">sees WHITE</text>
+<text x="117" y="318" text-anchor="middle" fill="#6a5a48" font-size="9" font-style="italic" font-family="Georgia,serif">all wavelengths returned</text>
+<text x="117" y="332" text-anchor="middle" fill="#6a5a48" font-size="9" font-style="italic" font-family="Georgia,serif">nothing retained</text>
+
+
+<text x="351" y="34" text-anchor="middle" fill="#1040c0" font-size="12" font-weight="bold" font-family="Georgia,serif">BLUE PIGMENT</text>
+<text x="351" y="50" text-anchor="middle" fill="#6a5a48" font-size="9" font-family="Georgia,serif">white light arrives ↓</text>
+<line x1="309" y1="52" x2="309" y2="102" stroke="#5020a0" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="321" y1="52" x2="321" y2="102" stroke="#1040c0" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="333" y1="52" x2="333" y2="102" stroke="#0898a8" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="345" y1="52" x2="345" y2="102" stroke="#208030" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="357" y1="52" x2="357" y2="102" stroke="#a89000" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="369" y1="52" x2="369" y2="102" stroke="#c04808" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="381" y1="52" x2="381" y2="102" stroke="#a81010" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="393" y1="52" x2="393" y2="102" stroke="#600808" stroke-width="2.2" stroke-linecap="round"/>
+
+<rect x="286" y="104" width="130" height="34" rx="4" fill="#1040c0" stroke="#0a2050" stroke-width="1.5"/>
+<text x="351" y="126" text-anchor="middle" fill="white" font-size="10" font-weight="bold" font-family="Georgia,serif">blue pigment</text>
+<line x1="309" y1="104" x2="291" y2="60" stroke="#5020a0" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="345" y1="104" x2="335" y2="60" stroke="#1040c0" stroke-width="2.2" stroke-linecap="round"/>
+<text x="289" y="74" fill="#1040c0" font-size="8.5" font-family="Georgia,serif">blue</text>
+<text x="289" y="86" fill="#1040c0" font-size="8.5" font-family="Georgia,serif">refl. ↑</text>
+
+<line x1="352" y1="138" x2="346" y2="174" stroke="#208030" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.55" stroke-linecap="round"/>
+<line x1="363" y1="138" x2="360" y2="174" stroke="#a89000" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.55" stroke-linecap="round"/>
+<line x1="374" y1="138" x2="374" y2="174" stroke="#c04808" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.55" stroke-linecap="round"/>
+<line x1="385" y1="138" x2="388" y2="174" stroke="#a81010" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.55" stroke-linecap="round"/>
+<line x1="396" y1="138" x2="402" y2="174" stroke="#600808" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.55" stroke-linecap="round"/>
+
+<text x="351" y="200" text-anchor="middle" fill="#6a5a48" font-size="9" font-style="italic" font-family="Georgia,serif">green, yellow, orange, red — absorbed ↓</text>
+<ellipse cx="351" cy="268" rx="22" ry="13" fill="#f8f0e0" stroke="#a09080" stroke-width="1.5"/>
+<circle cx="351" cy="268" r="9" fill="#1040c0"/>
+<circle cx="351" cy="268" r="5" fill="#080808"/>
+<circle cx="354" cy="265" r="1.5" fill="white" opacity="0.8"/>
+<text x="351" y="302" text-anchor="middle" fill="#1040c0" font-size="11" font-weight="bold" font-family="Georgia,serif">sees BLUE</text>
+<text x="351" y="318" text-anchor="middle" fill="#6a5a48" font-size="9" font-style="italic" font-family="Georgia,serif">blue wavelengths reflected</text>
+<text x="351" y="332" text-anchor="middle" fill="#6a5a48" font-size="9" font-style="italic" font-family="Georgia,serif">others absorbed</text>
+
+
+<text x="585" y="34" text-anchor="middle" fill="#1a1208" font-size="12" font-weight="bold" font-family="Georgia,serif">BLACK SURFACE</text>
+<text x="585" y="50" text-anchor="middle" fill="#6a5a48" font-size="9" font-family="Georgia,serif">white light arrives ↓</text>
+<line x1="543" y1="52" x2="543" y2="102" stroke="#5020a0" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="555" y1="52" x2="555" y2="102" stroke="#1040c0" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="567" y1="52" x2="567" y2="102" stroke="#0898a8" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="579" y1="52" x2="579" y2="102" stroke="#208030" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="591" y1="52" x2="591" y2="102" stroke="#a89000" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="603" y1="52" x2="603" y2="102" stroke="#c04808" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="615" y1="52" x2="615" y2="102" stroke="#a81010" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="627" y1="52" x2="627" y2="102" stroke="#600808" stroke-width="2.2" stroke-linecap="round"/>
+
+<rect x="520" y="104" width="130" height="34" rx="4" fill="#101010" stroke="#383838" stroke-width="1.5"/>
+<text x="585" y="126" text-anchor="middle" fill="#c8c0b0" font-size="10" font-weight="bold" font-family="Georgia,serif">black surface</text>
+<line x1="543" y1="138" x2="535" y2="170" stroke="#5020a0" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.5" stroke-linecap="round"/>
+<line x1="555" y1="138" x2="549" y2="170" stroke="#1040c0" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.5" stroke-linecap="round"/>
+<line x1="567" y1="138" x2="563" y2="170" stroke="#0898a8" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.5" stroke-linecap="round"/>
+<line x1="579" y1="138" x2="577" y2="170" stroke="#208030" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.5" stroke-linecap="round"/>
+<line x1="591" y1="138" x2="591" y2="170" stroke="#a89000" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.5" stroke-linecap="round"/>
+<line x1="603" y1="138" x2="605" y2="170" stroke="#c04808" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.5" stroke-linecap="round"/>
+<line x1="615" y1="138" x2="619" y2="170" stroke="#a81010" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.5" stroke-linecap="round"/>
+<line x1="627" y1="138" x2="633" y2="170" stroke="#600808" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.5" stroke-linecap="round"/>
+
+<text x="585" y="200" text-anchor="middle" fill="#6a5a48" font-size="9" font-style="italic" font-family="Georgia,serif">all wavelengths absorbed ↓ nothing reflected</text>
+<ellipse cx="585" cy="268" rx="22" ry="13" fill="#f8f0e0" stroke="#a09080" stroke-width="1.5"/>
+<circle cx="585" cy="268" r="9" fill="#181818"/>
+<circle cx="585" cy="268" r="5" fill="#080808"/>
+<circle cx="588" cy="265" r="1.5" fill="white" opacity="0.8"/>
+<text x="585" y="302" text-anchor="middle" fill="#1a1208" font-size="11" font-weight="bold" font-family="Georgia,serif">sees BLACK</text>
+<text x="585" y="318" text-anchor="middle" fill="#6a5a48" font-size="9" font-style="italic" font-family="Georgia,serif">no light returned</text>
+<text x="585" y="332" text-anchor="middle" fill="#6a5a48" font-size="9" font-style="italic" font-family="Georgia,serif">everything retained</text>
+</svg>

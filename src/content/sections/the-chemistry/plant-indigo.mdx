@@ -1,0 +1,171 @@
+---
+sectionNum: § 2
+title: Plant Indigo — Kala Ilan
+movement: the-chemistry
+movementLabel: The Chemistry
+order: 13
+needs3Dmol: true
+subtitle: The same chemistry applied to a familiar, accessible baseline
+---
+
+import SubHead from "@components/SubHead.astro";
+import Callout from "@components/Callout.astro";
+import DiagramPanel from "@components/DiagramPanel.astro";
+import MolViewer from "@components/MolViewer.astro";
+
+<p class="bt">
+  The molecule we described in §1 is not hypothetical. It exists in nature,
+  produced by two different plants on opposite ends of the ancient world, and it
+  is the molecule the Talmud calls <span class="heb-inline">קָלָא אִילָן</span>{" "}
+  — the fraudulent substitute for tekhelet. Understanding it precisely is
+  essential before we can understand what makes tekhelet different.
+</p>
+
+<div class="term-with-image">
+  <div class="term-img-slot">
+    <img
+      class="term-img"
+      src="/images/woad-plant.jpg"
+      alt="Isatis tinctoria — woad"
+    ></img>
+  </div>
+  <div class="term-content">
+    <span class="term-w">Woad — Isatis tinctoria</span>
+    <span class="term-d">
+      Europe's traditional blue dye for millennia, used from the Neolithic
+      period through the Middle Ages. The plant contains a colorless precursor —
+      isatan B — that converts to indigotin through enzymatic hydrolysis and air
+      oxidation. The final dye molecule is identical to that of Indian indigo,
+      but present at roughly 1/20th the concentration. More impurities in woad
+      dye produce a softer, slightly greyed blue.
+    </span>
+  </div>
+</div>
+
+<div class="term-with-image">
+  <div class="term-img-slot">
+    <img
+      class="term-img"
+      src="/images/indigo-plant.jpg"
+      alt="Indigofera tinctoria — indigo plant"
+    ></img>
+  </div>
+  <div class="term-content">
+    <span class="term-w">Indigo — Indigofera tinctoria</span>
+    <span class="term-d">
+      The indigo plant, cultivated across India and later the Americas. Its dye
+      concentration is so much higher than woad that when Indian indigo reached
+      Europe in the 16th century, it threatened to make the entire European woad
+      industry economically obsolete overnight. Woad merchants lobbied their
+      governments for bans on Indian indigo — the "Devil's Dye" they called it —
+      to protect their livelihoods. Today, synthetic indigotin — chemically
+      identical — dyes all blue denim worldwide.
+    </span>
+  </div>
+</div>
+
+<Callout type="blue">
+  <b>
+    Both woad and indigo produce exactly the same molecule: indigotin
+    (C₁₆H₁₀N₂O₂).
+  </b>
+  The plants contain different colorless precursors — isatan B and indican
+  respectively — but both convert to indigotin through enzymatic hydrolysis and
+  air oxidation. The chemistry of §1 applies exactly. Same chromophore. Same
+  hydrogen bonding. Same vat chemistry. Same vulnerability.
+</Callout>
+
+<DiagramPanel
+  num="Diagram 7"
+  title="Indigotin — the complete kala ilan molecule (C₁₆H₁₀N₂O₂)"
+>
+  <div class="mol-3d-outer">
+    <div class="mol-guide">
+      <span>Drag to rotate</span>
+      <span>Scroll to zoom</span>
+      <span>Find the flat central C=C bond — the chromophore</span>
+      <span>Note the symmetric butterfly shape</span>
+    </div>
+    <div class="mol-3d-wrap">
+      <MolViewer divId="mol-plant-ind" sdfPath="/data/molecules/ind.sdf" />
+    </div>
+  </div>
+  <hr class="mol-divider" />
+  <div class="flat-label">
+    Key structural features — same molecule as shown in 3D above
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.7rem;margin:.5rem 0">
+    <div style="background:#0a100a;border:1.5px solid #e8c000;border-radius:6px;padding:.7rem;text-align:center">
+      <div style="font-family:var(--ff-mono);font-size:.6rem;color:#e8c000;margin-bottom:.3rem">
+        CHROMOPHORE
+      </div>
+      <div style="font-size:1.6rem;font-family:'Courier New',monospace;color:#e8c000;font-weight:700">
+        C=C
+      </div>
+      <div style="font-size:.7rem;color:#8a8060;margin-top:.3rem">
+        center of molecule
+        <br />
+        source of blue color
+      </div>
+    </div>
+    <div style="background:#080a20;border:1.5px solid #4488ff;border-radius:6px;padding:.7rem;text-align:center">
+      <div style="font-family:var(--ff-mono);font-size:.6rem;color:#6a8aff;margin-bottom:.3rem">
+        H-BOND DONOR
+      </div>
+      <div style="font-size:1.6rem;font-family:'Courier New',monospace;color:#4488ff;font-weight:700">
+        N–H
+      </div>
+      <div style="font-size:.7rem;color:#6a7090;margin-top:.3rem">
+        ×2, one per half
+        <br />
+        causes insolubility
+      </div>
+    </div>
+    <div style="background:#200808;border:1.5px solid #ff6666;border-radius:6px;padding:.7rem;text-align:center">
+      <div style="font-family:var(--ff-mono);font-size:.6rem;color:#ff7060;margin-bottom:.3rem">
+        H-BOND ACCEPTOR
+      </div>
+      <div style="font-size:1.6rem;font-family:'Courier New',monospace;color:#ff6666;font-weight:700">
+        C=O
+      </div>
+      <div style="font-size:.7rem;color:#907070;margin-top:.3rem">
+        ×2, one per half
+        <br />
+        causes insolubility
+      </div>
+    </div>
+  </div>
+  <hr class="mol-divider" style="margin:.8rem 0" />
+  <div class="flat-label">Full flat structure — key features annotated</div>
+  <img src="/diagrams/m3/indigotin-flat-annotated.svg" alt="Indigotin Flat Annotated" style="width:100%;display:block;border-radius:6px" />
+  <div class="dp-cap">
+    The flat diagram shows the complete indigotin structure with all key groups
+    highlighted: the C=C chromophore (gold, center), the N-H hydrogen bond
+    donors (blue, circled), and the C=O carbonyl acceptors (red, circled).
+  </div>
+</DiagramPanel>
+
+<SubHead text="What plant indigo cannot withstand" />
+
+<p class="bt">
+  Plant indigo is among the most colorfast natural dyes known under normal
+  conditions. Mild soap, rain, perspiration — none of these come close to the
+  stripping threshold. The dye is physically trapped in its crystalline lattice
+  and nothing mild can break it.
+</p>
+
+<p class="bt">
+  Its vulnerability is well-defined: the same two keys that dye plant indigo can
+  strip it. A mild alkaline environment combined with bacterial reduction is
+  sufficient — no extreme conditions required. The two locks disengage. The
+  lattice dissolves. The color exits the fiber.
+</p>
+
+<Callout type="red">
+  <b>The critical point: indigotin has no additional protection.</b> No
+  structural feature in the molecule raises the stripping threshold beyond what
+  mild alkalinity and bacterial reduction can achieve. Whatever strips under
+  these conditions is chemically no better than kala ilan. Whatever survives
+  must have additional structural resistance. In §3 we will see exactly what
+  that difference is.
+</Callout>

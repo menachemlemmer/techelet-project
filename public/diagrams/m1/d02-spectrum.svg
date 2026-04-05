@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 700 116" xmlns="http://www.w3.org/2000/svg">
+<rect width="700" height="116" fill="#f5f0e8" rx="6"/>
+<text x="60" y="28" fill="#6a5a48" font-size="9" font-family="Georgia,serif">← UV (invisible)</text>
+<text x="640" y="28" text-anchor="end" fill="#6a5a48" font-size="9" font-family="Georgia,serif">IR (invisible) →</text>
+<rect x="60.0" y="40" width="90.6" height="52" fill="#5820a8"/>
+<rect x="150.6" y="40" width="108.8" height="52" fill="#1840c8"/>
+<rect x="259.4" y="40" width="72.5" height="52" fill="#10a0b0"/>
+<rect x="331.9" y="40" width="90.6" height="52" fill="#28a040"/>
+<rect x="422.5" y="40" width="72.5" height="52" fill="#c0a000"/>
+<rect x="495.0" y="40" width="72.5" height="52" fill="#d05010"/>
+<rect x="567.5" y="40" width="72.5" height="52" fill="#b01010"/>
+
+<rect x="60" y="40" width="580" height="52" fill="none" stroke="#b0a090" stroke-width="1" rx="2"/>
+<line x1="60.0" y1="92" x2="60.0" y2="100" stroke="#1a1208" stroke-width="1"/>
+<text x="60.0" y="113" text-anchor="middle" fill="#1a1208" font-size="9" font-family="Georgia,serif">380nm</text>
+<text x="60.0" y="127" text-anchor="middle" fill="#5020a0" font-size="9" font-weight="bold" font-family="Georgia,serif">Violet</text>
+<line x1="150.6" y1="92" x2="150.6" y2="100" stroke="#1a1208" stroke-width="1"/>
+<text x="150.6" y="113" text-anchor="middle" fill="#1a1208" font-size="9" font-family="Georgia,serif">430nm</text>
+<text x="150.6" y="127" text-anchor="middle" fill="#1040c0" font-size="9" font-weight="bold" font-family="Georgia,serif">Blue</text>
+<line x1="259.4" y1="92" x2="259.4" y2="100" stroke="#1a1208" stroke-width="1"/>
+<text x="259.4" y="113" text-anchor="middle" fill="#1a1208" font-size="9" font-family="Georgia,serif">490nm</text>
+<text x="259.4" y="127" text-anchor="middle" fill="#0898a8" font-size="9" font-weight="bold" font-family="Georgia,serif">Cyan</text>
+<line x1="331.9" y1="92" x2="331.9" y2="100" stroke="#1a1208" stroke-width="1"/>
+<text x="331.9" y="113" text-anchor="middle" fill="#1a1208" font-size="9" font-family="Georgia,serif">530nm</text>
+<text x="331.9" y="127" text-anchor="middle" fill="#208030" font-size="9" font-weight="bold" font-family="Georgia,serif">Green</text>
+<line x1="422.5" y1="92" x2="422.5" y2="100" stroke="#1a1208" stroke-width="1"/>
+<text x="422.5" y="113" text-anchor="middle" fill="#1a1208" font-size="9" font-family="Georgia,serif">580nm</text>
+<text x="422.5" y="127" text-anchor="middle" fill="#a89000" font-size="9" font-weight="bold" font-family="Georgia,serif">Yellow</text>
+<line x1="495.0" y1="92" x2="495.0" y2="100" stroke="#1a1208" stroke-width="1"/>
+<text x="495.0" y="113" text-anchor="middle" fill="#1a1208" font-size="9" font-family="Georgia,serif">620nm</text>
+<text x="495.0" y="127" text-anchor="middle" fill="#c04808" font-size="9" font-weight="bold" font-family="Georgia,serif">Orange</text>
+<line x1="640.0" y1="92" x2="640.0" y2="100" stroke="#1a1208" stroke-width="1"/>
+<text x="640.0" y="113" text-anchor="middle" fill="#1a1208" font-size="9" font-family="Georgia,serif">700nm</text>
+<text x="640.0" y="127" text-anchor="middle" fill="#a81010" font-size="9" font-weight="bold" font-family="Georgia,serif">Red</text>
+
+</svg>

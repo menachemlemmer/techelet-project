@@ -1,0 +1,41 @@
+---
+import Sidebar from '../components/Sidebar.astro';
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/components.css';
+import type { NavItem } from '../lib/navigation';
+
+interface Props {
+  sections: NavItem[];
+  currentSlug: string;
+}
+const { sections, currentSlug } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Chemistry of Tekhelet — Shiur Materials</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+Hebrew&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <button id="hamburger" onclick="toggleSidebar()" aria-label="Navigation">
+    <span></span><span></span><span></span>
+  </button>
+  <div id="overlay" onclick="toggleSidebar()"></div>
+  <Sidebar sections={sections} currentSlug={currentSlug} />
+  <div id="main">
+    <div id="content">
+      <slot />
+    </div>
+  </div>
+  <script is:inline>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+      document.getElementById('overlay').classList.toggle('visible');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+---
+interface Props {
+  num: string;
+  title: string;
+  subtitle?: string;
+}
+
+const { num, title, subtitle } = Astro.props;
+---
+
+<div class="sec-head">
+  <div class="sec-num">{num}</div>
+  <h2 class="sec-title" set:html={title} />
+  {subtitle && <div class="sec-sub">{subtitle}</div>}
+</div>

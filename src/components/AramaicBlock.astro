@@ -1,0 +1,17 @@
+---
+interface Props {
+  segments: Array<{ hebrew: string; translation?: string; style?: string }>;
+}
+
+const { segments } = Astro.props;
+---
+
+<div class="aramaic-block">
+  {segments.map((seg, i) => (
+    <>
+      {i > 0 && <hr class="aram-sep" />}
+      <div class={`heb-block`} style={seg.style} set:html={seg.hebrew} />
+      {seg.translation && <div class="heb-trans" set:html={seg.translation} />}
+    </>
+  ))}
+</div>

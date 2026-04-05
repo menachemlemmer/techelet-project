@@ -1,0 +1,35 @@
+---
+import { getCollection, render } from 'astro:content';
+import Main from '../layouts/Main.astro';
+import SectionHead from '../components/SectionHead.astro';
+import NavButtons from '../components/NavButtons.astro';
+import { getNavContext, type NavItem } from '../lib/navigation';
+
+export async function getStaticPaths() {
+  const sections = await getCollection('sections');
+  return sections.map(entry => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { sections, prev, next } = await getNavContext(entry.id);
+---
+<Main sections={sections} currentSlug={entry.id}>
+  {!entry.data.hideHeader && (
+    <SectionHead
+      num={entry.data.sectionNum}
+      title={entry.data.title}
+      subtitle={entry.data.subtitle}
+    />
+  )}
+
+  <Content />
+
+  <NavButtons
+    prev={prev ? { href: `/${prev.id}`, label: `${prev.sectionNum} — ${prev.title}` } : undefined}
+    next={next ? { href: `/${next.id}`, label: `${next.sectionNum} — ${next.title}` } : undefined}
+  />
+</Main>

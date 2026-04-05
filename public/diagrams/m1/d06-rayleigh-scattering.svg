@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 700 210" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="skygrad" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#b8d8f0"/>
+<stop offset="100%" stop-color="#e8f0f8"/>
+</linearGradient>
+</defs>
+<rect width="700" height="210" fill="#f5f0e8" rx="6"/>
+
+<rect x="0" y="20" width="700" height="118" fill="url(#skygrad)" rx="0"/>
+
+<circle cx="50" cy="76" r="28" fill="#f8e840" stroke="#c8a800" stroke-width="2"/>
+<text x="50" y="72" text-anchor="middle" fill="#6a4800" font-size="8.5" font-weight="bold" font-family="Georgia,serif">SUN</text>
+<text x="50" y="84" text-anchor="middle" fill="#6a4800" font-size="8" font-family="Georgia,serif">white light</text>
+
+<line x1="78" y1="70" x2="660" y2="68" stroke="#c04808" stroke-width="2.5" opacity="0.7" stroke-linecap="round"/>
+<line x1="78" y1="78" x2="660" y2="78" stroke="#a81010" stroke-width="2.5" opacity="0.7" stroke-linecap="round"/>
+<text x="580" y="62" fill="#c04808" font-size="9" font-family="Georgia,serif">orange — passes through →</text>
+<text x="580" y="88" fill="#a81010" font-size="9" font-family="Georgia,serif">red — passes through →</text>
+
+<circle cx="200" cy="74" r="11" fill="#c0d0e0" stroke="#8090a8" stroke-width="1.5"/>
+<text x="200" y="78" text-anchor="middle" fill="#404860" font-size="7" font-family="sans-serif">N₂/O₂</text>
+<line x1="200" y1="74" x2="218.4" y2="100.2" stroke="#1040c0" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+<line x1="200" y1="74" x2="200.0" y2="106.0" stroke="#1040c0" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+<line x1="200" y1="74" x2="181.6" y2="100.2" stroke="#1040c0" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+<line x1="200" y1="74" x2="218.4" y2="47.8" stroke="#1040c0" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+<line x1="200" y1="74" x2="200.0" y2="42.0" stroke="#1040c0" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+<circle cx="370" cy="72" r="11" fill="#c0d0e0" stroke="#8090a8" stroke-width="1.5"/>
+<text x="370" y="76" text-anchor="middle" fill="#404860" font-size="7" font-family="sans-serif">N₂/O₂</text>
+<line x1="370" y1="72" x2="388.4" y2="98.2" stroke="#1040c0" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+<line x1="370" y1="72" x2="370.0" y2="104.0" stroke="#1040c0" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+<line x1="370" y1="72" x2="351.6" y2="98.2" stroke="#1040c0" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+<line x1="370" y1="72" x2="388.4" y2="45.8" stroke="#1040c0" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+<line x1="370" y1="72" x2="370.0" y2="40.0" stroke="#1040c0" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+<circle cx="530" cy="74" r="11" fill="#c0d0e0" stroke="#8090a8" stroke-width="1.5"/>
+<text x="530" y="78" text-anchor="middle" fill="#404860" font-size="7" font-family="sans-serif">N₂/O₂</text>
+<line x1="530" y1="74" x2="548.4" y2="100.2" stroke="#1040c0" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+<line x1="530" y1="74" x2="530.0" y2="106.0" stroke="#1040c0" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+<line x1="530" y1="74" x2="511.6" y2="100.2" stroke="#1040c0" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+<line x1="530" y1="74" x2="548.4" y2="47.8" stroke="#1040c0" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+<line x1="530" y1="74" x2="530.0" y2="42.0" stroke="#1040c0" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+
+<text x="280" y="44" fill="#1040c0" font-size="9" font-family="Georgia,serif">blue scattered</text>
+
+<rect x="0" y="138" width="700" height="72" fill="#c8b888" rx="0"/>
+<line x1="0" y1="138" x2="700" y2="138" stroke="#a09070" stroke-width="1.5"/>
+
+<ellipse cx="350" cy="155" rx="14" ry="8" fill="#e8d8b8" stroke="#a09070" stroke-width="1"/>
+
+<line x1="200" y1="106" x2="338" y2="148" stroke="#1040c0" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.7"/>
+<line x1="350" y1="106" x2="350" y2="146" stroke="#1040c0" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.7"/>
+<line x1="530" y1="106" x2="362" y2="148" stroke="#1040c0" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.7"/>
+<text x="350" y="182" text-anchor="middle" fill="#6a5a48" font-size="10" font-style="italic" font-family="Georgia,serif">Blue light arrives from every direction — the whole sky appears blue</text>
+</svg>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 700 170" xmlns="http://www.w3.org/2000/svg">
+<rect width="700" height="170" fill="#f5f0e8" rx="6"/>
+
+
+<rect x="14" y="12" width="200" height="146" rx="6" fill="#eaecf4" stroke="#5060a0" stroke-width="1.8"/>
+<rect x="14" y="12" width="200" height="38" rx="6 6 0 0" fill="#1a3a8a"/>
+<text x="114" y="36" text-anchor="middle" fill="white" font-size="11.5" font-weight="bold" font-family="Georgia,serif" letter-spacing="1">LAPIS LAZULI</text>
+<text x="114" y="70" text-anchor="middle" fill="#6a5a48" font-size="10" font-weight="bold" font-family="Georgia,serif">Mechanism</text>
+<text x="114" y="88" text-anchor="middle" fill="#1040c0" font-size="10" font-style="italic" font-family="Georgia,serif">Pigment absorption</text>
+<text x="114" y="108" text-anchor="middle" fill="#1a1208" font-size="9" font-family="Georgia,serif">Lazurite molecules</text>
+<text x="114" y="122" text-anchor="middle" fill="#1a1208" font-size="9" font-family="Georgia,serif">absorb red/orange,</text>
+<text x="114" y="136" text-anchor="middle" fill="#1a1208" font-size="9" font-family="Georgia,serif">reflect blue</text>
+
+
+<line x1="214" y1="85" x2="242" y2="85" stroke="#a87800" stroke-width="2"/>
+<polygon points="238,81 248,85 238,89" fill="#a87800"/>
+
+
+<rect x="250" y="12" width="200" height="146" rx="6" fill="#e8eff8" stroke="#5080b8" stroke-width="1.8"/>
+<defs>
+<linearGradient id="skyhdr" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#5a9cc8"/>
+<stop offset="100%" stop-color="#7ab4d8"/>
+</linearGradient>
+</defs>
+<rect x="250" y="12" width="200" height="38" rx="6 6 0 0" fill="url(#skyhdr)"/>
+<text x="350" y="36" text-anchor="middle" fill="white" font-size="11.5" font-weight="bold" font-family="Georgia,serif" letter-spacing="1">THE SKY</text>
+<text x="350" y="70" text-anchor="middle" fill="#6a5a48" font-size="10" font-weight="bold" font-family="Georgia,serif">Mechanism</text>
+<text x="350" y="88" text-anchor="middle" fill="#1040c0" font-size="10" font-style="italic" font-family="Georgia,serif">Rayleigh scattering</text>
+<text x="350" y="108" text-anchor="middle" fill="#1a1208" font-size="9" font-family="Georgia,serif">Air molecules deflect</text>
+<text x="350" y="122" text-anchor="middle" fill="#1a1208" font-size="9" font-family="Georgia,serif">blue in all directions</text>
+<text x="350" y="136" text-anchor="middle" fill="#1a1208" font-size="9" font-family="Georgia,serif">No surface, no pigment</text>
+
+
+<line x1="450" y1="85" x2="478" y2="85" stroke="#a87800" stroke-width="2"/>
+<polygon points="474,81 484,85 474,89" fill="#a87800"/>
+
+
+<rect x="486" y="12" width="200" height="146" rx="6" fill="#e0ecf8" stroke="#3070a0" stroke-width="1.8"/>
+<defs>
+<linearGradient id="seahdr" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#3878a8"/>
+<stop offset="100%" stop-color="#1a5888"/>
+</linearGradient>
+</defs>
+<rect x="486" y="12" width="200" height="38" rx="6 6 0 0" fill="url(#seahdr)"/>
+<text x="586" y="36" text-anchor="middle" fill="white" font-size="11.5" font-weight="bold" font-family="Georgia,serif" letter-spacing="1">THE SEA</text>
+<text x="586" y="70" text-anchor="middle" fill="#6a5a48" font-size="10" font-weight="bold" font-family="Georgia,serif">Mechanism</text>
+<text x="586" y="88" text-anchor="middle" fill="#1040c0" font-size="10" font-style="italic" font-family="Georgia,serif">Pure reflection</text>
+<text x="586" y="108" text-anchor="middle" fill="#1a1208" font-size="9" font-family="Georgia,serif">Mirrors the sky above</text>
+<text x="586" y="122" text-anchor="middle" fill="#1a1208" font-size="9" font-family="Georgia,serif">No intrinsic color</text>
+<text x="586" y="136" text-anchor="middle" fill="#1a1208" font-size="9" font-family="Georgia,serif">Color entirely borrowed</text>
+</svg>

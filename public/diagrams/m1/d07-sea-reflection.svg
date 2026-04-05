@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="skyg7" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#7ab0d8"/>
+<stop offset="100%" stop-color="#b8d8f0"/>
+</linearGradient>
+<linearGradient id="seag7" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#5890b8"/>
+<stop offset="100%" stop-color="#2a5878"/>
+</linearGradient>
+</defs>
+
+
+<rect x="0" y="0" width="700" height="108" fill="url(#skyg7)" rx="6 6 0 0"/>
+
+<rect x="0" y="108" width="700" height="112" fill="url(#seag7)" rx="0 0 6 6"/>
+
+
+<line x1="0" y1="108" x2="700" y2="108" stroke="#e8f4ff" stroke-width="1.5" opacity="0.8"/>
+
+<text x="10" y="120" fill="#c8e8ff" font-size="8.5" font-style="italic" font-family="Georgia,serif" opacity="0.85">water surface — mirror</text>
+
+
+<rect x="155" y="10" width="390" height="72" rx="5" fill="white" fill-opacity="0.22"/>
+<text x="350" y="32" text-anchor="middle" fill="white" font-size="14" font-weight="bold" font-family="Georgia,serif" letter-spacing="3">S K Y</text>
+<text x="350" y="52" text-anchor="middle" fill="white" font-size="10" font-family="Georgia,serif">Blue by Rayleigh scattering — internal process</text>
+<text x="350" y="68" text-anchor="middle" fill="white" font-size="9" font-style="italic" font-family="Georgia,serif" opacity="0.9">Generates its own blue from scattered sunlight</text>
+
+
+<line x1="240" y1="88" x2="240" y2="128" stroke="white" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.6"/>
+<line x1="350" y1="88" x2="350" y2="128" stroke="white" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.6"/>
+<line x1="460" y1="88" x2="460" y2="128" stroke="white" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.6"/>
+
+<text x="350" y="106" text-anchor="middle" fill="white" font-size="8.5" font-style="italic" font-family="Georgia,serif" opacity="0.9">sky blue reflected</text>
+
+
+<rect x="155" y="128" width="390" height="72" rx="5" fill="white" fill-opacity="0.15"/>
+<text x="350" y="150" text-anchor="middle" fill="white" font-size="14" font-weight="bold" font-family="Georgia,serif" letter-spacing="3">S E A</text>
+<text x="350" y="170" text-anchor="middle" fill="white" font-size="10" font-family="Georgia,serif">Blue by reflection — the sky's color, mirrored</text>
+<text x="350" y="186" text-anchor="middle" fill="white" font-size="9" font-style="italic" font-family="Georgia,serif" opacity="0.9">Water has no intrinsic color — it shows the sky above</text>
+</svg>

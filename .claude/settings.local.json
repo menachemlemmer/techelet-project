@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /home/menachem/repos/techelet-project/src/content/sections -name \"*.mdx\" -exec wc -c {} +)",
+      "Bash(find /home/menachem/repos/techelet-project/src/content/sections -name \"*.mdx\" -exec ls -lh {} \\\\;)",
+      "Bash(sort -k1 -hr)",
+      "Bash(ls /home/menachem/repos/techelet-project/src/components/index*)",
+      "Bash(ls /home/menachem/repos/techelet-project/src/components/*.astro)"
+    ]
+  }
+}

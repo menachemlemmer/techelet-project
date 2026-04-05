@@ -1,0 +1,11 @@
+---
+interface Props {
+  type: 'gold' | 'blue' | 'violet' | 'green' | 'red' | 'thesis';
+}
+
+const { type } = Astro.props;
+---
+
+<div class={`callout ${type}`}>
+  <slot />
+</div>

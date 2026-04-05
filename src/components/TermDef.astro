@@ -1,0 +1,12 @@
+---
+interface Props {
+  word: string;
+}
+
+const { word } = Astro.props;
+---
+
+<div class="term">
+  <span class="term-w">{word}</span>
+  <span class="term-d"><slot /></span>
+</div>
