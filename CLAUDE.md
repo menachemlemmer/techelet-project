@@ -35,7 +35,7 @@ src/styles/                     # CSS: tokens.css, base.css, components.css
 public/diagrams/                # SVG diagram files (m1/, m3/, m4/)
 public/images/                  # Extracted images (plant photos, shell)
 public/data/molecules/          # SDF files for 3D molecular viewers
-docs/original_ref/              # Original monolithic HTML + reference doc
+docs/original_ref/              # Archived HTML snapshot (no longer canonical) + master reference doc
 ```
 
 ## Content Format

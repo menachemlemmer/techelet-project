@@ -59,22 +59,23 @@
 - sec-9: §5 The Sea — pure reflection (D7 sky/sea mirror, D8 three blues summary)
 - sec-10: §6 The Inversion — **author's draft, extensive editing needed**
 
-**§6 argument (author's draft 2026-03-30):**
+**§6 argument (author's draft 2026-03-30, updated 2026-04-01):**
 - Chain = gradations of color mechanisms, each associated with a different divine encounter
 - Sea (reflection) → warrior/exodus; Sky (scattering) → Sinai/Torah; Throne (pigment) → highest revelation
 - Even pigmented color: only the reflected is seen, not the absorbed — even at the highest rung, only the back
+- Unity sentence added to throne paragraph: the warrior at the sea and the sage at Sinai are all manifestations of the one indivisible source — אנכי ה' אלהיך אשר הוצאתיך. Same teaching as the first commandment. By implication throughout the movement, made explicit here.
 - Moses: פני לא יראו — panim = face = interior (פנים). Vision is always reflection
-- Maidservant at the sea (Mechilta on Shemot 15:2): saw more than Yechezkel — resolved: two languages (visceral vs. essential)
+- Maidservant at the sea (Rashi on Shemot 15:2, citing Midrash): saw more than Yechezkel — resolved: two languages (visceral vs. essential). Reference now explicit in prose with source citation.
 - Rashi on Shemot 20:2: sapphire brick = exodus/warrior (lower, in observer's language); sky = Sinai (higher). Torah inverts the listener's assumptions
 - White thread = exterior/visible; Blue thread = absorbed/interior. Tzitzit teaches the inversion daily.
 
 **Pending edits:**
-- §1: Remove "There is no blue out there in the world" line
+- ~~§1: Remove "There is no blue out there in the world" line~~ ✅ Done
 - §3: Sinai moment needs expansion
 - §5: Needs full rewrite to build toward inversion
 - §6: Extensive editing needed — structure correct, voice not yet final
-- §6: שפחה source (Mechilta Shemot 15:2) referenced in prose but full text not yet formally cited
-- D5 (lapis): cutoff at 530nm needs verification — lazurite absorption likely begins ~500nm
+- §6: שפחה source — cited in prose (Rashi on Shemot 15:2) but full AramaicBlock text not yet formally added
+- ~~D5 (lapis): cutoff at 530nm needs verification~~ ✅ Done — corrected to ~480nm onset, peak absorption 610–620nm
 
 ---
 
@@ -309,7 +310,7 @@ The surface of calm water acts as a mirror. It reflects the color of whatever is
 
 2. **pH and protonation (M3 §1/§2)** — needs more explanatory depth. H⁺ protonates other molecules in solution (adds proton, neutralizes negative charge, reduces solubility). OH⁻ deprotonates — strips proton from C-OH to leave C-O⁻, giving negative charge and water solubility. This clarifies why alkalinity opens the leuco form.
 
-3. **Rashi/sammanin/alum argument (belongs in M2 §4 — Radziner)** — Rashi's identification of sammanin as alum comes from a mordant-dyeing frame. His world was madder, weld — mordant dyes using alum. Woad, the one blue dye he knew, does NOT use alum as mordant. So Rashi's alum identification doesn't come from blue-dye practice. Ironically, the Radziner's Prussian blue is more consistent with Rashi's implicit chemistry than authentic murex tekhelet would be. Note this in the Radziner portrait section.
+3. **Rashi/sammanin/alum argument (belongs in Chilazon Candidates Appendix — cuttlefish/Radziner section)** — Rashi's identification of sammanin as alum comes from a mordant-dyeing frame. His world was madder, weld — mordant dyes using alum. Woad, the one blue dye he knew, does NOT use alum as mordant. So Rashi's alum identification doesn't come from blue-dye practice. Ironically, the Radziner's Prussian blue (an iron compound) is more consistent with Rashi's implicit chemistry than authentic murex tekhelet would be — Prussian blue is itself an iron-based compound that behaves like a mordant dye. This irony belongs in the chilazon candidates analysis, not in M2's biographical portrait of the Radziner. The M3 mordant distinction callout (note 1 above) is the prerequisite for this argument.
 
 4. **M4 §1 — purpurase paragraph** — completed and inserted in other session. Now in HTML.
 
@@ -320,17 +321,38 @@ The surface of calm water acts as a mirror. It reflects the color of whatever is
 **Sections:** §1 Shabbat 75a · §2 Menachot 42b · §3 Menachot 43a · §4 Logical Conclusions
 **Diagrams:** 17 (two-path dyeing) · 18 (sequential test flowchart)
 **Updates:** M4 §1 purpurase paragraph completed and inserted (separate session, now in HTML).
+**M4 §3 updates (2026-04-01):**
+- Removed "Alum and fenugreek moderate the bath" from body text
+- Added two callouts before "This is why there is a Test 2":
+  - Gold: forty-day specification as pH calibration. Lye (pH 13–14) was the likely original dyeing method; fermented urine (pH 9–10) is the Goldilocks test window. Urea→ammonia conversion, equilibrium pH, why forty days guarantees stability.
+  - Blue: uncertain roles of alum (mildly acidic — may open fiber or buffer alkalinity, two readings not mutually exclusive) and fenugreek (fermentable polysaccharides, plausible bacterial feeder, uncertain).
+- Lye claim hedged to "likely" — "The original murex vat dyeing process likely used lye."
 **Pending:** M4·§3 prose flagged for author review; M3 fixes should precede final M4 polish.
 
 ---
 
-### M5 — Appendix / Material Evidence
-**Status:** Not yet built. Structure still being thought through.
-**Key questions:** Self-contained vs. assuming M3/M4 knowledge. Mordant dyeing important for cuttlefish appendix.
-**Planned appendices:**
-- Cuttlefish — fails purpurase criterion; mordant dyeing distinction relevant here
-- Janthina — fails purpurase criterion for different reasons
-- Both: self-contained vs. assumes prior knowledge still open question
+### M5 — Visual Props / Illustrations
+**Status:** Not yet built. Scope defined.
+**Purpose:** A visual companion movement — physical objects, images, and experiments that illustrate concepts developed in earlier movements. Not an argument movement; a sensory and demonstrative one. Can be standalone or inserted as needed at live presentations.
+**Planned content:**
+- Lapis lazuli stone (physical specimen) — the Sinai color, tangible
+- Egyptian lapis in ancient art — archaeological images showing sapir in its original context
+- Insoluble indigo in liquid — demonstrating the insolubility problem before reduction
+- Leuco indigo in alkaline solution — demonstrating the color shift and solubility of the reduced form
+- Dyed wool samples — before/after the vat process
+- Murex trunculus shells — the chilazon, physical
+- Molecular models — lapis, indigotin, MBI, DBI; 3D structure as teaching prop
+
+---
+
+### Chilazon Candidates Appendix
+**Status:** Not yet built. Scope defined.
+**Purpose:** Analytical appendix asking how alternative chilazon candidates — cuttlefish (Radziner) and Janthina — would fare against the Talmudic tests established in M4. Draws on M3 chemistry and M4 test framework.
+**Planned sections:**
+- Cuttlefish (Sepia officinalis / Radziner's candidate): fails purpurase criterion; its ink is melanin-based, not indigoid; Prussian blue (the actual Radziner dye) is an iron compound — behaves as a mordant dye, not an indigoid vat dye. The Rashi/alum argument lives here: Rashi's sammanin = alum identification fits a mordant-dyeing frame, and Prussian blue is the one candidate that would actually behave that way. The irony: the Radziner's dye is more consistent with Rashi's implicit chemistry than authentic murex tekhelet.
+- Janthina (purple sea snail): fails purpurase criterion for different reasons
+- Prerequisite: M3 mordant distinction callout must be written first (see M3 notes above)
+- Open question: self-contained vs. assumes M3/M4 knowledge
 
 ---
 
@@ -340,12 +362,15 @@ The surface of calm water acts as a mirror. It reflects the color of whatever is
 3. ✅ M3 — built. Prose fixes pending (mordant distinction, pH protonation, lattice framework, bromine shield).
 4. ✅ M4 — built. §3 prose flagged for review.
 5. 🔜 M2 — next priority. Research gathered. Trunk excavated. Structure defined.
-6. M5 — scope undefined.
+6. M5 — Visual props / illustrations movement. Scope defined. Build when needed.
+7. Chilazon Candidates Appendix — scope defined. Requires M3 mordant callout first.
 
 ---
 
 
 ## Single Source of Truth · Version 3.0 · 2026-03-26
+
+> **⚠ Note (2026-04-05):** The project has been ported to Astro + MDX. The `src/content/sections/` MDX files are now the canonical source of truth for all content. The HTML file (`tekhelet_chemistry_v5_9_8.html`) in `docs/original_ref/` is an archived snapshot — it is no longer updated and will diverge from the live content over time. Do not treat it as authoritative.
 
 ---
 
@@ -353,7 +378,7 @@ The surface of calm water acts as a mirror. It reflects the color of whatever is
 
 ### Overview
 Multi-movement interactive HTML shiur on tekhelet chemistry.
-Six movements total. This document is the source of truth; the HTML is generated from it.
+Six movements total. As of 2026-04-05, content lives in Astro MDX files (`src/content/sections/`). The archived HTML is a historical snapshot only.
 
 ### Movement Inventory
 
@@ -364,7 +389,8 @@ Six movements total. This document is the source of truth; the HTML is generated
 | M2 | Sources, History, Debate | NOT BUILT — research gathered, structure defined |
 | M3 | Chemistry | **BUILT** sec-11–sec-16 — prose fixes pending |
 | M4 | Return to the Sources | **BUILT** sec-17–sec-21 — §3 prose flagged |
-| M5 | Material Evidence | NOT BUILT — scope undefined |
+| M5 | Visual Props / Illustrations | NOT BUILT — scope defined; visual companion movement |
+| App | Chilazon Candidates Appendix | NOT BUILT — scope defined; requires M3 mordant callout first |
 
 ### Movement Outlines
 
@@ -391,9 +417,15 @@ Talmudic test chemistry (stub → M4).
 Opens with Talmudic tests (Menachot 43a).
 Mechanistic readings of each test. Sourdough test as thermochromic detector. Theology of rediscovery.
 
-**M5 — Material Evidence**
-Physical lapis. Egyptian lapis photos.
-Oxidized / reduced pigment in water. Murex shells. Dyed fabric.
+**M5 — Visual Props / Illustrations**
+Physical lapis lazuli specimen. Egyptian lapis in ancient art (archaeological images).
+Insoluble indigo in liquid. Leuco indigo in alkaline solution. Dyed wool samples.
+Murex trunculus shells. Molecular models (lapis, IND, MBI, DBI).
+
+**Chilazon Candidates Appendix**
+How would alternative candidates fare against the M4 Talmudic tests?
+Cuttlefish/Radziner: Prussian blue as mordant dye; Rashi/alum irony.
+Janthina: fails purpurase criterion for different reasons.
 
 ### Structural Notes
 - M4 opens with Talmudic sources (Shabbat 75a, Menachot 42b, Menachot 43a). Full framework documented in M4 FRAMEWORK section.
@@ -1490,7 +1522,7 @@ Four candidates: (a) Kalir's historical period; (b) Arizal gilgul / Sinai covena
 1. Say: *"Load the tekhelet master reference. I want to work on [COMPONENT-ID]."*
 2. I pull only the named component, show current text, make the targeted change, output the updated component.
 3. Flag downstream effects.
-4. This MD is source of truth. HTML is generated output.
+4. The MDX files in `src/content/sections/` are the source of truth. This reference doc drives content decisions; the archived HTML is no longer updated.
 
 ### Edit Request Examples
 
