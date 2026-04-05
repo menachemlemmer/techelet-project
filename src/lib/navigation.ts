@@ -2,8 +2,9 @@ import { getCollection } from 'astro:content';
 
 export interface NavItem {
   id: string;
-  sectionNum: string;
-  title: string;
+  sectionNum: string;    // Short form ("§ 1") — for sidebar and nav buttons
+  title: string;         // Full title — for page header
+  navTitle: string;      // Short title — for sidebar and nav buttons
   movement: string;
   movementLabel: string;
   order: number;
@@ -17,6 +18,7 @@ export async function getOrderedSections(): Promise<NavItem[]> {
       id: s.id,
       sectionNum: s.data.sectionNum,
       title: s.data.title,
+      navTitle: s.data.navTitle || s.data.title,
       movement: s.data.movement,
       movementLabel: s.data.movementLabel,
       order: s.data.order,

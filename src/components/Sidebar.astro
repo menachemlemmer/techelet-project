@@ -42,7 +42,7 @@ for (const sec of sections) {
             href={`/${sec.id}`}
             class:list={['nav-btn', { active: sec.id === currentSlug }]}
           >
-            <span class="nav-sec-num">{sec.sectionNum}</span>{sec.title}
+            <span class="nav-sec-num">{sec.sectionNum}</span>{sec.navTitle}
           </a>
         ))}
       </>
@@ -70,6 +70,10 @@ for (const sec of sections) {
       <div style="display:flex;align-items:center;gap:8px">
         <div style="width:13px;height:13px;border-radius:50%;background:#c07030;flex-shrink:0"></div>
         <span style="color:#8a7a60;font-size:.65rem">Br — Bromine</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:2px">
+        <svg width="26" height="8" style="flex-shrink:0"><line x1="1" y1="4" x2="25" y2="4" stroke="#e8c000" stroke-width="3.5" stroke-linecap="round"/></svg>
+        <span style="color:#8a7a60;font-size:.65rem">C=C chromophore</span>
       </div>
     </div>
     <div style="margin-top:12px;color:#4a3820;font-size:.6rem">Shiur materials<br>Movements III–IV · v5.10</div>
