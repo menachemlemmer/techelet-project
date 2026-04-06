@@ -39,7 +39,7 @@ for (const sec of sections) {
         )}
         {movement.items.map((sec) => (
           <a
-            href={`/${sec.id}`}
+            href={`${sec.id}`}
             class:list={['nav-btn', { active: sec.id === currentSlug }]}
           >
             <span class="nav-sec-num">{sec.sectionNum}</span>{sec.navTitle}
