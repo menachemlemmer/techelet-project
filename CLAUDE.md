@@ -1,6 +1,6 @@
 # Tekhelet Shiur Project
 
-An interactive multi-movement shiur on the chemistry of tekhelet, built with Astro 6 + MDX.
+An interactive multi-movement shiur on the chemistry of tekhelet, built with Astro 6 + MDX + Tailwind CSS + DaisyUI.
 
 ## Who Works Here
 
@@ -40,6 +40,7 @@ When in doubt about which mode, ask.
 - A PostToolUse hook automatically runs `npm run build` after editing .mdx, .astro, .css, or .ts files
 - MDX is fragile — unclosed tags, missing blank lines between paragraphs, and stray JSX syntax will break builds
 - If a build fails, read the error to find the file and line, fix it, and rebuild before moving on
+- Deployed to Vercel — pushes to main auto-deploy
 
 ## Project Structure
 
@@ -54,16 +55,47 @@ src/content.config.ts           # Content collection schema
 src/pages/[...slug].astro       # Dynamic route — renders each section
 src/pages/index.astro           # Redirects to /opening/introduction
 
-src/layouts/Main.astro          # Page layout: sidebar + content area
+src/layouts/Main.astro          # Page layout: DaisyUI drawer + sidebar + content
 src/components/                 # Astro components for content types
 src/lib/navigation.ts           # Navigation helpers (prev/next, sidebar data)
-src/styles/                     # CSS: tokens.css, base.css, components.css
+
+src/styles/
+  global.css                    # Tailwind + DaisyUI + palette tokens + base typography
+  components.css                # Component-specific styles (callout, aramaic, diagram, etc.)
 
 public/diagrams/                # SVG diagram files (m1/, m3/, m4/)
 public/images/                  # Extracted images (plant photos, shell)
 public/data/molecules/          # SDF files for 3D molecular viewers
-docs/original_ref/              # Archived HTML snapshot (no longer canonical) + master reference doc
+docs/original_ref/              # Archived HTML snapshot + master reference doc
+
+.claude/settings.json           # Shared hooks and permissions (tracked in git)
+vercel.json                     # Vercel deployment config (redirect / → /opening/introduction)
 ```
+
+## Styling Architecture
+
+**Two CSS files, one source of truth:**
+- `global.css` — Tailwind, DaisyUI theme, palette scales, base typography, responsive rules
+- `components.css` — Component-specific styles (callout variants, aramaic block, diagram panel, etc.)
+
+**Palette system:** Five color scales defined as CSS custom properties in `global.css`:
+- `--parch-*` (50–400) — parchment/reading surfaces
+- `--brown-*` (50–500) — depth, leather, dark surfaces (sidebar, aramaic blocks, thesis callouts)
+- `--blue-*` (50–500) — tekhelet blue, headings, primary accent
+- `--gold-*` (50–500) — illumination, section markers, highlights
+- `--violet-*` (50–400) — MBI violet
+
+Semantic aliases for backwards compatibility: `--paper`, `--ink`, `--accent`, `--gold`, `--border`, etc.
+
+**DaisyUI:** Custom `tekhelet` theme defined in `global.css` via `@plugin "daisyui/theme"`. Used for buttons (NavButtons), drawer (mobile sidebar), and future interactive components.
+
+**Tailwind:** Available for utility classes in `.astro` components. Sidebar uses scoped `<style>` blocks to avoid specificity conflicts with Tailwind.
+
+**When adding new styles:**
+- Use palette variables (`--brown-400`, `--gold-100`, etc.) not hardcoded hex values
+- For new UI components (buttons, toggles, etc.), use DaisyUI classes
+- For new content components (callouts, blocks, etc.), add to `components.css`
+- For complex layouts inside MDX, create an Astro component — never raw HTML divs
 
 ## Content Format
 
@@ -71,10 +103,9 @@ Each section is an MDX file with YAML frontmatter:
 
 ```yaml
 ---
-sectionNum: "§ 1"              # Short form for sidebar ("§ 1", "Intro", "M4 · §1")
+sectionNum: "§ 1"              # Short form for sidebar ("§ 1", "Intro")
 title: "The Chain"             # Full title for page header
 navTitle: "The Chain"          # Short title for sidebar (defaults to title if omitted)
-headerNum: "Opening · § 1"    # Full section number for page header (defaults to sectionNum)
 subtitle: "Menachot 43b · ..." # Optional subtitle
 movement: "opening"            # Folder name — groups sections in sidebar
 movementLabel: "Opening"       # Display label for the movement
@@ -84,6 +115,10 @@ needs3Dmol: true               # Set true if section uses MolViewer
 hideHeader: true               # Set true to suppress the standard section header
 ---
 ```
+
+Page headers are computed automatically from `movementLabel` + `sectionNum`:
+- Intro pages show: "Opening", "Light & Color", etc.
+- Section pages show: "Opening · § 1", "The Chemistry · § 3", etc.
 
 ## MDX Formatting Rules
 
@@ -262,22 +297,11 @@ Navigation (sidebar, prev/next) is automatic based on the `order` field.
 5. For complex HTML layouts, create a component in `src/components/`
 6. Run `npm run build` to verify
 
-## Design System
-
-CSS custom properties in `src/styles/tokens.css`:
-- `--accent` (#1a4a8a) — headings
-- `--gold` (#b8860b) — section numbers, highlights
-- `--ind` (#1e5fa8) — indigotin blue
-- `--mbi` (#5b2d8a) — 6-bromoindigo violet
-- `--dbi` (#7a2060) — dibromoindigo purple
-
-Fonts: EB Garamond (display/body), Noto Serif Hebrew (Hebrew), Courier New (mono).
-
 ## Do NOT
 
 - Put raw HTML layout blocks directly in MDX — create components instead
 - Put blank lines inside component tags — it breaks rendering
 - Separate inline HTML elements from their surrounding text with blank lines
-- Modify `src/styles/` without understanding the full CSS
+- Use hardcoded hex colors — use palette variables (`--brown-400`, `--gold-100`, etc.)
 - Change `order` numbering without updating ALL affected sections
 - Remove `movement` or `movementLabel` — they drive sidebar grouping

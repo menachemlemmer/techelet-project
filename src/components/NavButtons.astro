@@ -5,11 +5,22 @@ interface Props {
 }
 const { prev, next } = Astro.props;
 ---
-<div id="nav-btns">
+<div class="nav-btns">
   {prev ? (
-    <a class="nb prev" href={prev.href}>← {prev.label}</a>
+    <a class="btn btn-ghost border border-base-300 font-serif text-sm" href={prev.href}>← {prev.label}</a>
   ) : <span />}
   {next ? (
-    <a class="nb next" href={next.href}>{next.label} →</a>
+    <a class="btn btn-primary font-serif text-sm" href={next.href}>{next.label} →</a>
   ) : <span />}
 </div>
+
+<style>
+  .nav-btns {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--parch-300);
+    gap: 1rem;
+  }
+</style>

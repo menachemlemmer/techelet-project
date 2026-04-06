@@ -17,65 +17,346 @@ for (const sec of sections) {
     last.items.push(sec);
   }
 }
+
+const currentMovement = sections.find(s => s.id === currentSlug)?.movement;
+
+// Movement number labels
+const movementNum: Record<string, string> = {
+  'opening': 'M0',
+  'light-and-color': 'M1',
+  'the-chemistry': 'M3',
+  'return-to-the-sources': 'M4',
+};
 ---
-<div id="sidebar">
-  <div id="sidebar-head">
-    <div class="t1">The Chemistry<br>of Tekhelet</div>
-    <div class="t2">Movements 0 · I · III · IV</div>
+<aside class="sidebar-root">
+  <!-- Header -->
+  <div class="sidebar-header">
+    <div class="sidebar-title">The Chemistry<br/>of Tekhelet</div>
   </div>
-  <nav id="nav">
-    {movements.map((movement, mi) => (
-      <>
-        {mi < 3 ? (
-          <div style="padding:6px 16px 2px;font-family:var(--ff-mono);font-size:0.6rem;color:#7a6040;text-transform:uppercase;letter-spacing:.08em;">
-            {movement.label}
-          </div>
-        ) : (
-          <div style="border-top:1px solid #3a2a10;margin:6px 0 2px;padding-top:6px;padding-left:0;padding-right:0;">
-            <div style="padding:0 16px 2px;font-family:var(--ff-mono);font-size:0.6rem;color:#7a6040;text-transform:uppercase;letter-spacing:.08em;">
-              {movement.label}
+
+  <!-- Navigation -->
+  <nav data-sidebar-nav class="sidebar-nav">
+    {movements.map((movement) => {
+      const isCurrentMovement = movement.key === currentMovement;
+      return (
+        <details open={isCurrentMovement} class:list={['sidebar-group', { 'has-active': isCurrentMovement }]}>
+          <summary class="sidebar-group-label">
+            <span class="sidebar-group-text">
+              <span class="sidebar-group-num">{movementNum[movement.key] || ''}</span>
+              <span>{movement.label}</span>
+            </span>
+            <svg class="sidebar-chevron" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </summary>
+          <div class="sidebar-group-items">
+            <div class="sidebar-group-items-inner">
+              {movement.items.map((sec) => {
+                const isActive = sec.id === currentSlug;
+                return (
+                  <a
+                    href={`/${sec.id}`}
+                    class:list={['sidebar-item', { active: isActive }]}
+                  >
+                    <span class="sidebar-item-num">{sec.sectionNum}</span>
+                    <span class="sidebar-item-title">{sec.navTitle}</span>
+                  </a>
+                );
+              })}
             </div>
           </div>
-        )}
-        {movement.items.map((sec) => (
-          <a
-            href={`/${sec.id}`}
-            class:list={['nav-btn', { active: sec.id === currentSlug }]}
-          >
-            <span class="nav-sec-num">{sec.sectionNum}</span>{sec.navTitle}
-          </a>
-        ))}
-      </>
-    ))}
+        </details>
+      );
+    })}
   </nav>
-  <div id="sidebar-foot">
-    <div style="margin-bottom:9px;color:#7a6030;letter-spacing:.08em;text-transform:uppercase;font-size:.63rem">Atom key</div>
-    <div style="display:flex;flex-direction:column;gap:6px">
-      <div style="display:flex;align-items:center;gap:8px">
-        <div style="width:13px;height:13px;border-radius:50%;background:#909090;flex-shrink:0"></div>
-        <span style="color:#8a7a60;font-size:.65rem">C — Carbon</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px">
-        <div style="width:13px;height:13px;border-radius:50%;background:#3366dd;flex-shrink:0"></div>
-        <span style="color:#8a7a60;font-size:.65rem">N — Nitrogen</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px">
-        <div style="width:13px;height:13px;border-radius:50%;background:#dd2222;flex-shrink:0"></div>
-        <span style="color:#8a7a60;font-size:.65rem">O — Oxygen</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px">
-        <div style="width:13px;height:13px;border-radius:50%;background:#ffffff;border:1px solid #888;flex-shrink:0"></div>
-        <span style="color:#8a7a60;font-size:.65rem">H — Hydrogen</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px">
-        <div style="width:13px;height:13px;border-radius:50%;background:#c07030;flex-shrink:0"></div>
-        <span style="color:#8a7a60;font-size:.65rem">Br — Bromine</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px;margin-top:2px">
+
+  <!-- Atom key footer -->
+  <div class="sidebar-footer">
+    <div class="sidebar-footer-label">Atom key</div>
+    <div class="sidebar-atom-grid">
+      <div class="sidebar-atom"><div class="sidebar-dot" style="background:#909090"></div><span>C — Carbon</span></div>
+      <div class="sidebar-atom"><div class="sidebar-dot" style="background:#3366dd"></div><span>N — Nitrogen</span></div>
+      <div class="sidebar-atom"><div class="sidebar-dot" style="background:#dd2222"></div><span>O — Oxygen</span></div>
+      <div class="sidebar-atom"><div class="sidebar-dot" style="background:#ffffff;border:1px solid #888"></div><span>H — Hydrogen</span></div>
+      <div class="sidebar-atom"><div class="sidebar-dot" style="background:#c07030"></div><span>Br — Bromine</span></div>
+      <div class="sidebar-atom">
         <svg width="26" height="8" style="flex-shrink:0"><line x1="1" y1="4" x2="25" y2="4" stroke="#e8c000" stroke-width="3.5" stroke-linecap="round"/></svg>
-        <span style="color:#8a7a60;font-size:.65rem">C=C chromophore</span>
+        <span>C=C chromophore</span>
       </div>
     </div>
-    <div style="margin-top:12px;color:#4a3820;font-size:.6rem">Shiur materials<br>Movements III–IV · v5.10</div>
   </div>
-</div>
+</aside>
+
+<script is:inline>
+  function initSidebarAccordion() {
+    document.querySelectorAll('.sidebar-group').forEach(details => {
+      const summary = details.querySelector('.sidebar-group-label');
+      const inner = details.querySelector('.sidebar-group-items-inner');
+      if (!summary || !inner) return;
+
+      summary.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (details.open) {
+          // Closing: animate height to 0, then remove open
+          inner.style.height = inner.scrollHeight + 'px';
+          requestAnimationFrame(() => {
+            inner.style.height = '0px';
+          });
+          inner.addEventListener('transitionend', function handler() {
+            details.removeAttribute('open');
+            inner.style.height = '';
+            inner.removeEventListener('transitionend', handler);
+          }, { once: true });
+        } else {
+          // Opening: set open, then animate from 0 to full height
+          details.setAttribute('open', '');
+          const h = inner.scrollHeight;
+          inner.style.height = '0px';
+          requestAnimationFrame(() => {
+            inner.style.height = h + 'px';
+          });
+          inner.addEventListener('transitionend', function handler() {
+            inner.style.height = '';
+            inner.removeEventListener('transitionend', handler);
+          }, { once: true });
+        }
+      });
+    });
+  }
+  initSidebarAccordion();
+  document.addEventListener('astro:after-swap', initSidebarAccordion);
+
+</script>
+
+<style>
+  /* ═══════════════════════════════════════════════════
+     Sidebar — unified palette
+     Uses palette scales: parch-*, brown-*, blue-*, gold-*
+  ═══════════════════════════════════════════════════ */
+
+  .sidebar-root {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    width: 270px;
+    background: #3a2c1c;       /* brown-400 */
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Header */
+  .sidebar-header {
+    padding: 20px 18px 16px;
+    border-bottom: 1px solid #5a4630;  /* brown-300 */
+  }
+  .sidebar-title {
+    font-family: var(--ff-disp);
+    font-size: 1.05rem;
+    color: #f0dca0;            /* gold-100 */
+    line-height: 1.3;
+  }
+
+  /* Navigation */
+  .sidebar-nav {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: visible;
+    padding: 0 0 8px;
+  }
+
+  /* Remove top border on first group — header border is sufficient */
+  .sidebar-group:first-child > .sidebar-group-label {
+    border-top: none;
+  }
+
+  /* Movement group */
+  .sidebar-group {
+    margin-bottom: 2px;
+  }
+  .sidebar-group-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 18px;
+    cursor: pointer;
+    font-family: var(--ff-mono);
+    font-size: 0.62rem;
+    color: #8a7458;            /* brown-200 */
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    list-style: none;
+    user-select: none;
+    transition: color 0.15s, background 0.15s;
+    border-top: 1px solid #5a4630;  /* brown-300 */
+  }
+  .sidebar-group-label:hover {
+    color: #c8b498;            /* brown-100 */
+    background: #4a3828;
+  }
+  .sidebar-group-label::-webkit-details-marker,
+  .sidebar-group-label::marker {
+    display: none;
+    content: '';
+  }
+
+  .sidebar-group-text {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .sidebar-group-num {
+    font-size: 0.56rem;
+    color: #5a4630;            /* brown-300 */
+    letter-spacing: 0.04em;
+  }
+
+  /* Current movement indicator */
+  .sidebar-group.has-active > .sidebar-group-label {
+    color: #d4a020;            /* gold-200 */
+  }
+  .sidebar-group.has-active > .sidebar-group-label .sidebar-group-num {
+    color: #8a6408;            /* gold-400 */
+  }
+
+  /* Chevron */
+  .sidebar-chevron {
+    width: 12px;
+    height: 12px;
+    color: #5a4630;            /* brown-300 */
+    transition: transform 0.2s ease, color 0.15s;
+    flex-shrink: 0;
+  }
+  details[open] > .sidebar-group-label .sidebar-chevron {
+    transform: rotate(90deg);
+    color: #8a7458;            /* brown-200 */
+  }
+
+  /* Collapse/expand animation */
+  .sidebar-group-items {
+    padding: 0;
+    position: relative;
+  }
+  .sidebar-group-items-inner {
+    overflow: hidden;
+    overflow: clip;
+    overflow-clip-margin: 14px;
+    transition: height 0.2s ease-out;
+    padding-bottom: 6px;
+    position: relative;
+  }
+
+  /* Individual nav item */
+  .sidebar-item {
+    display: block;
+    padding: 7px 12px 7px 18px;
+    text-decoration: none;
+    margin-bottom: 0;
+    border-left: 3px solid transparent;
+    transition: background 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    z-index: 1;
+  }
+  .sidebar-item:hover {
+    background: #4a3828;
+    border-radius: 8px 0 0 8px;
+  }
+
+  /* Active item — flows into the page */
+  .sidebar-item.active {
+    background: #fefcf8;       /* parch-50 / paper */
+    border-left-color: #b8860b; /* gold-300 */
+    border-radius: 14px 0 0 14px;
+    z-index: 2;
+  }
+  .sidebar-item.active:hover {
+    background: #fefcf8;
+  }
+
+  /* Inverted corners */
+  .sidebar-item.active::before,
+  .sidebar-item.active::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+  }
+  .sidebar-item.active::before {
+    bottom: 100%;
+    background: radial-gradient(circle at 0% 0%, transparent 14px, #fefcf8 14px);
+  }
+  .sidebar-item.active::after {
+    top: 100%;
+    background: radial-gradient(circle at 0% 100%, transparent 14px, #fefcf8 14px);
+  }
+
+  /* Section number */
+  .sidebar-item-num {
+    display: block;
+    font-family: var(--ff-mono);
+    font-size: 0.58rem;
+    color: #8a7458;            /* brown-200 */
+    letter-spacing: 0.06em;
+    margin-bottom: 1px;
+    line-height: 1;
+    transition: color 0.3s ease;
+  }
+  .sidebar-item.active .sidebar-item-num {
+    color: #8a6408;            /* gold-400 */
+  }
+
+  /* Section title */
+  .sidebar-item-title {
+    display: block;
+    font-family: var(--ff-body);
+    font-size: 0.8rem;
+    color: #c8b498;            /* brown-100 */
+    line-height: 1.35;
+    transition: color 0.3s ease, font-weight 0.3s ease;
+  }
+  .sidebar-item:hover .sidebar-item-title {
+    color: #f0dca0;            /* gold-100 */
+  }
+  .sidebar-item.active .sidebar-item-title {
+    color: #143e6e;            /* blue-400 — heading color */
+    font-weight: 600;
+  }
+
+  /* Footer */
+  .sidebar-footer {
+    padding: 12px 18px 14px;
+    border-top: 1px solid #5a4630;  /* brown-300 */
+    font-family: var(--ff-mono);
+    font-size: 0.58rem;
+    color: #5a4630;            /* brown-300 */
+    line-height: 1.6;
+  }
+  .sidebar-footer-label {
+    margin-bottom: 8px;
+    color: #8a7458;            /* brown-200 */
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.63rem;
+  }
+  .sidebar-atom-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .sidebar-atom {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sidebar-atom span {
+    color: #8a7458;            /* brown-200 */
+    font-size: 0.65rem;
+  }
+  .sidebar-dot {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+</style>
