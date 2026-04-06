@@ -8,7 +8,9 @@
       "Bash(ls /home/menachem/repos/techelet-project/src/components/*.astro)",
       "WebFetch(domain:docs.astro.build)",
       "Bash(ls /home/menachem/repos/techelet-project/public/diagrams/m*/)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "mcp__plugin_context7_context7__resolve-library-id",
+      "mcp__plugin_context7_context7__query-docs"
     ]
   }
 }

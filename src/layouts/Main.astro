@@ -1,5 +1,6 @@
 ---
 import Sidebar from '../components/Sidebar.astro';
+import { ClientRouter } from 'astro:transitions';
 import '../styles/tokens.css';
 import '../styles/base.css';
 import '../styles/components.css';
@@ -19,6 +20,7 @@ const { sections, currentSlug } = Astro.props;
   <title>The Chemistry of Tekhelet — Shiur Materials</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+Hebrew&display=swap" rel="stylesheet" />
+  <ClientRouter />
 </head>
 <body>
   <button id="hamburger" onclick="toggleSidebar()" aria-label="Navigation">
@@ -27,7 +29,7 @@ const { sections, currentSlug } = Astro.props;
   <div id="overlay" onclick="toggleSidebar()"></div>
   <Sidebar sections={sections} currentSlug={currentSlug} />
   <div id="main">
-    <div id="content">
+    <div id="content" transition:animate="fade">
       <slot />
     </div>
   </div>
@@ -36,6 +38,17 @@ const { sections, currentSlug } = Astro.props;
       document.getElementById('sidebar').classList.toggle('open');
       document.getElementById('overlay').classList.toggle('visible');
     }
+
+    // Preserve sidebar scroll position across view transitions
+    document.addEventListener('astro:before-swap', () => {
+      const sidebar = document.getElementById('sidebar');
+      if (sidebar) sessionStorage.setItem('sidebar-scroll', sidebar.scrollTop);
+    });
+    document.addEventListener('astro:after-swap', () => {
+      const sidebar = document.getElementById('sidebar');
+      const saved = sessionStorage.getItem('sidebar-scroll');
+      if (sidebar && saved) sidebar.scrollTop = parseInt(saved);
+    });
   </script>
 </body>
 </html>
