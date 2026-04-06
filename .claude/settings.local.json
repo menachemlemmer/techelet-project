@@ -6,7 +6,9 @@
       "Bash(sort -k1 -hr)",
       "Bash(ls /home/menachem/repos/techelet-project/src/components/index*)",
       "Bash(ls /home/menachem/repos/techelet-project/src/components/*.astro)",
-      "WebFetch(domain:docs.astro.build)"
+      "WebFetch(domain:docs.astro.build)",
+      "Bash(ls /home/menachem/repos/techelet-project/public/diagrams/m*/)",
+      "Bash(ls:*)"
     ]
   }
 }

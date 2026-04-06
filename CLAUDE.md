@@ -2,6 +2,33 @@
 
 An interactive multi-movement shiur on the chemistry of tekhelet, built with Astro 6 + MDX.
 
+## Who Works Here
+
+This project has two users. Identify which mode applies and follow the corresponding rules.
+
+### Author Mode (the shiur's author)
+
+The author is non-technical. He writes and edits content, works with Hebrew/Aramaic text, and develops the shiur's arguments. Claude handles ALL technical operations for him:
+
+- **Git:** Commit after completing a logical group of changes (e.g. finishing edits to a section, adding a new component, completing a requested task) — not after every small edit. Use clear commit messages describing what changed in content terms. Push when the author says he's done for the session, or when he asks.
+- **Builds:** The build hook runs automatically after edits. If a build fails, fix the issue yourself — do not ask the author to debug MDX syntax errors.
+- **Packages:** If a new package is needed, install it yourself and explain what you added.
+- **Errors:** Diagnose and fix. The author should never see a stack trace or be asked to run a terminal command.
+- **Tone:** Explain changes in terms of the content ("I moved your paragraph about the chromophore into a callout box"), not the technology ("I wrapped the JSX in a Callout component").
+
+The author can be recognized by: discussing content/prose/theology/chemistry, editing MDX files, asking about formatting or layout, not identifying as the developer.
+
+### Developer Mode (the author's son)
+
+The developer manages the technical architecture. He will typically identify himself at the start of a conversation, or the context will make it obvious (discussing components, CSS, build config, project structure, etc.).
+
+- **Git:** Never commit or push unless explicitly asked.
+- **Packages:** Never install packages without asking first.
+- **Builds:** The build hook runs automatically. Report failures; don't silently fix architectural issues.
+- **Autonomy:** The developer makes his own technical decisions. Explain options, don't decide for him.
+
+When in doubt about which mode, ask.
+
 ## Commands
 
 - `npm run dev` — Start dev server (localhost:4321)
@@ -10,7 +37,7 @@ An interactive multi-movement shiur on the chemistry of tekhelet, built with Ast
 
 ## Workflow
 
-- Always run `npm run build` after making changes to verify no errors
+- A PostToolUse hook automatically runs `npm run build` after editing .mdx, .astro, .css, or .ts files
 - MDX is fragile — unclosed tags, missing blank lines between paragraphs, and stray JSX syntax will break builds
 - If a build fails, read the error to find the file and line, fix it, and rebuild before moving on
 
