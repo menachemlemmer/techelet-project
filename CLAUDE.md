@@ -185,9 +185,11 @@ See existing examples: `EnzymeCascade.astro`, `ResistGrid.astro`, `ThresholdDiag
 
 **Callout** — Colored callout boxes
 ```mdx
-<Callout type="gold"><b>Key point.</b> Explanation text.</Callout>
+<Callout type="gold"><b>Header label.</b> Explanation text.</Callout>
 ```
 Types: `gold`, `blue`, `violet`, `green`, `red`, `thesis`
+
+**REQUIRED:** Every callout MUST open with a bolded header — a short declarative label or sentence in `<b>...</b>`. No callout should begin with unbolded prose.
 
 **TermDef** — Term definition boxes
 ```mdx
