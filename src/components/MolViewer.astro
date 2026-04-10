@@ -5,20 +5,65 @@ interface Props {
   hasBromine?: boolean;
   bgColor?: string;
   showGuide?: boolean;
+  staticImage?: string;
 }
-const { divId, sdfPath, hasBromine = false, bgColor, showGuide = true } = Astro.props;
+const { divId, sdfPath, hasBromine = false, bgColor, showGuide = true, staticImage } = Astro.props;
 ---
 <div class="mol-3d-outer">
-  <div class="mol-3d-wrap">
+  <div class="mol-3d-wrap mol-screen-only">
     <div id={divId}></div>
     <div id={`${divId}-loading`} class="mol-loading">Loading 3D model…</div>
+    <button id={`${divId}-save`} class="mol-save-btn" title="Save image">⬇ Save image</button>
   </div>
   {showGuide && (
-    <div class="mol-guide">
+    <div class="mol-guide mol-screen-only">
       <span>Drag</span> rotate <span>Scroll</span> zoom <span>Right-drag</span> pan
     </div>
   )}
+  <div class="mol-print-fallback">
+    {staticImage
+      ? <img src={staticImage} alt="Molecular structure" class="mol-static-img" />
+      : <div class="mol-print-placeholder">[ 3D molecular model — see interactive version online ]</div>
+    }
+  </div>
 </div>
+
+<style>
+  .mol-screen-only { }
+  .mol-print-fallback { display: none; }
+  .mol-static-img { width: 100%; border-radius: 6px; display: block; }
+  .mol-print-placeholder {
+    font-style: italic;
+    color: #7a6a50;
+    font-size: 0.85rem;
+    padding: 1rem;
+    border: 1px dashed #d0c4a8;
+    border-radius: 6px;
+    text-align: center;
+  }
+  .mol-save-btn {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(0,0,0,0.55);
+    color: #e8d8b0;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 4px;
+    font-size: 0.72rem;
+    padding: 3px 8px;
+    cursor: pointer;
+    font-family: var(--ff-body, Georgia, serif);
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 10;
+  }
+  .mol-3d-wrap:hover .mol-save-btn { opacity: 1; }
+  @media print {
+    .mol-screen-only { display: none !important; }
+    .mol-guide { display: none !important; }
+    .mol-print-fallback { display: block; }
+  }
+</style>
 
 <script define:vars={{ divId, sdfPath, hasBromine, bgColor }}>
   const observer = new IntersectionObserver((entries) => {
@@ -33,8 +78,9 @@ const { divId, sdfPath, hasBromine = false, bgColor, showGuide = true } = Astro.
   const el = document.getElementById(divId);
   if (el) observer.observe(el);
 
+  let viewer = null;
+
   async function loadMolecule() {
-    // Ensure 3Dmol is loaded
     if (typeof $3Dmol === 'undefined') {
       const script = document.createElement('script');
       script.src = 'https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.0.1/3Dmol-min.js';
@@ -53,6 +99,7 @@ const { divId, sdfPath, hasBromine = false, bgColor, showGuide = true } = Astro.
         const v = $3Dmol.createViewer(document.getElementById(divId), {
           backgroundColor: bg, antialias: true
         });
+        viewer = v;
         const elemColors = {
           C: '#909090', N: '#3366dd', O: '#dd2222', H: '#ffffff', Br: '#c07030'
         };
@@ -71,6 +118,18 @@ const { divId, sdfPath, hasBromine = false, bgColor, showGuide = true } = Astro.
         v.zoomTo(); v.zoom(0.78); v.rotate(15, 'x'); v.rotate(-20, 'y'); v.render();
         const loadEl = document.getElementById(divId + '-loading');
         if (loadEl) loadEl.style.opacity = '0';
+
+        // Save button
+        const saveBtn = document.getElementById(divId + '-save');
+        if (saveBtn) {
+          saveBtn.addEventListener('click', () => {
+            const uri = v.pngURI();
+            const a = document.createElement('a');
+            a.href = uri;
+            a.download = divId + '.png';
+            a.click();
+          });
+        }
       });
   }
 </script>

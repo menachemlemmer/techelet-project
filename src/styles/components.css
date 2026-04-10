@@ -42,6 +42,7 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
 .callout.thesis b { color: var(--gold-200); }
+.callout br { display: block; margin-bottom: 0.55em; }
 
 /* ═══════════════════════════════════════════════════
    DIAGRAM PANELS
