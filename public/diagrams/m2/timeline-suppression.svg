@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 220 1010" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Background -->
+  <rect width="220" height="1010" fill="#ede5d5" rx="4"/>
+
+  <!-- Title -->
+  <text x="110" y="22" text-anchor="middle" fill="#6a5a48" font-size="7" font-family="Georgia,serif" font-style="italic" letter-spacing="1.5">CHRONOLOGY</text>
+
+  <!-- Legal sequence bracket region 301–529 CE (y=593 to y=833) -->
+  <rect x="70" y="590" width="146" height="246" fill="#b8860b" fill-opacity="0.07" rx="2"/>
+
+  <!-- BCE / CE divider at year 0 (y=276) -->
+  <line x1="14" y1="276" x2="210" y2="276" stroke="#b8860b" stroke-width="0.5" stroke-dasharray="2,3" opacity="0.4"/>
+  <text x="66" y="272" text-anchor="end" fill="#b8860b" font-size="6.5" font-family="Georgia,serif" opacity="0.65">BCE</text>
+  <text x="66" y="284" text-anchor="end" fill="#b8860b" font-size="6.5" font-family="Georgia,serif" opacity="0.65">CE</text>
+
+  <!-- Main vertical line -->
+  <line x1="72" y1="45" x2="72" y2="965" stroke="#b8860b" stroke-width="1.5"/>
+
+  <!-- ── 215 BCE · y=50 ── -->
+  <circle cx="72" cy="50" r="4" fill="#b8860b"/>
+  <text x="67" y="53" text-anchor="end" fill="#6a5a48" font-size="7" font-family="'Courier New',monospace">215 BCE</text>
+  <text x="80" y="49" fill="#1a1208" font-size="7.5" font-family="Georgia,serif">Lex Oppia</text>
+  <text x="80" y="59" fill="#6a5a48" font-size="6.5" font-family="Georgia,serif">purple banned privately</text>
+
+  <!-- ── 46 BCE · y=228 ── -->
+  <circle cx="72" cy="228" r="4" fill="#b8860b"/>
+  <text x="67" y="231" text-anchor="end" fill="#6a5a48" font-size="7" font-family="'Courier New',monospace">46 BCE</text>
+  <text x="80" y="227" fill="#1a1208" font-size="7.5" font-family="Georgia,serif">Lex Julia</text>
+  <text x="80" y="237" fill="#6a5a48" font-size="6.5" font-family="Georgia,serif">Caesar encodes supremacy</text>
+
+  <!-- ── 70 CE · y=350 ── -->
+  <circle cx="72" cy="350" r="4" fill="#8a2020"/>
+  <text x="67" y="353" text-anchor="end" fill="#6a5a48" font-size="7" font-family="'Courier New',monospace">70 CE</text>
+  <text x="80" y="349" fill="#1a1208" font-size="7.5" font-family="Georgia,serif">Temple destroyed</text>
+  <text x="80" y="359" fill="#6a5a48" font-size="6.5" font-family="Georgia,serif">community contracts north</text>
+
+  <!-- ── 135 CE · y=418 ── -->
+  <circle cx="72" cy="418" r="4" fill="#8a2020"/>
+  <text x="67" y="421" text-anchor="end" fill="#6a5a48" font-size="7" font-family="'Courier New',monospace">135 CE</text>
+  <text x="80" y="417" fill="#1a1208" font-size="7.5" font-family="Georgia,serif">Bar Kokhba</text>
+  <text x="80" y="427" fill="#6a5a48" font-size="6.5" font-family="Georgia,serif">expelled from Jerusalem</text>
+
+  <!-- ── 301 CE · y=593 ── -->
+  <circle cx="72" cy="593" r="5" fill="#b8860b"/>
+  <text x="67" y="596" text-anchor="end" fill="#6a5a48" font-size="7" font-family="'Courier New',monospace">301 CE</text>
+  <text x="80" y="591" fill="#1a1208" font-size="7.5" font-family="Georgia,serif" font-weight="bold">Nationalization</text>
+  <text x="80" y="601" fill="#6a5a48" font-size="6.5" font-family="Georgia,serif">Diocletian · gynaeciae</text>
+
+  <!-- ── 351 CE · y=646 ── -->
+  <circle cx="72" cy="646" r="4" fill="#8a2020"/>
+  <text x="67" y="649" text-anchor="end" fill="#6a5a48" font-size="7" font-family="'Courier New',monospace">351 CE</text>
+  <text x="80" y="645" fill="#1a1208" font-size="7.5" font-family="Georgia,serif">Gallus revolt</text>
+  <text x="80" y="655" fill="#6a5a48" font-size="6.5" font-family="Georgia,serif">supply network severed</text>
+
+  <!-- ── 385 CE · y=682 ── -->
+  <circle cx="72" cy="682" r="4" fill="#b8860b"/>
+  <text x="67" y="685" text-anchor="end" fill="#6a5a48" font-size="7" font-family="'Courier New',monospace">385 CE</text>
+  <text x="80" y="681" fill="#1a1208" font-size="7.5" font-family="Georgia,serif">Purple = death</text>
+  <text x="80" y="691" fill="#6a5a48" font-size="6.5" font-family="Georgia,serif">CTh 10.21.3</text>
+
+  <!-- ── 424 CE · y=723 ── -->
+  <circle cx="72" cy="723" r="4" fill="#b8860b"/>
+  <text x="67" y="726" text-anchor="end" fill="#6a5a48" font-size="7" font-family="'Courier New',monospace">424 CE</text>
+  <text x="80" y="722" fill="#1a1208" font-size="7.5" font-family="Georgia,serif">Confiscation order</text>
+  <text x="80" y="732" fill="#6a5a48" font-size="6.5" font-family="Georgia,serif">CTh 10.21.4</text>
+
+  <!-- ── 470 CE · y=771 ── -->
+  <circle cx="72" cy="771" r="4" fill="#b8860b"/>
+  <text x="67" y="774" text-anchor="end" fill="#6a5a48" font-size="7" font-family="'Courier New',monospace">470 CE</text>
+  <text x="80" y="770" fill="#1a1208" font-size="7.5" font-family="Georgia,serif">Murex = death</text>
+  <text x="80" y="780" fill="#6a5a48" font-size="6.5" font-family="Georgia,serif">CJ 1.23.6 · named explicitly</text>
+
+  <!-- ── 529 CE · y=833 ── -->
+  <circle cx="72" cy="833" r="5" fill="#b8860b"/>
+  <text x="67" y="836" text-anchor="end" fill="#6a5a48" font-size="7" font-family="'Courier New',monospace">529 CE</text>
+  <text x="80" y="831" fill="#1a1208" font-size="7.5" font-family="Georgia,serif" font-weight="bold">Hyacinthina</text>
+  <text x="80" y="841" fill="#6a5a48" font-size="6.5" font-family="Georgia,serif">Justinian · CJ 4.40.1</text>
+
+  <!-- ── 614 CE · y=923 ── -->
+  <circle cx="72" cy="923" r="4" fill="#8a2020"/>
+  <text x="67" y="926" text-anchor="end" fill="#6a5a48" font-size="7" font-family="'Courier New',monospace">614 CE</text>
+  <text x="80" y="922" fill="#1a1208" font-size="7.5" font-family="Georgia,serif">Jerusalem falls</text>
+  <text x="80" y="932" fill="#6a5a48" font-size="6.5" font-family="Georgia,serif">coast destroyed</text>
+
+  <!-- ── 640 CE · y=950 ── -->
+  <circle cx="72" cy="950" r="4" fill="#8a2020"/>
+  <text x="67" y="953" text-anchor="end" fill="#6a5a48" font-size="7" font-family="'Courier New',monospace">640 CE</text>
+  <text x="80" y="949" fill="#1a1208" font-size="7.5" font-family="Georgia,serif">Islamic conquest</text>
+
+  <!-- Legend -->
+  <circle cx="24" cy="983" r="3.5" fill="#b8860b"/>
+  <text x="32" y="986" fill="#6a5a48" font-size="6.5" font-family="Georgia,serif">legal · institutional</text>
+  <circle cx="24" cy="997" r="3.5" fill="#8a2020"/>
+  <text x="32" y="1000" fill="#6a5a48" font-size="6.5" font-family="Georgia,serif">war · destruction</text>
+
+</svg>

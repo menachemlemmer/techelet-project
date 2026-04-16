@@ -1,0 +1,84 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  style?: string;
+  imgStyle?: string;
+}
+const { src, alt, caption, style, imgStyle } = Astro.props;
+const id = `lb-${Math.random().toString(36).slice(2,8)}`;
+---
+
+<figure class="lightbox-figure" style={style}>
+  <img
+    src={src}
+    alt={alt}
+    class="lightbox-thumb"
+    style={imgStyle}
+    onclick={`document.getElementById('${id}').showModal()`}
+    title="Click to enlarge"
+  />
+  {caption && <figcaption class="lightbox-caption" style="text-align:center;font-size:0.78rem;font-style:italic;color:#6a5a48;font-family:Georgia,serif;margin-top:0.4rem;line-height:1.4;">{caption}</figcaption>}
+</figure>
+
+<dialog id={id} class="lightbox-dialog" onclick={`this.close()`}>
+  <img src={src} alt={alt} class="lightbox-full" />
+  {caption && <p class="lightbox-dialog-caption">{caption}</p>}
+</dialog>
+
+<style>
+  .lightbox-figure {
+    margin: 0;
+  }
+
+  .lightbox-thumb {
+    cursor: zoom-in;
+    display: block;
+    width: 100%;
+    border-radius: 4px;
+    transition: opacity 0.15s ease;
+  }
+
+  .lightbox-thumb:hover {
+    opacity: 0.88;
+  }
+
+  .lightbox-dialog {
+    border: none;
+    background: transparent;
+    max-width: 92vw;
+    max-height: 92vh;
+    padding: 0;
+    outline: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+  }
+
+  .lightbox-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.82);
+    cursor: zoom-out;
+  }
+
+  .lightbox-full {
+    display: block;
+    width: 88vw;
+    max-height: 85vh;
+    border-radius: 4px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    object-fit: contain;
+  }
+
+  .lightbox-dialog-caption {
+    color: #e8dcc8;
+    font-size: 0.82rem;
+    font-style: italic;
+    font-family: Georgia, serif;
+    text-align: center;
+    margin-top: 0.6rem;
+    padding: 0 1rem;
+  }
+</style>

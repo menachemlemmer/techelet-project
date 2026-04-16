@@ -1,0 +1,177 @@
+---
+// SuppressionTimeline.astro
+// Fixed content — the legal and military chronology of tekhelet suppression, 215 BCE – 640 CE
+const events = [
+  { year: '215 BCE', type: 'legal', size: 'sm', title: 'Lex Oppia',         desc: 'private purple banned' },
+  { year: '46 BCE',  type: 'legal', size: 'md', title: 'Lex Julia',          desc: 'Caesar encodes supremacy' },
+  { year: '70 CE',   type: 'war',   size: 'lg', title: 'Temple destroyed',   desc: 'community contracts north' },
+  { year: '135 CE',  type: 'war',   size: 'md', title: 'Bar Kokhba',         desc: 'expelled from Jerusalem' },
+  { year: '301 CE',  type: 'legal', size: 'lg', title: 'Nationalization',    desc: 'Diocletian · gynaeciae' },
+  { year: '351 CE',  type: 'war',   size: 'lg', title: 'Gallus revolt',      desc: 'supply network severed' },
+  { year: '385 CE',  type: 'legal', size: 'md', title: 'Purple = death',     desc: 'CTh 10.21.3' },
+  { year: '424 CE',  type: 'legal', size: 'lg', title: 'Confiscation order', desc: 'CTh 10.21.4' },
+  { year: '470 CE',  type: 'legal', size: 'lg', title: 'Murex = death',      desc: 'CJ 1.23.6' },
+  { year: '529 CE',  type: 'legal', size: 'lg', title: 'Hyacinthina named',  desc: 'Justinian · CJ 4.40.1' },
+  { year: '614 CE',  type: 'war',   size: 'lg', title: 'Jerusalem falls',    desc: 'coast destroyed' },
+  { year: '640 CE',  type: 'war',   size: 'md', title: 'Islamic conquest',   desc: '' },
+];
+---
+
+<aside class="tl-wrap">
+  <div class="tl-head">CHRONOLOGY</div>
+  <div class="tl-body">
+    <div class="tl-spine"></div>
+    {events.map((e) => (
+      <div class:list={['tl-row', `tl-${e.type}`, `tl-${e.size}`]}>
+        <div class="tl-year">{e.year}</div>
+        <div class="tl-node">
+          <div class="tl-dot"></div>
+        </div>
+        <div class="tl-info">
+          <b class="tl-title">{e.title}</b>
+          {e.desc && <span class="tl-desc">{e.desc}</span>}
+        </div>
+      </div>
+    ))}
+  </div>
+  <div class="tl-legend">
+    <div class="tl-leg tl-legal"><span class="tl-leg-dot"></span>legal · institutional</div>
+    <div class="tl-leg tl-war"><span class="tl-leg-dot"></span>war · destruction</div>
+  </div>
+</aside>
+
+<style>
+  .tl-wrap {
+    float: right;
+    clear: right;
+    width: 192px;
+    margin: 0.5rem 0 2rem 1.5rem;
+    font-family: Georgia, serif;
+    background: #f5efe0;
+    border: 1px solid #d8cab0;
+    border-radius: 6px;
+    padding: 0.9rem 0.8rem 0.75rem;
+  }
+
+  .tl-head {
+    font-family: 'Courier New', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.24em;
+    color: #b8860b;
+    text-align: center;
+    margin-bottom: 0.9rem;
+    opacity: 0.7;
+  }
+
+  .tl-body {
+    position: relative;
+  }
+
+  /* Vertical spine behind all dots */
+  .tl-spine {
+    position: absolute;
+    left: 56px;
+    top: 5px;
+    bottom: 5px;
+    width: 1.5px;
+    background: #d8cab0;
+    z-index: 0;
+  }
+
+  .tl-row {
+    display: grid;
+    grid-template-columns: 48px 18px 1fr;
+    gap: 0 3px;
+    align-items: start;
+    margin-bottom: 9px;
+    padding: 1px 2px;
+    border-radius: 3px;
+  }
+
+  /* Highlight consequential events */
+  .tl-lg { background: rgba(184,134,11,0.06); }
+  .tl-war.tl-lg { background: rgba(138,32,32,0.06); }
+
+  .tl-year {
+    font-family: 'Courier New', monospace;
+    font-size: 0.58rem;
+    color: #6a5a48;
+    text-align: right;
+    padding-top: 2px;
+    line-height: 1.2;
+  }
+
+  .tl-node {
+    display: flex;
+    justify-content: center;
+    padding-top: 1px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .tl-dot {
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Dot sizes by consequence */
+  .tl-sm .tl-dot { width: 6px;  height: 6px;  margin-top: 2px; }
+  .tl-md .tl-dot { width: 8px;  height: 8px;  margin-top: 1px; }
+  .tl-lg .tl-dot { width: 11px; height: 11px; margin-top: 0; }
+
+  /* Dot colors by type */
+  .tl-legal .tl-dot { background: #b8860b; }
+  .tl-war   .tl-dot { background: #8a2020; }
+
+  .tl-info {
+    padding-bottom: 2px;
+  }
+
+  .tl-title {
+    display: block;
+    font-size: 0.67rem;
+    font-family: Georgia, serif;
+    font-style: normal;
+    line-height: 1.25;
+    color: #1a1208;
+  }
+  .tl-sm .tl-title, .tl-md .tl-title { font-weight: 500; }
+  .tl-lg .tl-title { font-weight: 700; }
+
+  .tl-desc {
+    display: block;
+    font-size: 0.58rem;
+    color: #6a5a48;
+    font-style: italic;
+    line-height: 1.3;
+    margin-top: 1px;
+  }
+
+  .tl-legend {
+    margin-top: 0.6rem;
+    border-top: 1px solid #d8cab0;
+    padding-top: 0.45rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .tl-leg {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.58rem;
+    color: #6a5a48;
+    font-style: italic;
+  }
+
+  .tl-leg-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .tl-legal .tl-leg-dot { background: #b8860b; }
+  .tl-war   .tl-leg-dot { background: #8a2020; }
+</style>

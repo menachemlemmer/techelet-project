@@ -1,9 +1,10 @@
 ---
 interface Props {
   text: string;
+  level?: 1 | 2;
 }
 
-const { text } = Astro.props;
+const { text, level = 1 } = Astro.props;
 ---
 
-<div class="sub-head">{text}</div>
+<div class:list={['sub-head', level === 2 && 'sub-head-2']}>{text}</div>

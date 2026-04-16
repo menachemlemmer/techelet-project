@@ -199,6 +199,18 @@
     padding-bottom: var(--sp-1);
     margin: var(--sp-8) 0 var(--sp-4);
   }
+  .sub-head.sub-head-2 {
+    font-family: var(--ff-disp);
+    font-size: 1rem;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--gold-300);
+    border-bottom: none;
+    border-left: 2px solid var(--gold-200);
+    padding-bottom: 0;
+    padding-left: 0.85rem;
+    margin: var(--sp-6) 0 var(--sp-3);
+  }
   .bt,
   #content > p,
   #content > div > div > p {
