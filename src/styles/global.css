@@ -256,6 +256,25 @@
     gap: 1rem;
     align-items: flex-start;
   }
+  /* Color variants */
+  .term.term-blue   { background: #eef4fb; border-color: #b0c8e8; }
+  .term.term-gold   { background: #fef8e8; border-color: #d4aa50; }
+  .term.term-green  { background: #eef7ee; border-color: #90c890; }
+  .term.term-violet { background: #f4eefb; border-color: #c0a0d8; }
+  /* Long-form variant: title as block header, definition below full-width */
+  .term.term-long {
+    display: block;
+  }
+  .term.term-long .term-w {
+    display: block;
+    min-width: unset;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .term.term-long .term-d {
+    display: block;
+  }
   .term-w {
     font-family: var(--ff-disp);
     font-size: 0.95rem;

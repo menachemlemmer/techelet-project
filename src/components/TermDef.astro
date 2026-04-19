@@ -1,12 +1,20 @@
 ---
 interface Props {
   word: string;
+  type?: 'blue' | 'gold' | 'green' | 'violet';
+  long?: boolean;
 }
 
-const { word } = Astro.props;
+const { word, type, long = false } = Astro.props;
+
+const classes = [
+  'term',
+  type ? `term-${type}` : '',
+  long ? 'term-long' : '',
+].filter(Boolean).join(' ');
 ---
 
-<div class="term">
+<div class={classes}>
   <span class="term-w">{word}</span>
   <span class="term-d"><slot /></span>
 </div>
