@@ -19,6 +19,7 @@ pnpm-debug.log*
 
 # user-specific Claude Code settings (personal permissions/overrides)
 .claude/settings.local.json
+.claude/worktrees/
 
 # macOS-specific files
 .DS_Store
