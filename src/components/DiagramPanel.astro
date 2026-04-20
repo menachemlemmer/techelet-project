@@ -3,12 +3,14 @@ interface Props {
   num?: string;
   title?: string;
   caption?: string;
+  type?: 'blue' | 'gold' | 'violet' | 'green';
 }
 
-const { num, title, caption } = Astro.props;
+const { num, title, caption, type } = Astro.props;
+const classes = ['dp', type ? `dp-${type}` : ''].filter(Boolean).join(' ');
 ---
 
-<div class="dp">
+<div class={classes}>
   {num && <div class="dp-num">{num}</div>}
   {title && <div class="dp-title">{title}</div>}
   <div class="svg-wrap">

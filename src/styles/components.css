@@ -55,6 +55,11 @@
   margin: 1.4rem 0;
   box-shadow: 0 1px 6px rgba(0,0,0,.04);
 }
+.dp.dp-blue   { background: var(--blue-50);   border-color: var(--blue-300); }
+.dp.dp-gold   { background: var(--gold-50);   border-color: var(--gold-300); }
+.dp.dp-violet { background: var(--violet-50); border-color: var(--violet-300); }
+.dp.dp-green  { background: #eafff0;          border-color: var(--green); }
+
 .dp-num {
   font-family: var(--ff-disp);
   font-size: var(--text-sm);
