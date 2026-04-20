@@ -57,7 +57,7 @@
 }
 .dp.dp-blue      { background: var(--blue-50);   border-color: transparent; box-shadow: none; }
 .dp.dp-borderless { background: transparent; border-color: transparent; box-shadow: none; padding: 0.3rem; }
-.dp.dp-borderless .dp-cap { margin-top: 0.3rem; }
+.dp.dp-borderless .dp-cap { margin-top: 1.8rem; }
 .dp.dp-borderless .dp-title { margin-bottom: 0.3rem; }
 .dp.dp-compact    { padding: 0.35rem; }
 .dp.dp-gold   { background: var(--gold-50);   border-color: var(--gold-300); }
