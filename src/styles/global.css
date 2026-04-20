@@ -274,6 +274,7 @@
   }
   .term.term-long .term-d {
     display: block;
+    overflow: hidden; /* contain floated images */
   }
   .term-w {
     font-family: var(--ff-disp);
