@@ -56,7 +56,7 @@
   box-shadow: 0 1px 6px rgba(0,0,0,.04);
 }
 .dp.dp-blue      { background: var(--blue-50);   border-color: transparent; box-shadow: none; }
-.dp.dp-borderless { border-color: transparent; box-shadow: none; }
+.dp.dp-borderless { border-color: transparent; box-shadow: none; padding: 0.3rem; }
 .dp.dp-compact    { padding: 0.35rem; }
 .dp.dp-gold   { background: var(--gold-50);   border-color: var(--gold-300); }
 .dp.dp-violet { background: var(--violet-50); border-color: var(--violet-300); }
