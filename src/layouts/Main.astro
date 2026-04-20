@@ -59,7 +59,38 @@ const { sections, currentSlug } = Astro.props;
       const sidebar = document.querySelector('[data-sidebar-nav]');
       const saved = sessionStorage.getItem('sidebar-scroll');
       if (sidebar && saved) sidebar.scrollTop = parseInt(saved);
+      initLightbox();
     });
+
+    // Lightbox
+    function initLightbox() {
+      let overlay = document.getElementById('lb-overlay');
+      if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'lb-overlay';
+        overlay.innerHTML = '<img id="lb-img" alt="" /><button id="lb-close" aria-label="Close">&#x2715;</button>';
+        document.body.appendChild(overlay);
+        overlay.addEventListener('click', closeLightbox);
+        document.getElementById('lb-close').addEventListener('click', e => { e.stopPropagation(); closeLightbox(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+      }
+      const content = document.getElementById('content');
+      if (!content) return;
+      content.querySelectorAll('img').forEach(img => {
+        img.addEventListener('click', () => {
+          document.getElementById('lb-img').src = img.src;
+          document.getElementById('lb-img').alt = img.alt || '';
+          document.getElementById('lb-overlay').classList.add('lb-open');
+        });
+      });
+    }
+
+    function closeLightbox() {
+      const overlay = document.getElementById('lb-overlay');
+      if (overlay) overlay.classList.remove('lb-open');
+    }
+
+    initLightbox();
   </script>
 </body>
 </html>

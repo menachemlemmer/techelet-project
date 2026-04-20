@@ -345,6 +345,44 @@
 }
 
 /* ═══════════════════════════════════════════════════
+   LIGHTBOX
+═══════════════════════════════════════════════════ */
+#lb-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+#lb-overlay.lb-open { display: flex; }
+#lb-img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 4px;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.6);
+  cursor: default;
+  object-fit: contain;
+}
+#lb-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+#lb-close:hover { opacity: 1; }
+#content img { cursor: zoom-in; }
+
+/* ═══════════════════════════════════════════════════
    RESPONSIVE — MOBILE
 ═══════════════════════════════════════════════════ */
 @media (max-width: 768px) {
