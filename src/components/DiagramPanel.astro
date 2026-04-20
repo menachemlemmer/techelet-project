@@ -4,10 +4,11 @@ interface Props {
   title?: string;
   caption?: string;
   type?: 'blue' | 'gold' | 'violet' | 'green';
+  borderless?: boolean;
 }
 
-const { num, title, caption, type } = Astro.props;
-const classes = ['dp', type ? `dp-${type}` : ''].filter(Boolean).join(' ');
+const { num, title, caption, type, borderless = false } = Astro.props;
+const classes = ['dp', type ? `dp-${type}` : '', borderless ? 'dp-borderless' : ''].filter(Boolean).join(' ');
 ---
 
 <div class={classes}>
