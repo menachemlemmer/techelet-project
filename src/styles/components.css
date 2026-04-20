@@ -18,6 +18,8 @@
   font-size: var(--text-base);
   color: var(--ink);
   line-height: 1.8;
+  text-align: justify;
+  hyphens: auto;
 }
 .callout b {
   font-family: var(--ff-disp);
