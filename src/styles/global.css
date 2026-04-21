@@ -410,6 +410,22 @@
   .step-arr { transform: rotate(90deg); padding: 4px 0; }
 
   .mol-3d-wrap { min-height: 180px; aspect-ratio: 1.5 / 1; }
+
+  /* Inline float image wrappers — stack full-width on mobile */
+  #content div[style*="float:right"],
+  #content div[style*="float:left"] {
+    float: none !important;
+    width: 100% !important;
+    margin: 0 0 1rem 0 !important;
+  }
+
+  /* Inline flex image+text rows — stack vertically on mobile */
+  #content div[style*="display:flex"] {
+    flex-direction: column !important;
+  }
+  #content div[style*="display:flex"] > div[style*="flex:0"] {
+    width: 100% !important;
+  }
 }
 
 @media (max-width: 480px) {
