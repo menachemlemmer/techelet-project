@@ -1,4 +1,4 @@
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:.5rem 0">
+<div class="flat-comparison">
   <div>
     <div class="flat-label" style="color:var(--ind)">
       IND — no bromine
@@ -24,3 +24,17 @@
     </div>
   </div>
 </div>
+
+<style>
+  .flat-comparison {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: .5rem 0;
+  }
+  @media (max-width: 768px) {
+    .flat-comparison {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

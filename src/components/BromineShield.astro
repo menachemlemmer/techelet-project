@@ -1,4 +1,4 @@
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin:.6rem 0">
+<div class="bromine-shield-grid">
   <div style="border:2px solid var(--ind);border-radius:8px;overflow:hidden">
     <div style="background:var(--ind);color:white;padding:.5rem .8rem;font-size:.82rem;font-weight:600;text-align:center;font-family:var(--ff-disp)">
       PLANT INDIGO (IND) — no shield
@@ -60,3 +60,17 @@
     </div>
   </div>
 </div>
+
+<style>
+  .bromine-shield-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin: .6rem 0;
+  }
+  @media (max-width: 768px) {
+    .bromine-shield-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
