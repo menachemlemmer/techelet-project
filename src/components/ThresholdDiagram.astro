@@ -1,48 +1,106 @@
 <div class="threshold-diagram">
-  <div style="font-family:var(--ff-mono);font-size:.65rem;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.8rem">
-    Stripping resistance
+  <div class="td-header">Stripping resistance</div>
+  <div class="td-bar">
+    <div class="td-seg td-ind">IND</div>
+    <div class="td-sep">
+      <span class="td-sep-label">TEST</span>
+      <span class="td-sep-arrow">↓</span>
+    </div>
+    <div class="td-seg td-mbi">MBI</div>
+    <div class="td-seg td-dbi">DBI</div>
   </div>
-  <div style="display:flex;align-items:center;gap:0;margin:.5rem 0 1.2rem">
-    <div style="flex:2;height:28px;background:linear-gradient(to right,var(--ind),#4444aa);border-radius:4px 0 0 4px;display:flex;align-items:center;padding:0 8px">
-      <span style="font-family:var(--ff-body);font-size:.78rem;color:white;font-weight:600">
-        IND
-      </span>
-    </div>
-    <div style="width:4px;height:44px;background:var(--gold2);position:relative">
-      <div style="position:absolute;top:-20px;left:50%;transform:translateX(-50%);white-space:nowrap;font-family:var(--ff-mono);font-size:.65rem;color:var(--gold2)">
-        TEST
-      </div>
-      <div style="position:absolute;top:-8px;left:50%;transform:translateX(-50%);font-size:1rem">
-        ↓
-      </div>
-    </div>
-    <div style="flex:2;height:28px;background:linear-gradient(to right,#4444aa,var(--mbi));display:flex;align-items:center;padding:0 8px">
-      <span style="font-family:var(--ff-body);font-size:.78rem;color:white;font-weight:600">
-        MBI
-      </span>
-    </div>
-    <div style="flex:1;height:28px;background:linear-gradient(to right,var(--mbi),var(--dbi));border-radius:0 4px 4px 0;display:flex;align-items:center;padding:0 8px">
-      <span style="font-family:var(--ff-body);font-size:.78rem;color:white;font-weight:600">
-        DBI
-      </span>
-    </div>
-  </div>
-  <div style="display:flex;gap:1rem;margin-top:.3rem">
-    <div style="flex:1;font-family:var(--ff-body);font-size:.8rem;color:#ef4444">
+  <div class="td-legend">
+    <div class="td-fail">
       ✗ Below threshold
-      <br/>
-      <span style="font-size:.75rem;opacity:.8">
-        Fails Test 1 — color stripped
-        <br/>→ identified as kala ilan
-      </span>
+      <br/><span>Fails Test 1 — color stripped<br/>→ identified as kala ilan</span>
     </div>
-    <div style="flex:2;font-family:var(--ff-body);font-size:.8rem;color:#4ade80">
+    <div class="td-pass">
       ✓ Above threshold
-      <br/>
-      <span style="font-size:.75rem;opacity:.8">
-        Survives Test 1 — color holds
-        <br/>→ possibly authentic tekhelet
-      </span>
+      <br/><span>Survives Test 1 — color holds<br/>→ possibly authentic tekhelet</span>
     </div>
   </div>
 </div>
+
+<style>
+  .td-header {
+    font-family: var(--ff-mono);
+    font-size: .65rem;
+    color: var(--gold);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: .8rem;
+  }
+  .td-bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: .5rem 0 1.2rem;
+  }
+  .td-seg {
+    flex: 2 1 0;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    font-family: var(--ff-body);
+    font-size: .78rem;
+    color: white;
+    font-weight: 600;
+    min-width: 0;
+  }
+  .td-ind {
+    background: linear-gradient(to right, var(--ind), #4444aa);
+    border-radius: 4px 0 0 4px;
+  }
+  .td-mbi {
+    background: linear-gradient(to right, #4444aa, var(--mbi));
+  }
+  .td-dbi {
+    flex: 1 1 0;
+    background: linear-gradient(to right, var(--mbi), var(--dbi));
+    border-radius: 0 4px 4px 0;
+  }
+  .td-sep {
+    flex: 0 0 4px;
+    width: 4px;
+    height: 44px;
+    background: var(--gold2);
+    position: relative;
+  }
+  .td-sep-label {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-family: var(--ff-mono);
+    font-size: .65rem;
+    color: var(--gold2);
+  }
+  .td-sep-arrow {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+  }
+  .td-legend {
+    display: flex;
+    gap: 1rem;
+    margin-top: .3rem;
+    font-family: var(--ff-body);
+    font-size: .8rem;
+  }
+  .td-fail {
+    flex: 2;
+    color: #ef4444;
+  }
+  .td-fail span, .td-pass span {
+    font-size: .75rem;
+    opacity: .8;
+  }
+  .td-pass {
+    flex: 2;
+    color: #4ade80;
+  }
+</style>
