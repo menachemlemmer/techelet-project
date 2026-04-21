@@ -1,28 +1,71 @@
----
----
-<div class="threshold-diagram">
-  <div style="font-family:var(--ff-mono);font-size:.65rem;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.8rem">
-    Stripping resistance
-  </div>
-  <div style="display:flex;align-items:center;gap:0;margin:.5rem 0 1.2rem">
-    <div style="flex:2;height:28px;background:linear-gradient(to right,var(--ind),#4444aa);border-radius:4px 0 0 4px;display:flex;align-items:center;padding:0 8px">
-      <span style="font-family:var(--ff-body);font-size:.78rem;color:white;font-weight:600">
-        IND
-      </span>
+<div class="zt-wrap">
+  <div class="zt-header">Stripping resistance</div>
+  <div class="zt-bar">
+    <div class="zt-seg zt-ind">IND</div>
+    <div class="zt-sep">
+      <span class="zt-sep-label">← Ziderman product is here</span>
     </div>
-    <div style="width:4px;height:44px;background:var(--gold2)"></div>
-    <div style="flex:2;height:28px;background:linear-gradient(to right,#4444aa,var(--mbi));display:flex;align-items:center;padding:0 8px;position:relative">
-      <span style="font-family:var(--ff-body);font-size:.78rem;color:white;font-weight:600">
-        MBI
-      </span>
-      <div style="position:absolute;top:-24px;left:8px;font-family:var(--ff-mono);font-size:.62rem;color:#4ade80;white-space:nowrap">
-        ← Ziderman product is here
-      </div>
-    </div>
-    <div style="flex:1;height:28px;background:linear-gradient(to right,var(--mbi),var(--dbi));border-radius:0 4px 4px 0;display:flex;align-items:center;padding:0 8px">
-      <span style="font-family:var(--ff-body);font-size:.78rem;color:white;font-weight:600">
-        DBI
-      </span>
-    </div>
+    <div class="zt-seg zt-mbi">MBI</div>
+    <div class="zt-seg zt-dbi">DBI</div>
   </div>
 </div>
+
+<style>
+  .zt-wrap {
+    padding: .2rem 0;
+  }
+  .zt-header {
+    font-family: var(--ff-mono);
+    font-size: .65rem;
+    color: var(--gold);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: .8rem;
+  }
+  .zt-bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: .5rem 0 1.2rem;
+  }
+  .zt-seg {
+    flex: 2 1 0;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    font-family: var(--ff-body);
+    font-size: .78rem;
+    color: white;
+    font-weight: 600;
+    min-width: 0;
+  }
+  .zt-ind {
+    background: linear-gradient(to right, var(--ind), #4444aa);
+    border-radius: 4px 0 0 4px;
+  }
+  .zt-mbi {
+    background: linear-gradient(to right, #4444aa, var(--mbi));
+  }
+  .zt-dbi {
+    flex: 1 1 0;
+    background: linear-gradient(to right, var(--mbi), var(--dbi));
+    border-radius: 0 4px 4px 0;
+  }
+  .zt-sep {
+    flex: 0 0 4px;
+    width: 4px;
+    height: 44px;
+    background: var(--gold2);
+    position: relative;
+  }
+  .zt-sep-label {
+    position: absolute;
+    top: -20px;
+    left: 8px;
+    white-space: nowrap;
+    font-family: var(--ff-mono);
+    font-size: .62rem;
+    color: #4ade80;
+  }
+</style>
