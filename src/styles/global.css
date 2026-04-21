@@ -411,11 +411,23 @@
 
   .mol-3d-wrap { min-height: 180px; aspect-ratio: 1.5 / 1; }
 
-  /* Inline float image wrappers — shrink to 38% on mobile so text wraps beside then below */
+  /* Term boxes — stack label above definition on mobile */
+  .term:not(.term-long) {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .term:not(.term-long) .term-w {
+    min-width: unset;
+  }
+
+  /* Inline float image wrappers — stack full-width on mobile */
   #content div[style*="float:right"],
-  #content div[style*="float:left"] {
-    width: 38% !important;
-    max-width: 140px !important;
+  #content div[style*="float:left"],
+  #content figure[style*="float:right"],
+  #content figure[style*="float:left"] {
+    float: none !important;
+    width: 100% !important;
+    margin: 0 0 1rem 0 !important;
   }
 
   /* Inline flex image+text rows — stack vertically on mobile */
