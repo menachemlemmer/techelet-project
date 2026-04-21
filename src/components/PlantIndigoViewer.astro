@@ -16,7 +16,7 @@ import MolViewer from './MolViewer.astro';
   <div class="flat-label">
     Key structural features — same molecule as shown in 3D above
   </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.7rem;margin:.5rem 0">
+  <div class="feature-grid">
     <div style="background:#0a100a;border:1.5px solid #e8c000;border-radius:6px;padding:.7rem;text-align:center">
       <div style="font-family:var(--ff-mono);font-size:.6rem;color:#e8c000;margin-bottom:.3rem">
         CHROMOPHORE
@@ -65,3 +65,17 @@ import MolViewer from './MolViewer.astro';
     highlighted: the C=C chromophore (gold, center), the N-H hydrogen bond
     donors (blue, circled), and the C=O carbonyl acceptors (red, circled).
   </div>
+
+<style>
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: .7rem;
+    margin: .5rem 0;
+  }
+  @media (max-width: 768px) {
+    .feature-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
