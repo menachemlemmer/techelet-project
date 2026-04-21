@@ -608,3 +608,18 @@
 .dnode-test { background: #1a1a3a; border: 1.5px solid #4a4a9a; color: #c0c0ff; }
 .dnode-start { background: #2a1e0e; border: 1.5px solid var(--gold); color: #e8d090; }
 .dnode-note { background: transparent; border: 1px dashed var(--border); color: var(--muted); font-size: 0.78rem; max-width: 420px; padding: 8px 14px; margin-top: 4px; }
+
+@media (max-width: 768px) {
+  .mol-grid { grid-template-columns: 1fr; }
+  .cpd-grid { grid-template-columns: 1fr; }
+  .cpd-grid-wide { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+  .resist-grid { grid-template-columns: 1fr; }
+  .ing-grid { grid-template-columns: 1fr; }
+  .ph-regions { grid-template-columns: 1fr; }
+
+  .mol-viewer-wrap {
+    aspect-ratio: 4 / 3;
+    max-height: 220px;
+  }
+}

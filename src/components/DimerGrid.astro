@@ -1,43 +1,76 @@
-<div style="font-family:var(--ff-body);font-size:.9rem;line-height:1.8">
-  <div style="display:grid;grid-template-columns:auto auto auto 1fr;align-items:center;gap:.5rem .75rem;margin:.5rem 0">
-    <div style="font-family:var(--ff-mono);font-size:.8rem;color:var(--ink)">
-      Indoxyl
+<div class="dimer-grid">
+  <div class="dimer-row">
+    <div class="dimer-reactants">
+      <span class="dimer-mol">Indoxyl</span>
+      <span class="dimer-plus">+</span>
+      <span class="dimer-mol">Indoxyl</span>
     </div>
-    <div style="color:var(--muted)">+</div>
-    <div style="font-family:var(--ff-mono);font-size:.8rem;color:var(--ink)">
-      Indoxyl
-    </div>
-    <div>
+    <div class="dimer-result">
       → <b style="color:var(--ind)">Indigotin (IND)</b>
-      <span style="color:var(--muted);font-size:.82rem">
-        — no bromine. Identical to kala ilan.
-      </span>
+      <span class="dimer-note">— no bromine. Identical to kala ilan.</span>
     </div>
-    <div style="font-family:var(--ff-mono);font-size:.8rem;color:var(--ink)">
-      Bromoindoxyl
+  </div>
+  <div class="dimer-row">
+    <div class="dimer-reactants">
+      <span class="dimer-mol">Bromoindoxyl</span>
+      <span class="dimer-plus">+</span>
+      <span class="dimer-mol">Bromoindoxyl</span>
     </div>
-    <div style="color:var(--muted)">+</div>
-    <div style="font-family:var(--ff-mono);font-size:.8rem;color:var(--ink)">
-      Bromoindoxyl
-    </div>
-    <div>
+    <div class="dimer-result">
       → <b style="color:var(--dbi)">6,6'-Dibromoindigo (DBI)</b>
-      <span style="color:var(--muted);font-size:.82rem">
-        — two bromines. Tyrian purple / argaman.
-      </span>
+      <span class="dimer-note">— two bromines. Tyrian purple / argaman.</span>
     </div>
-    <div style="font-family:var(--ff-mono);font-size:.8rem;color:var(--ink)">
-      Indoxyl
+  </div>
+  <div class="dimer-row">
+    <div class="dimer-reactants">
+      <span class="dimer-mol">Indoxyl</span>
+      <span class="dimer-plus">+</span>
+      <span class="dimer-mol">Bromoindoxyl</span>
     </div>
-    <div style="color:var(--muted)">+</div>
-    <div style="font-family:var(--ff-mono);font-size:.8rem;color:var(--ink)">
-      Bromoindoxyl
-    </div>
-    <div>
+    <div class="dimer-result">
       → <b style="color:var(--mbi)">6-Bromoindigo (MBI)</b>
-      <span style="color:var(--muted);font-size:.82rem">
-        — one bromine. The cross-product. Unique to <em>H. trunculus</em>.
-      </span>
+      <span class="dimer-note">— one bromine. The cross-product. Unique to <em>H. trunculus</em>.</span>
     </div>
   </div>
 </div>
+
+<style>
+  .dimer-grid {
+    font-family: var(--ff-body);
+    font-size: 0.9rem;
+    line-height: 1.8;
+    margin: 0.5rem 0;
+  }
+  .dimer-row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: baseline;
+    gap: 0.5rem 0.75rem;
+    margin-bottom: 0.3rem;
+  }
+  .dimer-reactants {
+    font-family: var(--ff-mono);
+    font-size: 0.8rem;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .dimer-plus {
+    color: var(--muted);
+  }
+  .dimer-note {
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  @media (max-width: 768px) {
+    .dimer-row {
+      grid-template-columns: 1fr;
+      margin-bottom: 0.8rem;
+    }
+    .dimer-result {
+      padding-left: 0.5rem;
+    }
+  }
+</style>
