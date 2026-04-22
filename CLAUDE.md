@@ -46,10 +46,11 @@ When in doubt about which mode, ask.
 
 ```
 src/content/sections/           # MDX content — one file per section
-  opening/                      # M0: Theological Opening (4 sections)
-  light-and-color/              # M1: Physics of Light & Color (7 sections)
-  the-chemistry/                # M3: The Chemistry (6 sections)
-  return-to-the-sources/        # M4: Return to the Sources (5 sections)
+  opening/                      # M0: Theological Opening (4 sections, order 0–3)
+  light-and-color/              # M1: Physics of Light & Color (7 sections, order 4–10)
+  sources-history-loss-recovery/ # M2: Sources & History (order 11–17, gaps reserved)
+  the-chemistry/                # M3: The Chemistry (6 sections, order 18–23)
+  return-to-the-sources/        # M4: Return to the Sources (6 sections, order 24–29)
 
 src/content.config.ts           # Content collection schema
 src/pages/[...slug].astro       # Dynamic route — renders each section
@@ -109,7 +110,8 @@ navTitle: "The Chain"          # Short title for sidebar (defaults to title if o
 subtitle: "Menachot 43b · ..." # Optional subtitle
 movement: "opening"            # Folder name — groups sections in sidebar
 movementLabel: "Opening"       # Display label for the movement
-order: 1                       # Global sort order (0-21)
+headerNum: "Movement I · § 1"  # Optional — overrides the auto-computed "movementLabel · sectionNum" on the page header
+order: 1                       # Global sort order — currently spans 0–29 with gaps reserved for future M2 sections
 editingNotes: "..."            # Optional notes about editing status
 needs3Dmol: true               # Set true if section uses MolViewer
 hideHeader: true               # Set true to suppress the standard section header
@@ -229,7 +231,9 @@ Types: `gold`, `blue`, `violet`, `green`, `red`, `thesis`
 **TermDef** — Term definition boxes
 ```mdx
 <TermDef word="Chromophore">Definition text.</TermDef>
+<TermDef word="The Amarna Letters" type="gold" long>Long-form definition...</TermDef>
 ```
+Optional props: `type` (`blue`, `gold`, `green`, `violet`) for color variants; `long` for a wider layout suited to paragraph-length definitions.
 
 **SubHead** — Sub-section headings
 ```mdx
@@ -242,6 +246,10 @@ Types: `gold`, `blue`, `violet`, `green`, `red`, `thesis`
   <img src="/diagrams/m1/d05-lapis-spectrum.svg" alt="..." style="width:100%;display:block;border-radius:6px" />
 </DiagramPanel>
 ```
+Optional props:
+- `type` (`blue`, `gold`, `violet`, `green`) — adds a tinted background + matching border
+- `borderless` — removes border, padding, and shadow (for images that should sit flush, e.g. floated figures inside prose)
+- `compact` — tightens internal padding
 
 **MolViewer** — 3D molecular viewer (lazy-loading)
 ```mdx
@@ -261,6 +269,8 @@ Prose text here — this IS processed as markdown, so paragraphs work normally.
 <TermWithImage imageSrc="/images/woad-plant.jpg" imageAlt="..." word="Woad" definition="HTML definition text..." />
 ```
 
+**LightboxImage** — Image that opens to a full-screen overlay on click (click-to-zoom is also wired up globally for plain `<img>` tags via `src/layouts/Main.astro`)
+
 ### Layout Components (fixed content, no props)
 
 These encapsulate complex HTML layouts that would break if placed directly in MDX:
@@ -279,6 +289,11 @@ These encapsulate complex HTML layouts that would break if placed directly in MD
 - `ZidermanPaths` — Two-path comparison
 - `ZidermanLevers` — Two-lever comparison
 - `ZidermanThreshold` — Ziderman threshold bar
+- `MbiAggregateComparison` — Diagram 15 monomer/aggregate state comparison (vertical flow)
+- `PlantIndigoViewer` — 3D molecular viewer preset for plant indigotin
+- `VatDyeingSteps` — Vat dyeing process step flow
+- `PhScale` — pH scale visualization
+- `SuppressionTimeline` — Historical timeline of tekhelet suppression/loss
 
 Usage: `<EnzymeCascade />` (inside a `<DiagramPanel>` wrapper when appropriate)
 

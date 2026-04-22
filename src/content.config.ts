@@ -10,6 +10,7 @@ const sections = defineCollection({
     subtitle: z.string().optional(),
     movement: z.string(),
     movementLabel: z.string(),
+    headerNum: z.string().optional(), // Override computed "movementLabel · sectionNum" on page header
     order: z.number(),
     editingNotes: z.string().optional(),
     needs3Dmol: z.boolean().optional(),

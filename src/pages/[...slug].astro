@@ -50,7 +50,7 @@ const { sections, prev, next } = await getNavContext(entry.id);
 <Main sections={sections} currentSlug={entry.id}>
   {!entry.data.hideHeader && (
     <SectionHead
-      num={entry.data.sectionNum === 'Intro' ? entry.data.movementLabel : `${entry.data.movementLabel} · ${entry.data.sectionNum}`}
+      num={entry.data.headerNum ?? (entry.data.sectionNum === 'Intro' ? entry.data.movementLabel : `${entry.data.movementLabel} · ${entry.data.sectionNum}`)}
       title={entry.data.title}
       subtitle={entry.data.subtitle}
     />
