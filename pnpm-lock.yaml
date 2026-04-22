@@ -23,9 +23,6 @@ importers:
       hastscript:
         specifier: ^9.0.1
         version: 9.0.1
-      puppeteer:
-        specifier: ^24.42.0
-        version: 24.42.0
       remark-directive:
         specifier: ^4.0.0
         version: 4.0.0
@@ -42,6 +39,9 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0
     devDependencies:
+      puppeteer:
+        specifier: ^24.42.0
+        version: 24.42.0
       sharp:
         specifier: ^0.34.5
         version: 0.34.5

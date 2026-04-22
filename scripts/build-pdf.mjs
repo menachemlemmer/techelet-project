@@ -10,10 +10,12 @@
  *   5. Smoke check (file exists, reasonable size)
  *   6. Always clean up: kill preview, close browser
  */
-import { spawn } from 'node:child_process';
+import { spawn, execSync } from 'node:child_process';
 import { mkdir } from 'node:fs/promises';
 import { existsSync, statSync } from 'node:fs';
 import puppeteer from 'puppeteer';
+
+const isWindows = process.platform === 'win32';
 
 const PORT = 4322;
 const URL = `http://127.0.0.1:${PORT}/print/all`;
@@ -45,7 +47,7 @@ try {
   preview = spawn(
     'npx',
     ['astro', 'preview', '--port', String(PORT), '--host', '127.0.0.1'],
-    { stdio: ['ignore', 'pipe', 'pipe'] }
+    { stdio: ['ignore', 'pipe', 'pipe'], shell: true }
   );
   preview.stdout.on('data', (d) => process.stdout.write(`[preview] ${d}`));
   preview.stderr.on('data', (d) => process.stderr.write(`[preview] ${d}`));
@@ -100,6 +102,13 @@ try {
     await browser.close().catch(() => {});
   }
   if (preview && !preview.killed) {
-    preview.kill('SIGTERM');
+    if (isWindows) {
+      // On Windows, preview is a shell that spawned node children — kill the whole tree.
+      try {
+        execSync(`taskkill /pid ${preview.pid} /t /f`, { stdio: 'ignore' });
+      } catch {}
+    } else {
+      preview.kill('SIGTERM');
+    }
   }
 }
