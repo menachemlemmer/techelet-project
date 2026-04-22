@@ -1,0 +1,45 @@
+---
+interface Props {
+  label?: string;
+}
+const { label } = Astro.props;
+---
+
+<figure class="mol-print-placeholder">
+  <div class="mol-print-frame">
+    <div class="mol-print-icon" aria-hidden="true">◯</div>
+    {label && <div class="mol-print-label">{label}</div>}
+    <div class="mol-print-note">Interactive 3D model — view the online version to rotate and explore.</div>
+  </div>
+</figure>
+
+<style>
+.mol-print-placeholder {
+  margin: 1rem 0;
+}
+.mol-print-frame {
+  border: 1px dashed var(--border);
+  background: var(--parch-100);
+  padding: 2rem 1rem;
+  text-align: center;
+  border-radius: 4px;
+  font-family: var(--ff-body);
+}
+.mol-print-icon {
+  font-size: 2.4rem;
+  color: var(--muted);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.mol-print-label {
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.25rem;
+  font-size: 0.95rem;
+}
+.mol-print-note {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-style: italic;
+}
+</style>

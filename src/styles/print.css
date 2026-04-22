@@ -1,0 +1,301 @@
+/* ═══════════════════════════════════════════════════
+   PRINT STYLES — loaded only by PrintLayout.astro
+═══════════════════════════════════════════════════ */
+
+/* Physical page + footer page number */
+@page {
+  size: Letter;
+  margin: 0.85in 0.75in 0.75in 0.75in;
+  @bottom-right {
+    content: counter(page);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 9pt;
+    color: #8a7458;
+    margin-top: 0.25in;
+  }
+  @bottom-left {
+    content: "The Chemistry of Tekhelet";
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 8.5pt;
+    font-style: italic;
+    color: #8a7458;
+    margin-top: 0.25in;
+  }
+}
+
+/* Cover and TOC get no footer */
+@page :first {
+  @bottom-right { content: ""; }
+  @bottom-left { content: ""; }
+}
+
+/* Scope: print route only */
+.print-root {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* Reset web layout constraints — let @page margin own the layout */
+.print-root #content,
+.print-root #main,
+.print-root main {
+  max-width: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+/* Hide interactive chrome */
+.print-root .sidebar,
+.print-root .navbar,
+.print-root .nav-buttons,
+.print-root #lb-overlay,
+.print-root .drawer-toggle,
+.print-root .drawer-overlay,
+.print-root .no-print {
+  display: none !important;
+}
+
+/* Ensure backgrounds and colors print */
+.print-root,
+.print-root * {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ═══════════════════════════════════════════════════
+   PAGE BREAKS
+═══════════════════════════════════════════════════ */
+
+/* Explicit page break marker — used between cover/TOC and sections */
+.print-root .page-break {
+  page-break-before: always;
+  break-before: page;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  visibility: hidden;
+}
+
+/* Section anchor is invisible, but scroll target */
+.print-root .section-anchor {
+  display: block;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  scroll-margin-top: 0;
+}
+
+/* Keep small components together; allow long ones to split rather than leave huge whitespace */
+.print-root .term,
+.print-root .sub-head,
+.print-root .dp,
+.print-root figure {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* Callouts and Aramaic blocks may be long — let them split across pages if needed */
+.print-root .callout,
+.print-root .aramaic-block {
+  break-inside: auto;
+  page-break-inside: auto;
+}
+
+/* Paragraph break behavior: avoid stranding 1-2 lines at page edges */
+.print-root p,
+.print-root li {
+  orphans: 3;
+  widows: 3;
+}
+
+/* Don't strand headings at the bottom of a page */
+.print-root h1,
+.print-root h2,
+.print-root h3,
+.print-root .sec-title,
+.print-root .sec-num,
+.print-root .sub-head {
+  page-break-after: avoid;
+  break-after: avoid-page;
+}
+
+/* Images should not be split — but allow them to flow to the next page */
+.print-root img {
+  max-width: 100%;
+  max-height: 8.5in;
+  page-break-inside: avoid;
+}
+
+/* Neutralize raw-HTML float layouts from M2 — in print, make them centered figures
+   with a reasonable width rather than narrow floats leaving page whitespace */
+.print-root div[style*="float:right"],
+.print-root div[style*="float: right"],
+.print-root div[style*="float:left"],
+.print-root div[style*="float: left"] {
+  float: none !important;
+  width: auto !important;
+  max-width: 4.5in !important;
+  margin: 0.75rem auto !important;
+  display: block;
+}
+
+/* Inline flex layouts from M2 (image + text side by side) — keep flex but allow wrap */
+.print-root div[style*="display:flex"],
+.print-root div[style*="display: flex"] {
+  break-inside: avoid;
+}
+
+/* Inline floated images inside callouts — shrink reasonably, don't dominate */
+.print-root .callout img[style*="float"] {
+  max-width: 2in !important;
+}
+
+/* Reduce section-head top margin inside the document flow */
+.print-root .sec-head {
+  margin-top: 0;
+}
+
+/* ═══════════════════════════════════════════════════
+   COVER PAGE
+═══════════════════════════════════════════════════ */
+
+.cover-page {
+  height: 9.2in;       /* nearly full letter minus @page margin */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0;
+  page-break-after: always;
+  break-after: page;
+}
+
+.cover-ornament {
+  font-size: 1.2rem;
+  color: var(--gold);
+  letter-spacing: 1rem;
+  margin-bottom: 3rem;
+}
+
+.cover-heb {
+  font-family: 'Noto Serif Hebrew', serif;
+  font-size: 4.2rem;
+  color: var(--accent);
+  direction: rtl;
+  line-height: 1.2;
+  margin-bottom: 3.5rem;
+  font-weight: 500;
+}
+
+.cover-title {
+  font-family: var(--ff-disp);
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 0.6rem;
+  letter-spacing: 0.02em;
+}
+
+.cover-subtitle {
+  font-family: var(--ff-disp);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 3rem;
+  letter-spacing: 0.05em;
+}
+
+.cover-footer {
+  margin-top: auto;
+  padding-top: 2rem;
+}
+
+.cover-ornament-small {
+  color: var(--gold);
+  font-size: 1rem;
+}
+
+/* ═══════════════════════════════════════════════════
+   TABLE OF CONTENTS
+═══════════════════════════════════════════════════ */
+
+.toc-page {
+  padding: 0;
+  page-break-after: always;
+  break-after: page;
+}
+
+.toc-title {
+  font-family: var(--ff-disp);
+  font-size: 2rem;
+  color: var(--accent);
+  text-align: center;
+  margin: 0 0 2.5rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.75rem;
+}
+
+.toc-movement {
+  margin-bottom: 1.5rem;
+  page-break-inside: avoid;
+}
+
+.toc-movement-label {
+  font-family: var(--ff-disp);
+  font-size: 0.85rem;
+  font-variant: small-caps;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  margin-bottom: 0.45rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0 0.5rem;
+}
+
+.toc-item {
+  margin: 0.35rem 0;
+}
+
+.toc-item a {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--ink);
+  font-family: var(--ff-body);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.toc-num {
+  font-family: var(--ff-mono);
+  font-size: 0.75rem;
+  font-variant: small-caps;
+  color: var(--gold);
+  min-width: 3.5rem;
+  flex-shrink: 0;
+}
+
+.toc-dots {
+  flex: 1;
+  border-bottom: 1px dotted var(--border);
+  margin: 0 0.35rem;
+  transform: translateY(-0.2em);
+}
+
+.toc-name {
+  font-family: var(--ff-disp);
+  font-style: italic;
+  color: var(--ink);
+  flex-shrink: 0;
+}

@@ -1,0 +1,131 @@
+---
+import { getCollection, render } from 'astro:content';
+import PrintLayout from '../../layouts/PrintLayout.astro';
+import SectionHead from '../../components/SectionHead.astro';
+
+// All content components — same set as [...slug].astro
+import AramaicBlock from '../../components/AramaicBlock.astro';
+import Callout from '../../components/Callout.astro';
+import TermDef from '../../components/TermDef.astro';
+import SubHead from '../../components/SubHead.astro';
+import DiagramPanel from '../../components/DiagramPanel.astro';
+import ImageTextGrid from '../../components/ImageTextGrid.astro';
+import EnzymeCascade from '../../components/EnzymeCascade.astro';
+import DimerGrid from '../../components/DimerGrid.astro';
+import FlatMolComparison from '../../components/FlatMolComparison.astro';
+import BromineShield from '../../components/BromineShield.astro';
+import ResistGrid from '../../components/ResistGrid.astro';
+import ThresholdDiagram from '../../components/ThresholdDiagram.astro';
+import TermWithImage from '../../components/TermWithImage.astro';
+import PtilProcessSteps from '../../components/PtilProcessSteps.astro';
+import PhotostabilityComparison from '../../components/PhotostabilityComparison.astro';
+import PtilThreshold from '../../components/PtilThreshold.astro';
+import TwoKeysComparison from '../../components/TwoKeysComparison.astro';
+import ZidermanPaths from '../../components/ZidermanPaths.astro';
+import ZidermanLevers from '../../components/ZidermanLevers.astro';
+import ZidermanThreshold from '../../components/ZidermanThreshold.astro';
+import VatDyeingSteps from '../../components/VatDyeingSteps.astro';
+import PhScale from '../../components/PhScale.astro';
+import MbiAggregateComparison from '../../components/MbiAggregateComparison.astro';
+import LightboxImage from '../../components/LightboxImage.astro';
+import SuppressionTimeline from '../../components/SuppressionTimeline.astro';
+
+// Print-specific substitutes
+import PrintMolPlaceholder from '../../components/PrintMolPlaceholder.astro';
+
+const sections = (await getCollection('sections')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const rendered = await Promise.all(
+  sections.map(async (entry) => {
+    const { Content } = await render(entry);
+    return { entry, Content };
+  })
+);
+
+const componentMap = {
+  AramaicBlock, Callout, TermDef, SubHead, DiagramPanel, ImageTextGrid,
+  EnzymeCascade, DimerGrid, FlatMolComparison, BromineShield, ResistGrid,
+  ThresholdDiagram, TermWithImage, PtilProcessSteps, PhotostabilityComparison,
+  PtilThreshold, TwoKeysComparison, ZidermanPaths, ZidermanLevers, ZidermanThreshold,
+  VatDyeingSteps, PhScale, MbiAggregateComparison, LightboxImage, SuppressionTimeline,
+  MolViewer: PrintMolPlaceholder,
+  PlantIndigoViewer: PrintMolPlaceholder,
+  MoleculeShowcase: PrintMolPlaceholder,
+};
+
+function headerNum(data) {
+  if (data.headerNum) return data.headerNum;
+  if (data.sectionNum === 'Intro') return data.movementLabel;
+  return `${data.movementLabel} · ${data.sectionNum}`;
+}
+
+function anchorId(entryId) {
+  return 'sec--' + entryId.replace(/\//g, '--');
+}
+
+// TOC — group sections by movement, preserving order
+type TocMovement = { label: string; entries: typeof rendered };
+const tocByMovement: TocMovement[] = [];
+for (const item of rendered) {
+  const label = item.entry.data.movementLabel;
+  const last = tocByMovement[tocByMovement.length - 1];
+  if (!last || last.label !== label) {
+    tocByMovement.push({ label, entries: [item] });
+  } else {
+    last.entries.push(item);
+  }
+}
+---
+<PrintLayout>
+  {/* ════════════════ COVER PAGE ════════════════ */}
+  <div class="cover-page">
+    <div class="cover-ornament">✦     ✦     ✦</div>
+    <div class="cover-heb">לִבְנַת הַסַּפִּיר</div>
+    <h1 class="cover-title">The Chemistry of Tekhelet</h1>
+    <div class="cover-subtitle">A Shiur in Five Movements</div>
+    <div class="cover-footer">
+      <div class="cover-ornament-small">✦</div>
+    </div>
+  </div>
+  <div class="page-break"></div>
+
+  {/* ════════════════ TABLE OF CONTENTS ════════════════ */}
+  <div class="toc-page">
+    <h1 class="toc-title">Table of Contents</h1>
+    {tocByMovement.map((mv) => (
+      <div class="toc-movement">
+        <div class="toc-movement-label">{mv.label}</div>
+        <ul class="toc-list">
+          {mv.entries.map((it) => (
+            <li class="toc-item">
+              <a href={`#${anchorId(it.entry.id)}`}>
+                <span class="toc-num">{it.entry.data.sectionNum}</span>
+                <span class="toc-dots" aria-hidden="true"></span>
+                <span class="toc-name">{it.entry.data.navTitle ?? it.entry.data.title}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+  <div class="page-break"></div>
+
+  {/* ════════════════ SECTIONS ════════════════ */}
+  {rendered.map(({ entry, Content }, i) => (
+    <>
+      {i > 0 && <div class="page-break" aria-hidden="true"></div>}
+      <a id={anchorId(entry.id)} class="section-anchor"></a>
+      {!entry.data.hideHeader && (
+        <SectionHead
+          num={headerNum(entry.data)}
+          title={entry.data.title}
+          subtitle={entry.data.subtitle}
+        />
+      )}
+      <Content components={componentMap} />
+    </>
+  ))}
+</PrintLayout>
