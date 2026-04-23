@@ -431,7 +431,7 @@
   }
 
   /* Inline flex image+text rows — stack vertically on mobile */
-  #content div[style*="display:flex"] {
+  #content div[style*="display:flex"]:not(.threshold-bar) {
     flex-direction: column !important;
   }
   #content div[style*="display:flex"] > div[style*="flex:0"] {

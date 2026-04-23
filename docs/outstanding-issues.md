@@ -1,5 +1,5 @@
 # Outstanding Issues — Tekhelet Project
-*Updated: 2026-04-17. Based on master reference v3 cross-referenced against current Astro/MDX build.*
+*Updated: 2026-04-23. Based on master reference v3 cross-referenced against current Astro/MDX build.*
 
 ---
 
@@ -18,6 +18,9 @@ Issues are grouped by movement and tagged with priority:
 **Build status:** BUILT (4 sections: intro, §1 The Chain, §2 Two Manifestations, §3 The Face and the Back)
 
 ### Issues
+
+🔴 **Introduction (intro.mdx) — needs complete rewrite**
+The introduction as written is too short and does not give the reader a map of what the whole work is. Author's intent: the reader should understand before starting that this is a 100-page exploration spanning theology, physics, chemistry, and history. The one remaining instance of "shiur" (line 22) is embedded in this structural gap — fixing the word requires rewriting the paragraph around it. This is the main opening gate of the entire work and must be treated with appropriate weight.
 
 🟡 **Extensive prose editing needed (all 4 sections)**
 The theological argument is correctly sequenced but the voice is not yet the author's. The master reference flags this explicitly: "prose is a structural draft only. Author must rewrite language, framing, and tone throughout."
@@ -83,6 +86,12 @@ User flagged: subheadings need work; important words need bolding throughout; ca
 Scope defined in master reference: Phoenician coast, Tel Shiqmona, Dor, Tyre; shell middens; dye installations; scale of operation. Tel Shiqmona is the only known specialized purple-dye factory in the Mediterranean (~1100–600 BCE); 176 production artifacts, 400+ Hexaplex trunculus shells; source: Shalvi et al., PLOS One (2025) — needs verification.
 
 ### §3 — The Suppression (BUILT as *a-history-of-loss.mdx*)
+
+🟡 **Section needs condensing — too long and loses momentum**
+Author feedback this session: the suppression history section is "too long and drags out." The section must be tightened. Consider which material is load-bearing for the argument and which is supplementary context that could be cut or moved.
+
+🟡 **Placement in restructured work — undecided**
+In the current 4-movement structure, the suppression history sits in M2. In a potential restructured work (chapters/parts), its position relative to the chemistry is unresolved. Author noted: "I feel like the suppression history will not have any momentum if left for last" — it depends on where it falls in the revised outline. Defer placement decision until structure decision is made.
 
 🟡 **Diocletian inline citations — resolved in last session, verify**
 Three inline Talmudic citations corrected to: Bereishit Rabbah 63, Y. Avodah Zarah 5:4, Y. Shevi'it 9:2. Verify citations appear correctly in the current MDX.
@@ -202,6 +211,12 @@ Planned sections:
 
 ## Cross-Cutting Issues
 
+🔴 **Structural decision: 4 movements → chapters and parts (unresolved)**
+Author is considering reorganizing the work from 4 movements into a structure of chapters and parts. This is a significant architectural decision that affects: sidebar labels, page headers, section numbering, and how internal sub-sections are labeled. No decision has been made. Key question: if the outer structure uses "Parts," do the internal "Part 1–7" labels inside M3 need to be renamed? Decision must precede any restructuring work. Do not begin renaming or reorganizing until author resolves this.
+
+🔴 **Diagram numbering: per-movement vs. continuous (depends on structure decision)**
+Currently diagrams are numbered per-movement (D1–D18 within movements). If the work is restructured into a single continuous sequence of chapters, continuous numbering (D1–D∞ throughout the whole work) may be more appropriate. This decision is blocked on the structure decision above.
+
 🟢 **Bolding of important words throughout**
 User flagged: "We will also need bolding across the document for important words." Not yet systematically done.
 
@@ -229,3 +244,9 @@ User: "I am also thinking about eventually conceiving of the outline as addition
 ✅ Float layout in §3 (Fusion, Ecclesiastical sections) — restructured
 ✅ Korach callout type changed to "thesis"
 ✅ Bomberg Talmud, Basil coronation, Theodora mosaic images added
+✅ Chemical bonds primer — written and integrated into M3 §1 (the-chemistry.mdx) as flowing prose with bolded key terms; no separate section, SubHeads replaced by bold inline titles
+✅ "Shiur" removed from murex-trunculus.mdx ("pivot point of this entire work") and ptil-tekhelet.mdx ("it is our position that it is not") — one instance remains in opening/introduction.mdx requiring a full rewrite (see M0 issues)
+✅ D04 (absorption diagram, M1) — text placement fixes: "white light arrives" labels moved up, "blue refl." label repositioned to clear triangular space, middle "nothing absorbed" line aligned with other panels
+✅ PtilThreshold (Diagram 14) — mobile display fixed; "← Ptil product is here" label moved to correct position on MBI bar; flex layout excluded from mobile column-override rule via `.threshold-bar` class
+✅ D17 (two-path dyeing, M4) — font sizes increased throughout for legibility at normal zoom
+✅ D18 (sequential test, M4) — font sizes increased throughout; viewBox height reduced from 680 to 625 to remove excess bottom space
