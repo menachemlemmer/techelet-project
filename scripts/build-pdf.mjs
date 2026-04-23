@@ -44,10 +44,18 @@ let browser = null;
 
 try {
   console.log(`Starting astro preview on port ${PORT}...`);
+  // Windows: shell:true so npx.cmd resolves. POSIX: detached:true so the
+  // child is its own process group leader, and we can kill the whole tree
+  // (npx → node → astro) via process.kill(-pid). Without this, SIGTERM on
+  // the shell PID leaves astro preview running and the script hangs.
   preview = spawn(
     'npx',
     ['astro', 'preview', '--port', String(PORT), '--host', '127.0.0.1'],
-    { stdio: ['ignore', 'pipe', 'pipe'], shell: true }
+    {
+      stdio: ['ignore', 'pipe', 'pipe'],
+      shell: isWindows,
+      detached: !isWindows,
+    }
   );
   preview.stdout.on('data', (d) => process.stdout.write(`[preview] ${d}`));
   preview.stderr.on('data', (d) => process.stderr.write(`[preview] ${d}`));
@@ -71,16 +79,12 @@ try {
   await page.evaluate(() => document.fonts.ready);
 
   console.log(`Rendering PDF to ${OUTPUT_PATH}...`);
+  // Size AND margins come from @page in print.css (preferCSSPageSize owns
+  // size only — margins are separate, and if we pass them here they stack
+  // on top of @page's, clipping content on the right.)
   await page.pdf({
     path: OUTPUT_PATH,
-    format: 'Letter',
     printBackground: true,
-    margin: {
-      top: '0.75in',
-      right: '0.75in',
-      bottom: '0.75in',
-      left: '0.75in',
-    },
     preferCSSPageSize: true,
   });
 
@@ -108,7 +112,12 @@ try {
         execSync(`taskkill /pid ${preview.pid} /t /f`, { stdio: 'ignore' });
       } catch {}
     } else {
-      preview.kill('SIGTERM');
+      // Negative PID = process group; reaches npx + its node children.
+      try {
+        process.kill(-preview.pid, 'SIGTERM');
+      } catch {
+        try { preview.kill('SIGTERM'); } catch {}
+      }
     }
   }
 }

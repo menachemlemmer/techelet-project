@@ -29,20 +29,28 @@
   @bottom-left { content: ""; }
 }
 
-/* Scope: print route only */
+/* Scope: print route only.
+   No body background — PDF pages are white. The web's cream (--paper)
+   renders inconsistently across Chromium builds / OSes, and it's not
+   the right look for a printed document anyway. */
 .print-root {
-  background: var(--paper);
+  background: #fff;
   color: var(--ink);
 }
 
-/* Reset web layout constraints — let @page margin own the layout */
+/* Reset web layout constraints — let @page margin own the layout.
+   Small horizontal padding (3pt each side) keeps bordered/backgrounded
+   blocks (callouts, termdefs, diagrams, aramaic, lever cards, etc.) from
+   sitting their edge stroke exactly on the @page margin boundary, where
+   Chromium's PDF renderer clips the outermost line. */
 .print-root #content,
 .print-root #main,
 .print-root main {
   max-width: none;
-  padding: 0;
+  padding: 0 3pt;
   margin: 0;
   width: 100%;
+  box-sizing: border-box;
 }
 
 /* Hide interactive chrome */
@@ -87,20 +95,20 @@
   scroll-margin-top: 0;
 }
 
-/* Keep small components together; allow long ones to split rather than leave huge whitespace */
+/* Keep block components together. If an element is taller than a full
+   page Chromium breaks it anyway, so `avoid` only costs us some trailing
+   whitespace on the previous page in exchange for never splitting a
+   callout or termdef mid-sentence. */
 .print-root .term,
 .print-root .sub-head,
 .print-root .dp,
+.print-root .callout,
+.print-root .aramaic-block,
+.print-root .lever-card,
+.print-root .two-col > *,
 .print-root figure {
   page-break-inside: avoid;
   break-inside: avoid;
-}
-
-/* Callouts and Aramaic blocks may be long — let them split across pages if needed */
-.print-root .callout,
-.print-root .aramaic-block {
-  break-inside: auto;
-  page-break-inside: auto;
 }
 
 /* Paragraph break behavior: avoid stranding 1-2 lines at page edges */
@@ -155,6 +163,13 @@
 /* Reduce section-head top margin inside the document flow */
 .print-root .sec-head {
   margin-top: 0;
+}
+
+/* Drop the box-shadow in print — web-only affordance, blurs into the page
+   margin and does nothing useful on paper. (Horizontal inset for the
+   right-border-clipping issue is handled globally on `main`, above.) */
+.print-root .dp {
+  box-shadow: none;
 }
 
 /* ═══════════════════════════════════════════════════
