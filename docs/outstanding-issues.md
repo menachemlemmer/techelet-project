@@ -39,8 +39,7 @@ M1 §6 references Rashi on Shemot 15:2 (the maidservant at the sea) with an inli
 
 ### Issues
 
-🟡 **§6 — Content present but body/soul language should be made more explicit**
-The section is fully written with the correct argument (white=exterior, blue=absorbed/interior, ascending interiority, Moses/panim, maidservant, Rashi inversion, tzitzit). However, the specific language of *body and soul* — white thread = body, blue thread = soul — is implicit rather than stated. This is the most direct and memorable formulation of the thesis and should appear explicitly in the prose, likely in the tzitzit paragraph where white and blue are directly contrasted.
+✅ **§6 — Body/soul language added** — white thread = body, blue thread = soul now stated explicitly in the prose.
 
 🟡 **§5 — Needs full rewrite**
 Current text is a placeholder. Must build toward the theological inversion — the sea as pure external reflection sets up the contrast with blue's interiority. Master reference flags: *"[FULL REWRITE NEEDED — current text is a placeholder. Must build toward the theological inversion.]"*
@@ -145,14 +144,11 @@ Scope: Otto Elsner, Shenkar College, 1985; accidental UV discovery; indoor=purpl
 🟡 **Lattice framework — not fully written**
 Antiparallel stacking, sealed geometry, why alkalinity alone cannot penetrate, why C=O→C-OH is what opens it. Master reference flags this as outstanding.
 
-🟡 **M3 §3 (bromine shield) — corrected solubility mechanism not yet written**
-"Same bacterial reduction, same C-OH, but LDF raises threshold to di-anion at pH 12+." The corrected chemical explanation has been defined but not yet drafted in the section.
+✅ **M3 §3 (bromine shield) — corrected solubility mechanism written**
 
-🟡 **M3 §2 (plant indigo) — three-stage mechanism and C-OH solubility story**
-Not fully carried forward from §1. The thread connecting the two sections needs reinforcement.
+✅ **M3 §2 (plant indigo) — three-stage mechanism and C-OH solubility story written**
 
-🟢 **Flat molecule diagrams — rebuilt with correct RDKit geometry**
-Master reference: "not yet reviewed by author." Verify current diagram accuracy.
+✅ **Flat molecule diagrams — reviewed and confirmed correct by author**
 
 🟢 **Other author comments**
 Master reference: "Many other author comments pending review of current HTML." Full review needed when author is ready.
@@ -216,6 +212,9 @@ Author is considering reorganizing the work from 4 movements into a structure of
 
 🔴 **Diagram numbering: per-movement vs. continuous (depends on structure decision)**
 Currently diagrams are numbered per-movement (D1–D18 within movements). If the work is restructured into a single continuous sequence of chapters, continuous numbering (D1–D∞ throughout the whole work) may be more appropriate. This decision is blocked on the structure decision above.
+
+🟡 **Full citation audit — every section needs sources**
+Every factual claim across all built sections needs inline citations or footnotes before publication. A working citation list for M2 §1 is stashed in `docs/m2-s1-citations.md` — that file covers pigment/dye history, Egypt/lapis, Amarna letters, and Phoenician industry, but it is a starting point only. The chemistry sections (M3), M4, M1 physics claims, and M0 theological sources all need the same treatment. This is a full pass requiring the author's involvement to identify which claims need sourcing and which sources to use.
 
 🟢 **Bolding of important words throughout**
 User flagged: "We will also need bolding across the document for important words." Not yet systematically done.
