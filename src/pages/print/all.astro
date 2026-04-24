@@ -33,6 +33,8 @@ import Citation from '../../components/Citation.astro';
 
 // Print-specific substitutes
 import PrintMolPlaceholder from '../../components/PrintMolPlaceholder.astro';
+import PrintMoleculeShowcase from '../../components/PrintMoleculeShowcase.astro';
+import PrintPlantIndigoViewer from '../../components/PrintPlantIndigoViewer.astro';
 
 const sections = (await getCollection('sections')).sort(
   (a, b) => a.data.order - b.data.order
@@ -52,8 +54,8 @@ const componentMap = {
   PtilThreshold, TwoKeysComparison, ZidermanPaths, ZidermanLevers, ZidermanThreshold,
   VatDyeingSteps, PhScale, MbiAggregateComparison, LightboxImage, SuppressionTimeline, Citation,
   MolViewer: PrintMolPlaceholder,
-  PlantIndigoViewer: PrintMolPlaceholder,
-  MoleculeShowcase: PrintMolPlaceholder,
+  PlantIndigoViewer: PrintPlantIndigoViewer,
+  MoleculeShowcase: PrintMoleculeShowcase,
 };
 
 function headerNum(data) {

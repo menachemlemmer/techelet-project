@@ -1,0 +1,41 @@
+---
+// Print-only replacement for MoleculeShowcase.
+// Uses static 3D-render PNGs in place of the interactive WebGL viewers.
+---
+<div class="mol-grid">
+  <div class="mol-card">
+    <div class="mol-viewer-wrap" style="background:#0d1b2a;border-radius:4px;overflow:hidden">
+      <img src="/images/mol-ind.png" alt="Indigotin (IND) — 3D structure" style="width:100%;display:block" />
+    </div>
+    <div class="mol-body">
+      <div class="mol-name color-ind">Indigotin (IND)</div>
+      <div class="mol-abbr">No bromine · CID 10215 · C₁₆H₁₀N₂O₂</div>
+      <div class="mol-chip" style="background:var(--ind)">Blue — 600–620 nm</div>
+      <div class="mol-note">The kala ilan molecule. No bromine — no additional shield against bacterial reduction.</div>
+    </div>
+  </div>
+
+  <div class="mol-card">
+    <div class="mol-viewer-wrap" style="background:#0d1b2a;border-radius:4px;overflow:hidden">
+      <img src="/images/mol-mbi.png" alt="6-Bromoindigo (MBI) — 3D structure" style="width:100%;display:block" />
+    </div>
+    <div class="mol-body">
+      <div class="mol-name color-mbi">6-Bromoindigo (MBI)</div>
+      <div class="mol-abbr">One bromine · C₁₆H₉BrN₂O₂ · MW 341</div>
+      <div class="mol-chip" style="background:var(--mbi)">Blue-Violet — 607 nm</div>
+      <div class="mol-note">Ziderman's tekhelet compound. One Br on the left ring. Thermochromic: violet → blue at 60°C.</div>
+    </div>
+  </div>
+
+  <div class="mol-card">
+    <div class="mol-viewer-wrap" style="background:#0d0a1e;border-radius:4px;overflow:hidden">
+      <img src="/images/mol-dbi.png" alt="6,6′-Dibromoindigo (DBI) — 3D structure" style="width:100%;display:block" />
+    </div>
+    <div class="mol-body">
+      <div class="mol-name color-dbi">6,6&#x2032;-Dibromoindigo (DBI)</div>
+      <div class="mol-abbr">Two bromines · CID 177057 · C₁₆H₈Br₂N₂O₂</div>
+      <div class="mol-chip" style="background:var(--dbi)">Purple-Red — 590 nm</div>
+      <div class="mol-note">Tyrian purple / argaman. Two Br atoms — one on each benzene ring, symmetrical.</div>
+    </div>
+  </div>
+</div>

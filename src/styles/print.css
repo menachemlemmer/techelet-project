@@ -136,28 +136,104 @@
   page-break-inside: avoid;
 }
 
-/* Neutralize raw-HTML float layouts from M2 — in print, make them centered figures
-   with a reasonable width rather than narrow floats leaving page whitespace */
-.print-root div[style*="float:right"],
-.print-root div[style*="float: right"],
-.print-root div[style*="float:left"],
-.print-root div[style*="float: left"] {
-  float: none !important;
-  width: auto !important;
-  max-width: 4.5in !important;
-  margin: 0.75rem auto !important;
-  display: block;
-}
+/* ── PRINT-MEDIA OVERRIDES ────────────────────────────────────────────────────
+   Everything in this block is scoped to @media print so it is guaranteed to
+   be the active context during PDF generation. The mobile @media(max-width:768px)
+   rules in global.css also fire during print (page width ~672px), but an
+   explicit @media print block with !important beats them unambiguously.
+   ──────────────────────────────────────────────────────────────────────────── */
+@media print {
 
-/* Inline flex layouts from M2 (image + text side by side) — keep flex but allow wrap */
-.print-root div[style*="display:flex"],
-.print-root div[style*="display: flex"] {
-  break-inside: avoid;
-}
+  /* White background everywhere — no cream bleed on any page */
+  html, body, .print-root {
+    background: #fff !important;
+  }
 
-/* Inline floated images inside callouts — shrink reasonably, don't dominate */
-.print-root .callout img[style*="float"] {
-  max-width: 2in !important;
+  /* Float images — sit alongside paragraph text */
+  #content div[style*="float:right"],
+  #content div[style*="float: right"],
+  #content figure[style*="float:right"],
+  #content figure[style*="float: right"] {
+    float: right !important;
+    width: 2.2in !important;
+    max-width: 2.2in !important;
+    margin: 0 0 0.6rem 1rem !important;
+  }
+  #content div[style*="float:left"],
+  #content div[style*="float: left"],
+  #content figure[style*="float:left"],
+  #content figure[style*="float: left"] {
+    float: left !important;
+    width: 2.2in !important;
+    max-width: 2.2in !important;
+    margin: 0 1rem 0.6rem 0 !important;
+  }
+
+  /* Flex image+text rows — stay horizontal */
+  #content div[style*="display:flex"]:not(.threshold-bar),
+  #content div[style*="display: flex"]:not(.threshold-bar) {
+    flex-direction: row !important;
+    break-inside: avoid;
+  }
+  #content div[style*="display:flex"] > div[style*="flex:0"],
+  #content div[style*="display: flex"] > div[style*="flex:0"] {
+    flex-shrink: 0 !important;
+    width: auto !important;
+  }
+
+  /* Floated images directly inside callouts */
+  .callout img[style*="float:right"],
+  .callout img[style*="float: right"] {
+    float: right !important;
+    max-width: 1.8in !important;
+    margin: 0 0 0.4rem 0.75rem !important;
+  }
+  .callout img[style*="float:left"],
+  .callout img[style*="float: left"] {
+    float: left !important;
+    max-width: 1.8in !important;
+    margin: 0 0.75rem 0.4rem 0 !important;
+  }
+  /* Caption spans attached to floated callout images */
+  .callout span[style*="float:right"],
+  .callout span[style*="float: right"] {
+    float: right !important;
+    clear: right !important;
+    width: 1.8in !important;
+  }
+
+  /* TermWithImage — image + text side by side */
+  .term-with-image {
+    grid-template-columns: 130px 1fr !important;
+  }
+  .term-img-slot { width: 130px !important; }
+  .term-img, .term-img-fallback {
+    width: 130px !important;
+    height: 130px !important;
+  }
+
+  /* Term definition boxes — label + definition on one line */
+  .term:not(.term-long) {
+    flex-direction: row !important;
+  }
+  .term:not(.term-long) .term-w {
+    min-width: 130px !important;
+  }
+
+  /* Molecule grids — keep three-up layout */
+  .mol-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  /* Step flows — keep horizontal */
+  .steps {
+    flex-direction: row !important;
+    align-items: flex-start !important;
+  }
+  .step-arr {
+    transform: none !important;
+  }
+
 }
 
 /* Reduce section-head top margin inside the document flow */
@@ -314,3 +390,4 @@
   color: var(--ink);
   flex-shrink: 0;
 }
+
