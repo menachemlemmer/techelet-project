@@ -1,41 +1,44 @@
 ---
-// Print-only replacement for MoleculeShowcase.
-// Uses static 3D-render PNGs in place of the interactive WebGL viewers.
+// Print substitute for MoleculeShowcase — three-molecule 3D grid (Diagram 10)
+// In print, show a static placeholder instead of the interactive viewers.
 ---
-<div class="mol-grid">
-  <div class="mol-card">
-    <div class="mol-viewer-wrap" style="background:#0d1b2a;border-radius:4px;overflow:hidden">
-      <img src="/images/mol-ind.png" alt="Indigotin (IND) — 3D structure" style="width:100%;display:block" />
-    </div>
-    <div class="mol-body">
-      <div class="mol-name color-ind">Indigotin (IND)</div>
-      <div class="mol-abbr">No bromine · CID 10215 · C₁₆H₁₀N₂O₂</div>
-      <div class="mol-chip" style="background:var(--ind)">Blue — 600–620 nm</div>
-      <div class="mol-note">The kala ilan molecule. No bromine — no additional shield against bacterial reduction.</div>
-    </div>
-  </div>
 
-  <div class="mol-card">
-    <div class="mol-viewer-wrap" style="background:#0d1b2a;border-radius:4px;overflow:hidden">
-      <img src="/images/mol-mbi.png" alt="6-Bromoindigo (MBI) — 3D structure" style="width:100%;display:block" />
-    </div>
-    <div class="mol-body">
-      <div class="mol-name color-mbi">6-Bromoindigo (MBI)</div>
-      <div class="mol-abbr">One bromine · C₁₆H₉BrN₂O₂ · MW 341</div>
-      <div class="mol-chip" style="background:var(--mbi)">Blue-Violet — 607 nm</div>
-      <div class="mol-note">Ziderman's tekhelet compound. One Br on the left ring. Thermochromic: violet → blue at 60°C.</div>
-    </div>
+<figure class="mol-print-placeholder">
+  <div class="mol-print-frame">
+    <div class="mol-print-icon" aria-hidden="true">◯ ◯ ◯</div>
+    <div class="mol-print-label">Diagram 10 — Three-Molecule Comparison</div>
+    <div class="mol-print-note">Interactive 3D models (plant indigotin, Murex indigotin, MBI) — view the online version to rotate and explore.</div>
   </div>
+</figure>
 
-  <div class="mol-card">
-    <div class="mol-viewer-wrap" style="background:#0d0a1e;border-radius:4px;overflow:hidden">
-      <img src="/images/mol-dbi.png" alt="6,6′-Dibromoindigo (DBI) — 3D structure" style="width:100%;display:block" />
-    </div>
-    <div class="mol-body">
-      <div class="mol-name color-dbi">6,6&#x2032;-Dibromoindigo (DBI)</div>
-      <div class="mol-abbr">Two bromines · CID 177057 · C₁₆H₈Br₂N₂O₂</div>
-      <div class="mol-chip" style="background:var(--dbi)">Purple-Red — 590 nm</div>
-      <div class="mol-note">Tyrian purple / argaman. Two Br atoms — one on each benzene ring, symmetrical.</div>
-    </div>
-  </div>
-</div>
+<style>
+.mol-print-placeholder {
+  margin: 1rem 0;
+}
+.mol-print-frame {
+  border: 1px dashed var(--border);
+  background: var(--parch-100);
+  padding: 2rem 1rem;
+  text-align: center;
+  border-radius: 4px;
+  font-family: var(--ff-body);
+}
+.mol-print-icon {
+  font-size: 2rem;
+  color: var(--muted);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5rem;
+}
+.mol-print-label {
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.25rem;
+  font-size: 0.95rem;
+}
+.mol-print-note {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-style: italic;
+}
+</style>

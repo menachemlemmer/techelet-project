@@ -29,8 +29,6 @@ import PhScale from '../../components/PhScale.astro';
 import MbiAggregateComparison from '../../components/MbiAggregateComparison.astro';
 import LightboxImage from '../../components/LightboxImage.astro';
 import SuppressionTimeline from '../../components/SuppressionTimeline.astro';
-import Citation from '../../components/Citation.astro';
-
 // Print-specific substitutes
 import PrintMolPlaceholder from '../../components/PrintMolPlaceholder.astro';
 import PrintMoleculeShowcase from '../../components/PrintMoleculeShowcase.astro';
@@ -52,7 +50,7 @@ const componentMap = {
   EnzymeCascade, DimerGrid, FlatMolComparison, BromineShield, ResistGrid,
   ThresholdDiagram, TermWithImage, PtilProcessSteps, PhotostabilityComparison,
   PtilThreshold, TwoKeysComparison, ZidermanPaths, ZidermanLevers, ZidermanThreshold,
-  VatDyeingSteps, PhScale, MbiAggregateComparison, LightboxImage, SuppressionTimeline, Citation,
+  VatDyeingSteps, PhScale, MbiAggregateComparison, LightboxImage, SuppressionTimeline,
   MolViewer: PrintMolPlaceholder,
   PlantIndigoViewer: PrintPlantIndigoViewer,
   MoleculeShowcase: PrintMoleculeShowcase,
@@ -80,6 +78,12 @@ for (const item of rendered) {
     last.entries.push(item);
   }
 }
+
+// Roman numerals for movement cover pages
+const NUMERALS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'];
+const movementNumerals = new Map(
+  tocByMovement.map((mv, i) => [mv.label, NUMERALS[i]])
+);
 ---
 <PrintLayout>
   {/* ════════════════ COVER PAGE ════════════════ */}
@@ -119,12 +123,28 @@ for (const item of rendered) {
   {/* ════════════════ SECTIONS ════════════════ */}
   {rendered.map(({ entry, Content }, i) => {
     const prevMovement = i > 0 ? rendered[i - 1].entry.data.movement : null;
-    const isNewMovement = i > 0 && entry.data.movement !== prevMovement;
-    const forceBreak = i > 0 && !isNewMovement && entry.data.printBreak;
+    const isFirstOfMovement = entry.data.movement !== prevMovement;
+    const isNewMovement = i > 0 && isFirstOfMovement;
+    const forceBreak = i > 0 && !isFirstOfMovement && entry.data.printBreak;
     return (
       <>
-        {(isNewMovement || forceBreak) && <div class="page-break" aria-hidden="true"></div>}
-        {i > 0 && !isNewMovement && !forceBreak && <div class="section-sep" aria-hidden="true"></div>}
+        {/* Page break between movements (before the cover page) */}
+        {isNewMovement && <div class="page-break" aria-hidden="true"></div>}
+
+        {/* Movement cover page — one per movement, including the first */}
+        {isFirstOfMovement && (
+          <div class="movement-cover">
+            <div class="movement-cover-ornament">✦     ✦     ✦</div>
+            <div class="movement-cover-num">Movement {movementNumerals.get(entry.data.movementLabel)}</div>
+            <div class="movement-cover-rule"></div>
+            <div class="movement-cover-title">{entry.data.movementLabel}</div>
+          </div>
+        )}
+
+        {/* Within a movement: forced break or ornament separator */}
+        {!isFirstOfMovement && forceBreak && <div class="page-break" aria-hidden="true"></div>}
+        {i > 0 && !isFirstOfMovement && !forceBreak && <div class="section-sep" aria-hidden="true"></div>}
+
         <a id={anchorId(entry.id)} class="section-anchor"></a>
         {!entry.data.hideHeader && (
           <SectionHead
