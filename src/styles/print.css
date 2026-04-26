@@ -86,6 +86,23 @@
   visibility: hidden;
 }
 
+/* Section separator — replaces the hard page-break between sections within
+   the same movement. Provides visual breathing room and a subtle ornament
+   without forcing a blank page. The break-after:avoid keeps the ornament
+   from stranding at the bottom of a page without the section that follows. */
+.print-root .section-sep {
+  margin: 2.2rem 0 0;
+  text-align: center;
+  break-after: avoid;
+}
+.print-root .section-sep::after {
+  content: '✦';
+  font-size: 0.7rem;
+  color: #b8860b;
+  opacity: 0.55;
+  letter-spacing: 0.5em;
+}
+
 /* Section anchor is invisible, but scroll target */
 .print-root .section-anchor {
   display: block;
@@ -134,6 +151,37 @@
   max-width: 100%;
   max-height: 8.5in;
   page-break-inside: avoid;
+}
+
+/* ── LIGHTBOX FLOAT RESTORATION ───────────────────────────────────────────────
+   These rules live OUTSIDE @media print as a safety net against bundlers that
+   strip @media print blocks. Print.css is only loaded by PrintLayout.astro
+   (/print/all), so regular rules here only affect that route.
+
+   The mobile breakpoint (@media max-width:768px) fires during PDF generation
+   because the print viewport is ~672px. That rule sets float:none !important
+   on #content figure[style*="float:right"] — specificity (1,1,1). Using the
+   .lightbox-figure class gives (1,2,0) which wins unconditionally.
+   ──────────────────────────────────────────────────────────────────────────── */
+#content .lightbox-figure[style*="float:right"],
+#content .lightbox-figure[style*="float: right"] {
+  float: right !important;
+  width: 2.2in !important;
+  max-width: 2.2in !important;
+  margin: 0 0 0.6rem 1rem !important;
+}
+#content .lightbox-figure[style*="float:left"],
+#content .lightbox-figure[style*="float: left"] {
+  float: left !important;
+  width: 2.2in !important;
+  max-width: 2.2in !important;
+  margin: 0 1rem 0.6rem 0 !important;
+}
+
+/* The dialog element has no purpose in print — hide it so it doesn't
+   consume block space after the figure. */
+.lightbox-dialog {
+  display: none !important;
 }
 
 /* ── PRINT-MEDIA OVERRIDES ────────────────────────────────────────────────────
@@ -220,6 +268,15 @@
     min-width: 130px !important;
   }
 
+  /* Keep AramaicBlocks with whatever precedes them — they open most sections
+     and are the primary cause of heading orphans. Callouts are deliberately
+     excluded: applying break-before:avoid to callouts causes orphan lines
+     when a paragraph breaks to keep its last line with the callout. */
+  .aramaic-block {
+    break-before: avoid;
+    page-break-before: avoid;
+  }
+
   /* Molecule grids — keep three-up layout */
   .mol-grid {
     grid-template-columns: repeat(3, 1fr) !important;
@@ -234,11 +291,54 @@
     transform: none !important;
   }
 
+  /* LightboxImage — hide the dialog (click-to-enlarge is meaningless in print). */
+  .lightbox-dialog {
+    display: none !important;
+  }
+
+  /* LightboxImage float restoration — higher specificity than the mobile rule.
+     Mobile rule: #content figure[style*="float:right"]  → specificity (1,1,1).
+     This rule: #content .lightbox-figure[style*="float:right"] → (1,2,0) = wins.
+     Using the class instead of the element type gives the extra specificity point
+     needed to beat float:none !important without relying on cascade order. */
+  #content .lightbox-figure[style*="float:right"],
+  #content .lightbox-figure[style*="float: right"] {
+    float: right !important;
+    width: 2.2in !important;
+    max-width: 2.2in !important;
+    margin: 0 0 0.6rem 1rem !important;
+  }
+  #content .lightbox-figure[style*="float:left"],
+  #content .lightbox-figure[style*="float: left"] {
+    float: left !important;
+    width: 2.2in !important;
+    max-width: 2.2in !important;
+    margin: 0 1rem 0.6rem 0 !important;
+  }
+
+  /* SuppressionTimeline — the float and width live in component-scoped CSS
+     (.tl-wrap), not in an inline style, so the [style*="float:right"] selector
+     above can't target it. Override here by class name and prevent page splits. */
+  .tl-wrap {
+    float: right !important;
+    clear: right !important;
+    width: 1.9in !important;
+    margin: 0.5rem 0 1.5rem 1.2rem !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
 }
 
-/* Reduce section-head top margin inside the document flow */
+/* Section heads: keep heading and first content block on the same page.
+   break-after:avoid tells the browser: if the block that follows this heading
+   won't fit on the same page, push the heading to the next page too rather
+   than leaving it stranded at the bottom. Covers AramaicBlock, Callout, etc.
+   opening a section. */
 .print-root .sec-head {
-  margin-top: 0;
+  margin-top: 0.5rem;
+  break-after: avoid;
+  page-break-after: avoid;
 }
 
 /* Drop the box-shadow in print — web-only affordance, blurs into the page

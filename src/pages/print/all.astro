@@ -117,18 +117,24 @@ for (const item of rendered) {
   <div class="page-break"></div>
 
   {/* ════════════════ SECTIONS ════════════════ */}
-  {rendered.map(({ entry, Content }, i) => (
-    <>
-      {i > 0 && <div class="page-break" aria-hidden="true"></div>}
-      <a id={anchorId(entry.id)} class="section-anchor"></a>
-      {!entry.data.hideHeader && (
-        <SectionHead
-          num={headerNum(entry.data)}
-          title={entry.data.title}
-          subtitle={entry.data.subtitle}
-        />
-      )}
-      <Content components={componentMap} />
-    </>
-  ))}
+  {rendered.map(({ entry, Content }, i) => {
+    const prevMovement = i > 0 ? rendered[i - 1].entry.data.movement : null;
+    const isNewMovement = i > 0 && entry.data.movement !== prevMovement;
+    const forceBreak = i > 0 && !isNewMovement && entry.data.printBreak;
+    return (
+      <>
+        {(isNewMovement || forceBreak) && <div class="page-break" aria-hidden="true"></div>}
+        {i > 0 && !isNewMovement && !forceBreak && <div class="section-sep" aria-hidden="true"></div>}
+        <a id={anchorId(entry.id)} class="section-anchor"></a>
+        {!entry.data.hideHeader && (
+          <SectionHead
+            num={headerNum(entry.data)}
+            title={entry.data.title}
+            subtitle={entry.data.subtitle}
+          />
+        )}
+        <Content components={componentMap} />
+      </>
+    );
+  })}
 </PrintLayout>

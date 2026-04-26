@@ -81,4 +81,19 @@ const id = `lb-${Math.random().toString(36).slice(2,8)}`;
     margin-top: 0.6rem;
     padding: 0 1rem;
   }
+
+  /* ── PRINT ─────────────────────────────────────────
+     Restore floated layout in PDF. The mobile breakpoint
+     (max-width:768px) fires during PDF generation and sets
+     float:none !important on figures. Override here so the
+     Astro-scoped attribute selector lifts specificity above
+     the mobile rule's #content figure[style*="float:right"]
+     (1,1,1). We also hide the dialog — it serves no purpose
+     in print and its block slot after the figure was
+     breaking the float context. */
+  @media print {
+    :global(.lightbox-dialog) {
+      display: none !important;
+    }
+  }
 </style>

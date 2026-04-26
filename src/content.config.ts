@@ -15,6 +15,7 @@ const sections = defineCollection({
     editingNotes: z.string().optional(),
     needs3Dmol: z.boolean().optional(),
     hideHeader: z.boolean().optional(),
+    printBreak: z.boolean().optional(), // Force a page break before this section in /print/all
   }),
 });
 
