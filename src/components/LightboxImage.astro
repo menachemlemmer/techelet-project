@@ -115,12 +115,13 @@ const id = `lb-${Math.random().toString(36).slice(2,8)}`;
     :global(.lightbox-dialog) {
       display: none !important;
     }
-    /* Prevent the figcaption from splitting to the next page.
-       break-after:avoid on the img tells Chromium: don't break between
-       the image and whatever follows it (the figcaption) inside the float. */
-    :global(.lightbox-figure .lightbox-thumb) {
-      break-after: avoid !important;
-      page-break-after: avoid !important;
+    /* Hide captions on floated figures in print. Any break-avoid constraint
+       inside a floated element triggers a Chromium bug that suppresses the
+       float entirely. Float + keep-caption-together are incompatible in
+       Chromium's print renderer. The surrounding prose always identifies
+       the subject, so hiding the caption is the clean trade-off. */
+    :global(.lightbox-figure[style*="float"] .lightbox-caption) {
+      display: none !important;
     }
   }
 </style>
