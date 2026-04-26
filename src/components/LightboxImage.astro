@@ -115,5 +115,12 @@ const id = `lb-${Math.random().toString(36).slice(2,8)}`;
     :global(.lightbox-dialog) {
       display: none !important;
     }
+    /* Prevent the figcaption from splitting to the next page.
+       break-after:avoid on the img tells Chromium: don't break between
+       the image and whatever follows it (the figcaption) inside the float. */
+    :global(.lightbox-figure .lightbox-thumb) {
+      break-after: avoid !important;
+      page-break-after: avoid !important;
+    }
   }
 </style>
