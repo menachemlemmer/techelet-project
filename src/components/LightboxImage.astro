@@ -82,16 +82,36 @@ const id = `lb-${Math.random().toString(36).slice(2,8)}`;
     padding: 0 1rem;
   }
 
-  /* ── PRINT ─────────────────────────────────────────
-     Restore floated layout in PDF. The mobile breakpoint
-     (max-width:768px) fires during PDF generation and sets
-     float:none !important on figures. Override here so the
-     Astro-scoped attribute selector lifts specificity above
-     the mobile rule's #content figure[style*="float:right"]
-     (1,1,1). We also hide the dialog — it serves no purpose
-     in print and its block slot after the figure was
-     breaking the float context. */
+  /* ── PRINT ──────────────────────────────────────────────────────────────────
+     Component @media print blocks survive Vite's bundler (unlike rules in
+     imported global CSS files). Two Chromium print-renderer issues addressed:
+     1. The mobile breakpoint (max-width:768px) fires during PDF generation
+        (~672px viewport) and sets float:none !important on figures. The
+        :global(#content .lightbox-figure[...]) selector has specificity
+        (1,2,0) which beats the mobile rule's (1,1,1) unconditionally.
+     2. .print-root figure { break-inside:avoid } is set globally in print.css.
+        Chromium suppresses float on elements with break-inside:avoid during
+        print rendering. Override to auto for floated figures.
+     ──────────────────────────────────────────────────────────────────────── */
   @media print {
+    :global(#content .lightbox-figure[style*="float:right"]),
+    :global(#content .lightbox-figure[style*="float: right"]) {
+      float: right !important;
+      width: 2.2in !important;
+      max-width: 2.2in !important;
+      margin: 0 0 0.6rem 1rem !important;
+      break-inside: auto !important;
+      page-break-inside: auto !important;
+    }
+    :global(#content .lightbox-figure[style*="float:left"]),
+    :global(#content .lightbox-figure[style*="float: left"]) {
+      float: left !important;
+      width: 2.2in !important;
+      max-width: 2.2in !important;
+      margin: 0 1rem 0.6rem 0 !important;
+      break-inside: auto !important;
+      page-break-inside: auto !important;
+    }
     :global(.lightbox-dialog) {
       display: none !important;
     }

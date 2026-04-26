@@ -169,6 +169,10 @@
   width: 2.2in !important;
   max-width: 2.2in !important;
   margin: 0 0 0.6rem 1rem !important;
+  /* Chromium print bug: break-inside:avoid on .print-root figure suppresses
+     float. Override to auto so the float is honoured. */
+  break-inside: auto !important;
+  page-break-inside: auto !important;
 }
 #content .lightbox-figure[style*="float:left"],
 #content .lightbox-figure[style*="float: left"] {
@@ -176,6 +180,8 @@
   width: 2.2in !important;
   max-width: 2.2in !important;
   margin: 0 1rem 0.6rem 0 !important;
+  break-inside: auto !important;
+  page-break-inside: auto !important;
 }
 
 /* The dialog element has no purpose in print — hide it so it doesn't
