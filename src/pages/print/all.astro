@@ -128,10 +128,8 @@ const movementNumerals = new Map(
     const forceBreak = i > 0 && !isFirstOfMovement && entry.data.printBreak;
     return (
       <>
-        {/* Page break between movements (before the cover page) */}
-        {isNewMovement && <div class="page-break" aria-hidden="true"></div>}
-
-        {/* Movement cover page — one per movement, including the first */}
+        {/* Movement cover page — one per movement, including the first.
+            CSS break-before:right ensures the cover lands on a recto page. */}
         {isFirstOfMovement && (
           <div class="movement-cover">
             <div class="movement-cover-ornament">✦     ✦     ✦</div>

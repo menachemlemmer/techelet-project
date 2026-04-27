@@ -117,6 +117,7 @@
    whitespace on the previous page in exchange for never splitting a
    callout or termdef mid-sentence. */
 .print-root .term,
+.print-root .term-with-image,
 .print-root .sub-head,
 .print-root .dp,
 .print-root .callout,
@@ -508,6 +509,11 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  /* break-before:right forces a recto (odd/right-hand) page, inserting a
+     blank verso if the preceding page is already a right page. This ensures
+     every movement cover is on the front face of a sheet in double-sided print. */
+  page-break-before: right;
+  break-before: right;
   page-break-after: always;
   break-after: page;
 }
