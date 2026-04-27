@@ -363,7 +363,10 @@
   height: 9.2in;       /* nearly full letter minus @page margin */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* flex-start lets the footer's margin-top:auto pin it to the bottom
+     while we manually position the content block with margin-top on the
+     first child. justify-content:center fights with auto margins. */
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
   padding: 0;
@@ -375,6 +378,9 @@
   font-size: 1.2rem;
   color: var(--gold);
   letter-spacing: 1rem;
+  /* Push the content block to roughly 40% down the page — just below
+     true center. Adjust this value to taste. */
+  margin-top: 2.8in;
   margin-bottom: 3rem;
 }
 
@@ -509,6 +515,8 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  /* padding-bottom shifts the centered content block above true center. */
+  padding-bottom: 1.1in;
   /* break-before:right forces a recto (odd/right-hand) page, inserting a
      blank verso if the preceding page is already a right page. This ensures
      every movement cover is on the front face of a sheet in double-sided print. */
