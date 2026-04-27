@@ -514,8 +514,10 @@
      every movement cover is on the front face of a sheet in double-sided print. */
   page-break-before: right;
   break-before: right;
-  page-break-after: always;
-  break-after: page;
+  /* break-after:right leaves the verso of the cover blank and starts
+     the movement's content on the next recto page. */
+  page-break-after: right;
+  break-after: right;
 }
 
 .movement-cover-ornament {
