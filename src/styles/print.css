@@ -379,6 +379,27 @@
 }
 
 /* ═══════════════════════════════════════════════════
+   BLANK PAGE
+═══════════════════════════════════════════════════ */
+
+/* Explicit blank page inserted after the main cover and after each
+   movement cover. break-before:page starts a new page, the 1px
+   invisible element occupies that page, break-after:page forces the
+   following content onto the next page. Chromium reliably renders this
+   as a blank page — unlike break-before/after:right which is not
+   supported in Chromium's PDF renderer. */
+.blank-page {
+  page-break-before: always;
+  break-before: page;
+  page-break-after: always;
+  break-after: page;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  visibility: hidden;
+}
+
+/* ═══════════════════════════════════════════════════
    COVER PAGE
 ═══════════════════════════════════════════════════ */
 
@@ -393,10 +414,8 @@
   align-items: center;
   text-align: center;
   padding: 0;
-  /* break-after:right leaves the verso of the cover blank, same as
-     movement covers — content (TOC) starts on the next recto page. */
-  page-break-after: right;
-  break-after: right;
+  page-break-after: always;
+  break-after: page;
 }
 
 .cover-ornament {
@@ -542,15 +561,10 @@
   text-align: center;
   /* padding-bottom shifts the centered content block above true center. */
   padding-bottom: 1.1in;
-  /* break-before:right forces a recto (odd/right-hand) page, inserting a
-     blank verso if the preceding page is already a right page. This ensures
-     every movement cover is on the front face of a sheet in double-sided print. */
-  page-break-before: right;
-  break-before: right;
-  /* break-after:right leaves the verso of the cover blank and starts
-     the movement's content on the next recto page. */
-  page-break-after: right;
-  break-after: right;
+  page-break-before: always;
+  break-before: page;
+  page-break-after: always;
+  break-after: page;
 }
 
 .movement-cover-ornament {

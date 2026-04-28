@@ -96,10 +96,9 @@ const movementNumerals = new Map(
       <div class="cover-ornament-small">✦</div>
     </div>
   </div>
+  <div class="blank-page" aria-hidden="true"></div>
 
   {/* ════════════════ TABLE OF CONTENTS ════════════════ */}
-  {/* No page-break div here — cover's break-after:right already forces the
-      TOC to the next recto. A competing break-before:page div cancels it. */}
   <div class="toc-page">
     <h1 class="toc-title">Table of Contents</h1>
     {tocByMovement.map((mv) => (
@@ -131,7 +130,11 @@ const movementNumerals = new Map(
     return (
       <>
         {/* Movement cover page — one per movement, including the first.
-            CSS break-before:right ensures the cover lands on a recto page. */}
+            Blank-page divs before and after ensure the cover is fully
+            isolated on its own sheet. break-before/after:right is not
+            supported in Chromium's PDF renderer, so explicit blank pages
+            are the only reliable mechanism. */}
+        {isFirstOfMovement && <div class="blank-page" aria-hidden="true"></div>}
         {isFirstOfMovement && (
           <div class="movement-cover">
             <div class="movement-cover-ornament">✦     ✦     ✦</div>
@@ -140,6 +143,7 @@ const movementNumerals = new Map(
             <div class="movement-cover-title">{entry.data.movementLabel}</div>
           </div>
         )}
+        {isFirstOfMovement && <div class="blank-page" aria-hidden="true"></div>}
 
         {/* Within a movement: forced break or ornament separator */}
         {!isFirstOfMovement && forceBreak && <div class="page-break" aria-hidden="true"></div>}
