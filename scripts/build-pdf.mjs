@@ -10,17 +10,17 @@
  *   5. Smoke check (file exists, reasonable size)
  *   6. Always clean up: kill preview, close browser
  */
-import { spawn, execSync } from 'node:child_process';
-import { mkdir } from 'node:fs/promises';
-import { existsSync, statSync } from 'node:fs';
-import puppeteer from 'puppeteer';
+import { spawn, execSync } from "node:child_process";
+import { mkdir } from "node:fs/promises";
+import { existsSync, statSync } from "node:fs";
+import puppeteer from "puppeteer";
 
-const isWindows = process.platform === 'win32';
+const isWindows = process.platform === "win32";
 
 const PORT = 4322;
 const URL = `http://127.0.0.1:${PORT}/print/all`;
-const OUTPUT_DIR = 'dist-pdf';
-const OUTPUT_PATH = `${OUTPUT_DIR}/shiur.pdf`;
+const OUTPUT_DIR = "dist-pdf";
+const OUTPUT_PATH = `${OUTPUT_DIR}/livnat_hasapir.pdf`;
 const READY_TIMEOUT_MS = 30_000;
 const POLL_INTERVAL_MS = 500;
 const MIN_PDF_BYTES = 100_000;
@@ -36,7 +36,9 @@ async function waitForServer(url, timeoutMs) {
     }
     await new Promise((r) => setTimeout(r, POLL_INTERVAL_MS));
   }
-  throw new Error(`preview server did not respond at ${url} within ${timeoutMs}ms`);
+  throw new Error(
+    `preview server did not respond at ${url} within ${timeoutMs}ms`,
+  );
 }
 
 let preview = null;
@@ -49,33 +51,33 @@ try {
   // (npx → node → astro) via process.kill(-pid). Without this, SIGTERM on
   // the shell PID leaves astro preview running and the script hangs.
   preview = spawn(
-    'npx',
-    ['astro', 'preview', '--port', String(PORT), '--host', '127.0.0.1'],
+    "npx",
+    ["astro", "preview", "--port", String(PORT), "--host", "127.0.0.1"],
     {
-      stdio: ['ignore', 'pipe', 'pipe'],
+      stdio: ["ignore", "pipe", "pipe"],
       shell: isWindows,
       detached: !isWindows,
-    }
+    },
   );
-  preview.stdout.on('data', (d) => process.stdout.write(`[preview] ${d}`));
-  preview.stderr.on('data', (d) => process.stderr.write(`[preview] ${d}`));
-  preview.on('exit', (code) => {
+  preview.stdout.on("data", (d) => process.stdout.write(`[preview] ${d}`));
+  preview.stderr.on("data", (d) => process.stderr.write(`[preview] ${d}`));
+  preview.on("exit", (code) => {
     if (code !== null && code !== 0) {
       console.error(`[preview] exited with code ${code}`);
     }
   });
 
   await waitForServer(URL, READY_TIMEOUT_MS);
-  console.log('Preview server ready.');
+  console.log("Preview server ready.");
 
   await mkdir(OUTPUT_DIR, { recursive: true });
 
-  console.log('Launching Puppeteer...');
+  console.log("Launching Puppeteer...");
   browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
 
   console.log(`Navigating to ${URL}...`);
-  await page.goto(URL, { waitUntil: 'networkidle0', timeout: 60_000 });
+  await page.goto(URL, { waitUntil: "networkidle0", timeout: 60_000 });
   await page.evaluate(() => document.fonts.ready);
 
   console.log(`Rendering PDF to ${OUTPUT_PATH}...`);
@@ -93,13 +95,15 @@ try {
   }
   const size = statSync(OUTPUT_PATH).size;
   if (size < MIN_PDF_BYTES) {
-    throw new Error(`PDF suspiciously small: ${size} bytes (expected > ${MIN_PDF_BYTES})`);
+    throw new Error(
+      `PDF suspiciously small: ${size} bytes (expected > ${MIN_PDF_BYTES})`,
+    );
   }
   console.log(
-    `✓ PDF generated: ${OUTPUT_PATH} (${(size / 1024 / 1024).toFixed(2)} MB)`
+    `✓ PDF generated: ${OUTPUT_PATH} (${(size / 1024 / 1024).toFixed(2)} MB)`,
   );
 } catch (err) {
-  console.error('PDF generation failed:', err.message);
+  console.error("PDF generation failed:", err.message);
   process.exitCode = 1;
 } finally {
   if (browser) {
@@ -109,14 +113,16 @@ try {
     if (isWindows) {
       // On Windows, preview is a shell that spawned node children — kill the whole tree.
       try {
-        execSync(`taskkill /pid ${preview.pid} /t /f`, { stdio: 'ignore' });
+        execSync(`taskkill /pid ${preview.pid} /t /f`, { stdio: "ignore" });
       } catch {}
     } else {
       // Negative PID = process group; reaches npx + its node children.
       try {
-        process.kill(-preview.pid, 'SIGTERM');
+        process.kill(-preview.pid, "SIGTERM");
       } catch {
-        try { preview.kill('SIGTERM'); } catch {}
+        try {
+          preview.kill("SIGTERM");
+        } catch {}
       }
     }
   }
