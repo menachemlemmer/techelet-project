@@ -96,9 +96,10 @@ const movementNumerals = new Map(
       <div class="cover-ornament-small">✦</div>
     </div>
   </div>
-  <div class="page-break"></div>
 
   {/* ════════════════ TABLE OF CONTENTS ════════════════ */}
+  {/* No page-break div here — cover's break-after:right already forces the
+      TOC to the next recto. A competing break-before:page div cancels it. */}
   <div class="toc-page">
     <h1 class="toc-title">Table of Contents</h1>
     {tocByMovement.map((mv) => (
@@ -118,9 +119,10 @@ const movementNumerals = new Map(
       </div>
     ))}
   </div>
-  <div class="page-break"></div>
 
   {/* ════════════════ SECTIONS ════════════════ */}
+  {/* No page-break div here — the first movement cover's break-before:right
+      handles placement on the next recto after the TOC. */}
   {rendered.map(({ entry, Content }, i) => {
     const prevMovement = i > 0 ? rendered[i - 1].entry.data.movement : null;
     const isFirstOfMovement = entry.data.movement !== prevMovement;
