@@ -36,6 +36,29 @@
 .print-root {
   background: #fff;
   color: var(--ink);
+
+  /* ── CMYK-optimized color palette ─────────────────────────────────────
+     Browser RGB → CMYK conversion is unpredictable. Small amounts in all
+     four channels produce muddy ink. These overrides use RGB values
+     computed from clean, round-number CMYK separations so each color
+     resolves to at most 2–3 ink channels.
+     Colors verified already CMYK-clean and unchanged:
+       --blue-300 #1e5fa8  C:82 M:43 Y:0  K:34
+       --brown-400 #3a2c1c C:0  M:24 Y:52 K:77
+       --gold-400 #8a6408  C:0  M:28 Y:94 K:46
+       --violet-300 #5b2d8a C:34 M:67 Y:0 K:46
+       --green #1a6a2a     C:75 M:0  Y:60 K:58
+       --crimson #a01818   C:0  M:85 Y:85 K:37
+  ─────────────────────────────────────────────────────────────────────── */
+  --ink:      #211d19;  /* C:0  M:12 Y:25  K:87  — K-heavy warm near-black for crisp text */
+  --blue-400: #12417a;  /* C:85 M:48 Y:0   K:52  — tekhelet blue */
+  --accent:   #12417a;
+  --gold-300: #b88400;  /* C:0  M:28 Y:100 K:28  — pure amber gold, no B channel */
+  --gold:     #b88400;
+  --gold-200: #d49a00;  /* C:0  M:24 Y:100 K:17  — lighter gold */
+  --gold2:    #d49a00;
+  --muted:    #66573f;  /* C:0  M:15 Y:38  K:60  — warm gray-brown for captions */
+  --border:   #d4c5a6;  /* C:0  M:7  Y:21  K:17  — light warm gray for rules */
 }
 
 /* Reset web layout constraints — let @page margin own the layout.
@@ -98,7 +121,7 @@
 .print-root .section-sep::after {
   content: '✦';
   font-size: 0.7rem;
-  color: #b8860b;
+  color: var(--gold);
   opacity: 0.55;
   letter-spacing: 0.5em;
 }
