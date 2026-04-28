@@ -393,8 +393,10 @@
   align-items: center;
   text-align: center;
   padding: 0;
-  page-break-after: always;
-  break-after: page;
+  /* break-after:right leaves the verso of the cover blank, same as
+     movement covers — content (TOC) starts on the next recto page. */
+  page-break-after: right;
+  break-after: right;
 }
 
 .cover-ornament {
