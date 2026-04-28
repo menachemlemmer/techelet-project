@@ -134,7 +134,6 @@ const movementNumerals = new Map(
             isolated on its own sheet. break-before/after:right is not
             supported in Chromium's PDF renderer, so explicit blank pages
             are the only reliable mechanism. */}
-        {isFirstOfMovement && <div class="blank-page" aria-hidden="true"></div>}
         {isFirstOfMovement && (
           <div class="movement-cover">
             <div class="movement-cover-ornament">✦     ✦     ✦</div>
