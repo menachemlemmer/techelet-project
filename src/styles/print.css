@@ -561,8 +561,13 @@
   text-align: center;
   /* padding-bottom shifts the centered content block above true center. */
   padding-bottom: 1.1in;
-  page-break-before: always;
-  break-before: page;
+  /* break-before:right ensures the cover always lands on a recto (odd)
+     page. Chromium supports this: when preceding content ends on an odd
+     page it inserts a blank verso automatically; when preceding content
+     ends on an even page the cover follows directly on the next odd page.
+     The explicit .blank-page div after the cover handles the reverse side. */
+  page-break-before: right;
+  break-before: right;
   page-break-after: always;
   break-after: page;
 }
