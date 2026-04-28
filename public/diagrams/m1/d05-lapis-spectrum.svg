@@ -5,11 +5,11 @@
 <text x="440.6" y="28" text-anchor="middle" fill="#c04808" font-size="10" font-weight="bold" font-family="Georgia,serif">ABSORBED by lazurite</text>
 <rect x="60.0"   y="48" width="90.6"  height="46" fill="#5820a8" opacity="1.0"/>
 <rect x="150.6"  y="48" width="90.6"  height="46" fill="#1840c8" opacity="1.0"/>
-<rect x="241.25" y="48" width="90.6"  height="46" fill="#10a0b0" opacity="0.3"/>
-<rect x="331.9"  y="48" width="90.6"  height="46" fill="#28a040" opacity="0.3"/>
-<rect x="422.5"  y="48" width="72.5"  height="46" fill="#c0a000" opacity="0.3"/>
-<rect x="495.0"  y="48" width="72.5"  height="46" fill="#d05010" opacity="0.3"/>
-<rect x="567.5"  y="48" width="72.5"  height="46" fill="#b01010" opacity="0.3"/>
+<rect x="241.25" y="48" width="90.6"  height="46" fill="#10a0b0" opacity="0.6"/>
+<rect x="331.9"  y="48" width="90.6"  height="46" fill="#28a040" opacity="0.6"/>
+<rect x="422.5"  y="48" width="72.5"  height="46" fill="#c0a000" opacity="0.6"/>
+<rect x="495.0"  y="48" width="72.5"  height="46" fill="#d05010" opacity="0.6"/>
+<rect x="567.5"  y="48" width="72.5"  height="46" fill="#b01010" opacity="0.6"/>
 
 <rect x="60" y="48" width="580" height="46" fill="none" stroke="#b0a090" stroke-width="1" rx="1"/>
 <line x1="241.25" y1="36" x2="241.25" y2="98" stroke="#c04808" stroke-width="1.5" stroke-dasharray="4,3"/>
@@ -35,7 +35,7 @@
 
 <text x="150.6"  y="126" text-anchor="middle" fill="#1040c0" font-size="9" font-family="Georgia,serif">violet → blue  380–480nm</text>
 <text x="440.6"  y="126" text-anchor="middle" fill="#c04808" font-size="9" font-family="Georgia,serif">blue-green → green → yellow → orange → red  480–700nm</text>
-<rect x="60" y="144" width="76" height="40" rx="4" fill="#14245a" stroke="#2a4070" stroke-width="1.5"/>
+<rect x="60" y="144" width="76" height="40" rx="4" fill="#2450a8" stroke="#1c3a88" stroke-width="1.5"/>
 <circle cx="84" cy="162" r="3" fill="#c89020" opacity="0.9"/>
 <circle cx="104" cy="170" r="2.5" fill="#c89020" opacity="0.8"/>
 <circle cx="94" cy="156" r="2" fill="#c89020" opacity="0.7"/>
