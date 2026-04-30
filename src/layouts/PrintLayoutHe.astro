@@ -1,0 +1,21 @@
+---
+import '../styles/global.css';
+import '../styles/components.css';
+import '../styles/print.css';
+import '../styles/print-he.css';
+---
+<!DOCTYPE html>
+<html lang="he" dir="rtl" data-theme="tekhelet">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>לבנת הספיר</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Serif+Hebrew:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body class="print-root">
+  <main id="content">
+    <slot />
+  </main>
+</body>
+</html>

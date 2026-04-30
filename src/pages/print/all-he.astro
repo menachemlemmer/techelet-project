@@ -1,9 +1,9 @@
 ---
 import { getCollection, render } from 'astro:content';
-import PrintLayout from '../../layouts/PrintLayout.astro';
+import PrintLayoutHe from '../../layouts/PrintLayoutHe.astro';
 import SectionHead from '../../components/SectionHead.astro';
 
-// All content components — same set as [...slug].astro
+// Content components — same set as English print
 import AramaicBlock from '../../components/AramaicBlock.astro';
 import Callout from '../../components/Callout.astro';
 import TermDef from '../../components/TermDef.astro';
@@ -29,12 +29,11 @@ import PhScale from '../../components/PhScale.astro';
 import MbiAggregateComparison from '../../components/MbiAggregateComparison.astro';
 import LightboxImage from '../../components/LightboxImage.astro';
 import SuppressionTimeline from '../../components/SuppressionTimeline.astro';
-// Print-specific substitutes
 import PrintMolPlaceholder from '../../components/PrintMolPlaceholder.astro';
 import PrintMoleculeShowcase from '../../components/PrintMoleculeShowcase.astro';
 import PrintPlantIndigoViewer from '../../components/PrintPlantIndigoViewer.astro';
 
-const sections = (await getCollection('sections')).sort(
+const sections = (await getCollection('sectionsHe')).sort(
   (a, b) => a.data.order - b.data.order
 );
 
@@ -56,12 +55,6 @@ const componentMap = {
   MoleculeShowcase: PrintMoleculeShowcase,
 };
 
-function headerNum(data) {
-  if (data.headerNum) return data.headerNum;
-  if (data.sectionNum === 'Intro') return data.movementLabel;
-  return `${data.movementLabel} · ${data.sectionNum}`;
-}
-
 function anchorId(entryId) {
   return 'sec--' + entryId.replace(/\//g, '--');
 }
@@ -79,19 +72,22 @@ for (const item of rendered) {
   }
 }
 
-// Roman numerals for movement cover pages
+// Roman numerals for part cover pages (skip prologue)
 const NUMERALS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'];
+const partMovements = tocByMovement.filter(mv =>
+  mv.entries[0].entry.data.movement !== 'prologue'
+);
 const movementNumerals = new Map(
-  tocByMovement.map((mv, i) => [mv.label, NUMERALS[i]])
+  partMovements.map((mv, i) => [mv.label, NUMERALS[i]])
 );
 ---
-<PrintLayout>
+<PrintLayoutHe>
   {/* ════════════════ COVER PAGE ════════════════ */}
   <div class="cover-page">
     <div class="cover-ornament">✦     ✦     ✦</div>
     <div class="cover-heb">לִבְנַת הַסַּפִּיר</div>
-    <h1 class="cover-title">Studies on Tekhelet</h1>
-    <div class="cover-subtitle">Theology, History, Chemistry</div>
+    <h1 class="cover-title">מחקרים בתכלת</h1>
+    <div class="cover-subtitle">תאולוגיה · היסטוריה · כימיה</div>
     <div class="cover-footer">
       <div class="cover-ornament-small">✦</div>
     </div>
@@ -100,8 +96,8 @@ const movementNumerals = new Map(
 
   {/* ════════════════ TABLE OF CONTENTS ════════════════ */}
   <div class="toc-page">
-    <h1 class="toc-title">Table of Contents</h1>
-    {tocByMovement.map((mv) => (
+    <h1 class="toc-title">תוכן עניינים</h1>
+    {tocByMovement.filter(mv => mv.entries[0].entry.data.movement !== 'prologue').map((mv) => (
       <div class="toc-movement">
         <div class="toc-movement-label">{mv.label}</div>
         <ul class="toc-list">
@@ -120,38 +116,30 @@ const movementNumerals = new Map(
   </div>
 
   {/* ════════════════ SECTIONS ════════════════ */}
-  {/* No page-break div here — the first movement cover's break-before:right
-      handles placement on the next recto after the TOC. */}
   {rendered.map(({ entry, Content }, i) => {
     const prevMovement = i > 0 ? rendered[i - 1].entry.data.movement : null;
     const isFirstOfMovement = entry.data.movement !== prevMovement;
-    const isNewMovement = i > 0 && isFirstOfMovement;
+    const isPrologue = entry.data.movement === 'prologue';
     const forceBreak = i > 0 && !isFirstOfMovement && entry.data.printBreak;
     return (
       <>
-        {/* Movement cover page — one per movement, including the first.
-            Blank-page divs before and after ensure the cover is fully
-            isolated on its own sheet. break-before/after:right is not
-            supported in Chromium's PDF renderer, so explicit blank pages
-            are the only reliable mechanism. */}
-        {isFirstOfMovement && entry.data.movement !== 'prologue' && (
+        {isFirstOfMovement && !isPrologue && (
           <div class="movement-cover">
             <div class="movement-cover-ornament">✦     ✦     ✦</div>
-            <div class="movement-cover-num">Part {movementNumerals.get(entry.data.movementLabel)}</div>
+            <div class="movement-cover-num">חלק {movementNumerals.get(entry.data.movementLabel)}</div>
             <div class="movement-cover-rule"></div>
             <div class="movement-cover-title">{entry.data.movementLabel}</div>
           </div>
         )}
-        {isFirstOfMovement && entry.data.movement !== 'prologue' && <div class="blank-page" aria-hidden="true"></div>}
+        {isFirstOfMovement && !isPrologue && <div class="blank-page" aria-hidden="true"></div>}
 
-        {/* Within a movement: forced break or ornament separator */}
         {!isFirstOfMovement && forceBreak && <div class="page-break" aria-hidden="true"></div>}
         {i > 0 && !isFirstOfMovement && !forceBreak && <div class="section-sep" aria-hidden="true"></div>}
 
         <a id={anchorId(entry.id)} class="section-anchor"></a>
         {!entry.data.hideHeader && (
           <SectionHead
-            num={headerNum(entry.data)}
+            num={entry.data.headerNum ?? (entry.data.sectionNum === 'Intro' ? entry.data.movementLabel : `${entry.data.movementLabel} · ${entry.data.sectionNum}`)}
             title={entry.data.title}
             subtitle={entry.data.subtitle}
           />
@@ -160,4 +148,4 @@ const movementNumerals = new Map(
       </>
     );
   })}
-</PrintLayout>
+</PrintLayoutHe>
