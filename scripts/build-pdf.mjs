@@ -79,6 +79,16 @@ try {
   console.log(`Navigating to ${URL}...`);
   await page.goto(URL, { waitUntil: "networkidle0", timeout: 60_000 });
   await page.evaluate(() => document.fonts.ready);
+  // Force the specific web fonts to fully download and render before capture
+  await page.evaluate(() => Promise.all([
+    document.fonts.load('400 16px "EB Garamond"'),
+    document.fonts.load('600 16px "EB Garamond"'),
+    document.fonts.load('italic 400 16px "EB Garamond"'),
+    document.fonts.load('400 16px "Noto Serif Hebrew"'),
+    document.fonts.load('600 16px "Noto Serif Hebrew"'),
+    document.fonts.load('700 16px "Noto Serif Hebrew"'),
+  ]));
+  await new Promise(r => setTimeout(r, 1500));
 
   console.log(`Rendering PDF to ${OUTPUT_PATH}...`);
   // Size AND margins come from @page in print.css (preferCSSPageSize owns
