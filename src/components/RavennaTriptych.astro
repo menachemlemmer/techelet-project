@@ -1,0 +1,59 @@
+---
+---
+<div class="ravenna-triptych">
+  <figure class="ravenna-panel">
+    <img src="/images/emperors/Justinian-Ravenna.jpg" alt="Justinian I in full imperial purple, Basilica di San Vitale, Ravenna, c. 547 CE" class="lightbox-trigger" />
+    <figcaption>Justinian I</figcaption>
+  </figure>
+  <figure class="ravenna-panel">
+    <img src="/images/basilica-di-san-vitale-particolare-corteo-teodora-e1640699455799.webp" alt="Empress Theodora and her court, Basilica di San Vitale, Ravenna, c. 547 CE" class="lightbox-trigger" />
+    <figcaption>Empress Theodora</figcaption>
+  </figure>
+  <figure class="ravenna-panel">
+    <img src="/images/byzantine-clergy-ravenna.jpg" alt="The founder of the faith enthroned in purple, Basilica di San Vitale, Ravenna, c. 547 CE" class="lightbox-trigger" />
+    <figcaption>The founder of the faith enthroned in the apse</figcaption>
+  </figure>
+</div>
+
+<style>
+  .ravenna-triptych {
+    display: flex;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+    align-items: flex-start;
+  }
+
+  .ravenna-panel {
+    flex: 1;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .ravenna-panel img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 4px;
+    cursor: zoom-in;
+    display: block;
+  }
+
+  .ravenna-panel figcaption {
+    font-size: 0.72em;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  @media (max-width: 640px) {
+    .ravenna-triptych {
+      flex-direction: column;
+    }
+    .ravenna-panel img {
+      height: 200px;
+    }
+  }
+</style>

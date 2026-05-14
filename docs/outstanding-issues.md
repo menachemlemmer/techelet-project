@@ -169,6 +169,15 @@ Final M4 polish depends on M3 prose fixes (especially mordant distinction and pH
 
 ---
 
+## Rupture and Return — Theological Synthesis
+
+**Build status:** NOT BUILT
+
+🔴 **Not yet written**
+Closing theological synthesis: physics of color, chromophore/Gevurah, tzimtzum, rupture and repair, tekhelet as marker of divine light, the return. Full source notes and author outline in `docs/rupture-and-return-sources.md`.
+
+---
+
 ## M5 — Visual Props / Illustrations
 
 **Build status:** NOT BUILT — scope defined
