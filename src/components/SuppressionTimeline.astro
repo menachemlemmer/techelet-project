@@ -1,222 +1,227 @@
 ---
-// SuppressionTimeline.astro
-// Two-track chronology: sumptuary/legal (left, gold) vs. persecution/military (right, red)
+// SuppressionTimeline — vertical two-track timeline with braid convergence at Justinian
+const PURPLE = '#6B1E6B';  // Tyrian purple — sumptuary/legal
+const BLUE   = '#1A4FA0';  // Tekhelet blue — persecution/religious
 
-const legal = [
-  { year: -215, label: '215 BCE', title: 'Lex Oppia',         desc: 'private purple banned during Punic War' },
-  { year: -46,  label: '46 BCE',  title: 'Lex Julia',          desc: 'Caesar encodes supremacy in color' },
-  { year: 301,  label: '301 CE',  title: 'Nationalization',    desc: 'Diocletian — gynaeciae, hereditary lock' },
-  { year: 385,  label: '385 CE',  title: 'Death penalty',      desc: 'CTh 10.21.3 — private dyeing capital' },
-  { year: 424,  label: '424 CE',  title: 'Confiscation order', desc: 'CTh 10.21.4 — all purple surrendered' },
-  { year: 436,  label: '436 CE',  title: 'Coast surveilled',   desc: 'imperial inspectors to dye-houses' },
-  { year: 470,  label: '470 CE',  title: 'Murex = death',      desc: 'CJ 1.23.6 — chilazon imperial property' },
-  { year: 529,  label: '529 CE',  title: 'Hyacinthina named',  desc: 'Codex Justinianus — tekhelet listed by name' },
-];
+const W = 540;
+const H = 950;
+const LEFT_X   = 215;
+const RIGHT_X  = 290;
+const CENTER_X = Math.round((LEFT_X + RIGHT_X) / 2); // 252
 
-const persecution = [
-  { year: 70,  label: '70 CE',   title: 'Temple destroyed',       desc: 'Vespasian — community contracts to Galilee' },
-  { year: 135, label: '135 CE',  title: 'Bar Kokhba crushed',      desc: 'Hadrian — expelled from Jerusalem, שמד decrees' },
-  { year: 315, label: '315 CE',  title: 'Persecution legislated',  desc: 'Constantine — Judaism "feral sect"' },
-  { year: 339, label: '339 CE',  title: 'Gynaeciae weaponized',    desc: 'Constantius II — Jewish access to dye workers cut' },
-  { year: 351, label: '351 CE',  title: 'Gallus revolt crushed',   desc: 'Galilean academies destroyed — supply severed' },
-  { year: 553, label: '553 CE',  title: 'Novella 146',             desc: 'Mishnah reading prohibited' },
-  { year: 614, label: '614 CE',  title: 'Wars devastate coast',    desc: 'Byzantine-Sassanid — murex coast shattered' },
-  { year: 640, label: '640 CE',  title: 'Islamic conquest',        desc: 'Byzantine industry collapsed' },
-];
+const PAD_TOP  = 70;
+const PAD_BOT  = 35;
+const USABLE_H = H - PAD_TOP - PAD_BOT; // 845
 
-const allEvents = [
-  ...legal.map(e => ({ ...e, side: 'legal' })),
-  ...persecution.map(e => ({ ...e, side: 'war' })),
-].sort((a, b) => a.year - b.year);
+const START_YEAR   = -215;
+const END_YEAR     = 640;
+const SPAN         = END_YEAR - START_YEAR; // 855
+const FUSION_YEAR  = 529;
+
+function yPos(year: number): number {
+  return Math.round(PAD_TOP + (year - START_YEAR) / SPAN * USABLE_H);
+}
+
+const FUSION_Y = yPos(FUSION_YEAR);
+const END_Y    = yPos(END_YEAR);
+
+const legalEvents = [
+  { year: -215, label: '215 BCE', title: 'Lex Oppia',       r: 4 },
+  { year: -46,  label: '46 BCE',  title: 'Lex Julia',        r: 5 },
+  { year: 301,  label: '301 CE',  title: 'Nationalization',  r: 6 },
+  { year: 385,  label: '385 CE',  title: 'Death penalty',    r: 5 },
+  { year: 424,  label: '424 CE',  title: 'Confiscation',     r: 6 },
+  { year: 436,  label: '436 CE',  title: 'Coast surveilled', r: 4 },
+  { year: 470,  label: '470 CE',  title: 'Murex = death',    r: 6 },
+].map(e => ({ ...e, y: yPos(e.year) }));
+
+const persecutionEvents = [
+  { year: 70,  label: '70 CE',  title: 'Temple destroyed', r: 6 },
+  { year: 135, label: '135 CE', title: 'Bar Kokhba',       r: 5 },
+  { year: 315, label: '315 CE', title: 'Constantine',      r: 5 },
+].map(e => ({ ...e, y: yPos(e.year) }));
+
+const dualEvents = [
+  { year: 339, label: '339 CE', titleL: 'Gynaeciae weaponized', titleR: 'Constantius II', r: 7 },
+  { year: 351, label: '351 CE', titleL: 'Supply severed',       titleR: 'Gallus revolt',  r: 7 },
+].map(e => ({ ...e, y: yPos(e.year) }));
+
+const mergedEvents = [
+  { year: 553, label: '553 CE', title: 'Novella 146',          r: 5 },
+  { year: 614, label: '614 CE', title: 'Wars devastate coast', r: 6 },
+  { year: 640, label: '640 CE', title: 'Islamic conquest',     r: 5 },
+].map(e => ({ ...e, y: yPos(e.year) }));
+
+// Braid — starts at FUSION_Y, waves converge from LEFT_X / RIGHT_X
+const BRAID_A    = 18;
+const BRAID_HALF = 13;
+
+interface BraidSeg {
+  purplePath: string;
+  bluePath:   string;
+  purpleOnTop: boolean;
+}
+
+function getBraidSegs(): BraidSeg[] {
+  const segs: BraidSeg[] = [];
+  const n = Math.ceil((END_Y - FUSION_Y) / BRAID_HALF) + 2;
+  for (let i = 0; i < n; i++) {
+    const y0 = FUSION_Y + i * BRAID_HALF;
+    const y1 = Math.min(y0 + BRAID_HALF, END_Y);
+    if (y0 >= END_Y) break;
+    const dh   = y1 - y0;
+    const cp1y = y0 + dh * 0.42;
+    const cp2y = y0 + dh * 0.58;
+
+    const pX0 = i === 0 ? LEFT_X  : (i % 2 === 0 ? CENTER_X + BRAID_A : CENTER_X - BRAID_A);
+    const bX0 = i === 0 ? RIGHT_X : (i % 2 === 0 ? CENTER_X - BRAID_A : CENTER_X + BRAID_A);
+    const pX1 = (i + 1) % 2 === 0 ? CENTER_X + BRAID_A : CENTER_X - BRAID_A;
+    const bX1 = (i + 1) % 2 === 0 ? CENTER_X - BRAID_A : CENTER_X + BRAID_A;
+
+    segs.push({
+      purplePath: `M ${pX0},${y0} C ${pX0},${cp1y} ${pX1},${cp2y} ${pX1},${y1}`,
+      bluePath:   `M ${bX0},${y0} C ${bX0},${cp1y} ${bX1},${cp2y} ${bX1},${y1}`,
+      purpleOnTop: i % 2 === 1,
+    });
+  }
+  return segs;
+}
+
+const braidSegs = getBraidSegs();
 ---
 
-<div class="tl2-wrap">
-  <div class="tl2-header">
-    <div class="tl2-track-label tl2-legal-lbl">Sumptuary · Legal</div>
-    <div class="tl2-center-lbl">CHRONOLOGY OF SUPPRESSION</div>
-    <div class="tl2-track-label tl2-war-lbl">Persecution · Military</div>
-  </div>
-  <div class="tl2-body">
-    <div class="tl2-spine"></div>
-    {allEvents.map((e) => (
-      <div class:list={['tl2-row', `tl2-${e.side}`]}>
-        <div class="tl2-left">
-          {e.side === 'legal' && (
-            <div>
-              <b class="tl2-title">{e.title}</b>
-              <span class="tl2-desc">{e.desc}</span>
-            </div>
-          )}
-        </div>
-        <div class="tl2-center">
-          <div class="tl2-dot"></div>
-          <div class="tl2-year">{e.label}</div>
-        </div>
-        <div class="tl2-right">
-          {e.side === 'war' && (
-            <div>
-              <b class="tl2-title">{e.title}</b>
-              <span class="tl2-desc">{e.desc}</span>
-            </div>
-          )}
-        </div>
-      </div>
+<div class="tlv-outer">
+  <svg viewBox={`0 0 ${W} ${H}`} xmlns="http://www.w3.org/2000/svg" class="tlv-svg" role="img" aria-label="Chronology of tekhelet suppression">
+
+    <defs>
+      <linearGradient id="mergedGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%"   stop-color={PURPLE} />
+        <stop offset="100%" stop-color={BLUE}   />
+      </linearGradient>
+    </defs>
+
+    <!-- Header -->
+    <text x={CENTER_X} y="22" text-anchor="middle" class="tlv-head">CHRONOLOGY OF SUPPRESSION</text>
+
+    <!-- Legend -->
+    <circle cx={LEFT_X - 55} cy="42" r="5" fill={PURPLE} />
+    <text x={LEFT_X - 47} y="46" class="tlv-legend">sumptuary · legal</text>
+    <circle cx={RIGHT_X + 20} cy="42" r="5" fill={BLUE} />
+    <text x={RIGHT_X + 28} y="46" class="tlv-legend">persecution · religious</text>
+
+    <!-- Pre-fusion vertical lines -->
+    <line x1={LEFT_X}  y1={PAD_TOP} x2={LEFT_X}  y2={FUSION_Y} stroke={PURPLE} stroke-width="2.5" />
+    <line x1={RIGHT_X} y1={PAD_TOP} x2={RIGHT_X} y2={FUSION_Y} stroke={BLUE}   stroke-width="2.5" />
+
+    <!-- Legal events -->
+    {legalEvents.map(e => (
+      <g>
+        <circle cx={LEFT_X} cy={e.y} r={e.r} fill={PURPLE} />
+        <text x={LEFT_X - 12} y={e.y - 2}  text-anchor="end" class="tlv-title">{e.title}</text>
+        <text x={LEFT_X - 12} y={e.y + 10} text-anchor="end" class="tlv-year">{e.label}</text>
+      </g>
     ))}
-  </div>
-  <div class="tl2-legend">
-    <div class="tl2-leg tl2-legal"><span class="tl2-leg-dot"></span>sumptuary · legal</div>
-    <div class="tl2-leg tl2-war"><span class="tl2-leg-dot"></span>persecution · military</div>
-  </div>
+
+    <!-- Persecution events -->
+    {persecutionEvents.map(e => (
+      <g>
+        <circle cx={RIGHT_X} cy={e.y} r={e.r} fill={BLUE} />
+        <text x={RIGHT_X + 12} y={e.y - 2}  text-anchor="start" class="tlv-title">{e.title}</text>
+        <text x={RIGHT_X + 12} y={e.y + 10} text-anchor="start" class="tlv-year">{e.label}</text>
+      </g>
+    ))}
+
+    <!-- Dual events -->
+    {dualEvents.map(e => (
+      <g>
+        <circle cx={LEFT_X}  cy={e.y} r={e.r} fill={PURPLE} />
+        <circle cx={RIGHT_X} cy={e.y} r={e.r} fill={BLUE}   />
+        <line x1={LEFT_X + e.r} y1={e.y} x2={RIGHT_X - e.r} y2={e.y} stroke="#aaa" stroke-width="0.75" stroke-dasharray="3,2" />
+        <text x={LEFT_X  - 12} y={e.y - 2}  text-anchor="end"   class="tlv-title">{e.titleL}</text>
+        <text x={RIGHT_X + 12} y={e.y - 2}  text-anchor="start" class="tlv-title">{e.titleR}</text>
+        <text x={CENTER_X}     y={e.y + 14} text-anchor="middle" class="tlv-year">{e.label}</text>
+      </g>
+    ))}
+
+    <!-- Fusion marker -->
+    <g>
+      <line x1={LEFT_X - 90} y1={FUSION_Y} x2={RIGHT_X + 90} y2={FUSION_Y} stroke="#b090b0" stroke-width="0.75" stroke-dasharray="4,3" />
+      <circle cx={LEFT_X}  cy={FUSION_Y} r="6" fill={PURPLE} />
+      <circle cx={RIGHT_X} cy={FUSION_Y} r="6" fill={BLUE}   />
+      <text x={CENTER_X} y={FUSION_Y - 14} text-anchor="middle" class="tlv-fusion-title">Justinian's Symphonia</text>
+      <text x={CENTER_X} y={FUSION_Y - 4}  text-anchor="middle" class="tlv-fusion-year">529 CE — the two mechanisms merge</text>
+    </g>
+
+    <!-- Braid -->
+    {braidSegs.map(seg => (
+      seg.purpleOnTop ? (
+        <g>
+          <path d={seg.bluePath}   stroke={BLUE}   stroke-width="2.8" fill="none" stroke-linecap="round" />
+          <path d={seg.purplePath} stroke={PURPLE} stroke-width="2.8" fill="none" stroke-linecap="round" />
+        </g>
+      ) : (
+        <g>
+          <path d={seg.purplePath} stroke={PURPLE} stroke-width="2.8" fill="none" stroke-linecap="round" />
+          <path d={seg.bluePath}   stroke={BLUE}   stroke-width="2.8" fill="none" stroke-linecap="round" />
+        </g>
+      )
+    ))}
+
+    <!-- Merged events (drawn on top of braid) -->
+    {mergedEvents.map(e => (
+      <g>
+        <circle cx={CENTER_X} cy={e.y} r={e.r + 3} fill="url(#mergedGrad)" />
+        <text x={CENTER_X + BRAID_A + 16} y={e.y - 2}  text-anchor="start" class="tlv-title">{e.title}</text>
+        <text x={CENTER_X + BRAID_A + 16} y={e.y + 10} text-anchor="start" class="tlv-year">{e.label}</text>
+      </g>
+    ))}
+
+  </svg>
 </div>
 
 <style>
-  .tl2-wrap {
+  .tlv-outer {
     width: 100%;
     margin: 2rem 0;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1.1rem 1.2rem 0.9rem;
-    background: var(--paper);
-    font-family: Georgia, serif;
   }
-
-  .tl2-header {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.6rem;
-    border-bottom: 1px solid var(--border);
-    align-items: center;
+  .tlv-svg {
+    width: 100%;
+    height: auto;
+    display: block;
   }
-
-  .tl2-track-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.08em;
-    font-style: italic;
-  }
-  .tl2-legal-lbl { text-align: right; color: #b8860b; }
-  .tl2-war-lbl   { text-align: left;  color: #8a2020; }
-
-  .tl2-center-lbl {
+  .tlv-head {
     font-family: 'Courier New', monospace;
-    font-size: 0.57rem;
+    font-size: 9.5px;
     letter-spacing: 0.2em;
-    color: #8a7a60;
-    text-align: center;
-    white-space: nowrap;
+    fill: #8a7a60;
   }
-
-  .tl2-body {
-    position: relative;
+  .tlv-legend {
+    font-family: Georgia, serif;
+    font-size: 8.5px;
+    fill: #6a5a48;
+    font-style: italic;
   }
-
-  .tl2-spine {
-    position: absolute;
-    left: 50%;
-    top: 8px;
-    bottom: 8px;
-    width: 1px;
-    background: var(--border);
-    transform: translateX(-50%);
-    z-index: 0;
-  }
-
-  .tl2-row {
-    display: grid;
-    grid-template-columns: 1fr 76px 1fr;
-    align-items: start;
-    margin-bottom: 0.6rem;
-  }
-
-  .tl2-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .tl2-dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-  .tl2-legal .tl2-dot { background: #b8860b; }
-  .tl2-war   .tl2-dot { background: #8a2020; }
-
-  .tl2-year {
-    font-family: 'Courier New', monospace;
-    font-size: 0.56rem;
-    color: #6a5a48;
-    text-align: center;
-    line-height: 1.2;
-  }
-
-  .tl2-left {
-    text-align: right;
-    padding-right: 0.65rem;
-    padding-top: 1px;
-  }
-  .tl2-right {
-    text-align: left;
-    padding-left: 0.65rem;
-    padding-top: 1px;
-  }
-
-  .tl2-title {
-    display: block;
-    font-size: 0.67rem;
+  .tlv-title {
+    font-family: Georgia, serif;
+    font-size: 9px;
     font-weight: 700;
-    line-height: 1.25;
+    fill: #1a1208;
   }
-  .tl2-legal .tl2-title { color: #7a5a00; }
-  .tl2-war   .tl2-title { color: #7a1818; }
-
-  .tl2-desc {
-    display: block;
-    font-size: 0.57rem;
-    color: #6a5a48;
-    font-style: italic;
-    line-height: 1.3;
-    margin-top: 1px;
+  .tlv-year {
+    font-family: 'Courier New', monospace;
+    font-size: 7.5px;
+    fill: #6a5a48;
   }
-
-  .tl2-legend {
-    margin-top: 0.7rem;
-    border-top: 1px solid var(--border);
-    padding-top: 0.5rem;
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-  }
-
-  .tl2-leg {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 0.57rem;
-    color: #6a5a48;
+  .tlv-fusion-title {
+    font-family: Georgia, serif;
+    font-size: 9px;
+    font-weight: 700;
+    fill: #5a1060;
     font-style: italic;
   }
-
-  .tl2-leg-dot {
-    display: inline-block;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .tl2-legal .tl2-leg-dot { background: #b8860b; }
-  .tl2-war   .tl2-leg-dot { background: #8a2020; }
-
-  @media (max-width: 640px) {
-    .tl2-row { grid-template-columns: 1fr 52px 1fr; }
-    .tl2-desc { display: none; }
-    .tl2-title { font-size: 0.61rem; }
-    .tl2-center-lbl { font-size: 0.5rem; letter-spacing: 0.12em; }
+  .tlv-fusion-year {
+    font-family: 'Courier New', monospace;
+    font-size: 7.5px;
+    fill: #5a1060;
   }
 </style>
