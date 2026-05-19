@@ -2,66 +2,149 @@
 // SuppressionTimeline.astro
 // Two-track chronology: sumptuary/legal (left, gold) vs. persecution/military (right, red)
 
-const legal = [
-  { year: -215, label: '215 BCE', title: 'Lex Oppia',         desc: 'private purple banned during Punic War' },
-  { year: -46,  label: '46 BCE',  title: 'Lex Julia',          desc: 'Caesar encodes supremacy in color' },
-  { year: 301,  label: '301 CE',  title: 'Nationalization',    desc: 'Diocletian — gynaeciae, hereditary lock' },
-  { year: 385,  label: '385 CE',  title: 'Death penalty',      desc: 'CTh 10.21.3 — private dyeing capital' },
-  { year: 424,  label: '424 CE',  title: 'Confiscation order', desc: 'CTh 10.21.4 — all purple surrendered' },
-  { year: 436,  label: '436 CE',  title: 'Coast surveilled',   desc: 'imperial inspectors to dye-houses' },
-  { year: 470,  label: '470 CE',  title: 'Murex = death',      desc: 'CJ 1.23.6 — chilazon imperial property' },
-  { year: 529,  label: '529 CE',  title: 'Hyacinthina named',  desc: 'Codex Justinianus — tekhelet listed by name' },
+interface EventEntry { year: number; label: string; title: string; desc: string; }
+interface DualEntry  { year: number; label: string; legalTitle: string; legalDesc: string; warTitle: string; warDesc: string; }
+
+const legalOnly: EventEntry[] = [
+  { year: -215, label: '215 BCE', title: 'Lex Oppia',          desc: 'private purple banned during Punic War' },
+  { year: -46,  label: '46 BCE',  title: 'Lex Julia',           desc: 'Caesar encodes supremacy in color' },
+  { year: 301,  label: '301 CE',  title: 'Nationalization',     desc: 'Diocletian — gynaeciae, hereditary lock' },
+  { year: 436,  label: '436 CE',  title: 'Coast surveilled',    desc: 'imperial inspectors to dye-houses' },
+  { year: 470,  label: '470 CE',  title: 'Murex = death',       desc: 'CJ 1.23.6 — chilazon imperial property' },
 ];
 
-const persecution = [
-  { year: 70,  label: '70 CE',   title: 'Temple destroyed',       desc: 'Vespasian — community contracts to Galilee' },
-  { year: 135, label: '135 CE',  title: 'Bar Kokhba crushed',      desc: 'Hadrian — expelled from Jerusalem, שמד decrees' },
-  { year: 315, label: '315 CE',  title: 'Persecution legislated',  desc: 'Constantine — Judaism "feral sect"' },
-  { year: 339, label: '339 CE',  title: 'Gynaeciae weaponized',    desc: 'Constantius II — Jewish access to dye workers cut' },
-  { year: 351, label: '351 CE',  title: 'Gallus revolt crushed',   desc: 'Galilean academies destroyed — supply severed' },
-  { year: 553, label: '553 CE',  title: 'Novella 146',             desc: 'Mishnah reading prohibited' },
-  { year: 614, label: '614 CE',  title: 'Wars devastate coast',    desc: 'Byzantine-Sassanid — murex coast shattered' },
-  { year: 640, label: '640 CE',  title: 'Islamic conquest',        desc: 'Byzantine industry collapsed' },
+const warOnly: EventEntry[] = [
+  { year: 135, label: '135 CE', title: 'Bar Kokhba crushed',     desc: 'Hadrian — expelled from Jerusalem, שמד decrees' },
+  { year: 315, label: '312–315 CE', title: 'Constantine converts', desc: 'Christianity as imperial faith — Judaism becomes theological enemy' },
 ];
 
-const allEvents = [
-  ...legal.map(e => ({ ...e, side: 'legal' })),
-  ...persecution.map(e => ({ ...e, side: 'war' })),
-].sort((a, b) => a.year - b.year);
+const dualEvents: DualEntry[] = [
+  { year: 70,  label: '70 CE',       legalTitle: "Nero's enforcement",   legalDesc: 'strictest enforcement of the purple monopoly', warTitle: 'Temple destroyed',            warDesc: 'Vespasian — community contracts to Galilee' },
+  { year: 339, label: '339 CE',      legalTitle: 'Gynaeciae weaponized', legalDesc: 'Jewish access to dye workers cut',             warTitle: 'Constantius II',              warDesc: 'religious persecution intensifies' },
+  { year: 351, label: '351 CE',      legalTitle: 'Supply severed',       legalDesc: 'Galilean dye supply disrupted',               warTitle: 'Gallus revolt crushed',       warDesc: 'Galilean academies destroyed' },
+  { year: 385, label: '380–395 CE',  legalTitle: 'Death penalty',        legalDesc: 'CTh 10.21.3 — private dyeing capital',        warTitle: 'Christianity enthroned',     warDesc: 'Theodosius I — empire becomes Christian state; church overrides imperial law' },
+  { year: 424, label: '415–450 CE',  legalTitle: 'Confiscation order',   legalDesc: 'CTh 10.21.4 — all purple surrendered',        warTitle: 'Systematic degradation',     warDesc: 'Theodosius II — Patriarchate abolished, office barred, synagogues frozen, witnesses silenced' },
+];
+
+const fusionLabel = '529 CE';
+
+const mergedEvents: EventEntry[] = [
+  { year: 553, label: '553 CE', title: 'Novella 146',         desc: 'Mishnah reading prohibited' },
+  { year: 614, label: '614 CE', title: 'Wars devastate coast', desc: 'Byzantine-Sassanid — murex coast shattered' },
+  { year: 640, label: '640 CE', title: 'Islamic conquest',    desc: 'Byzantine industry collapsed' },
+];
+
+type RowType = 'legal' | 'war' | 'dual' | 'fusion' | 'merged';
+interface TimelineRow { type: RowType; label: string; legal?: EventEntry; war?: EventEntry; dual?: DualEntry; merged?: EventEntry; }
+
+const yearOf = (r: TimelineRow) => r.legal?.year ?? r.war?.year ?? r.dual?.year ?? (r.type === 'fusion' ? 529 : r.merged?.year ?? 0);
+
+const allRows: TimelineRow[] = [
+  ...legalOnly.map(e => ({ type: 'legal' as RowType, label: e.label, legal: e })),
+  ...warOnly.map(e   => ({ type: 'war'   as RowType, label: e.label, war: e })),
+  ...dualEvents.map(e => ({ type: 'dual' as RowType, label: e.label, dual: e })),
+  { type: 'fusion', label: fusionLabel },
+  ...mergedEvents.map(e => ({ type: 'merged' as RowType, label: e.label, merged: e })),
+].sort((a, b) => yearOf(a) - yearOf(b));
+
+const preRows  = allRows.filter(r => r.type !== 'merged');
+const postRows = allRows.filter(r => r.type === 'merged');
 ---
 
 <div class="tl2-wrap">
   <div class="tl2-header">
-    <div class="tl2-track-label tl2-legal-lbl">Sumptuary · Legal</div>
     <div class="tl2-center-lbl">CHRONOLOGY OF SUPPRESSION</div>
-    <div class="tl2-track-label tl2-war-lbl">Persecution · Military</div>
+    <div class="tl2-header-tracks">
+      <div class="tl2-track-label tl2-legal-lbl">Sumptuary · Legal</div>
+      <div class="tl2-track-label tl2-war-lbl">Persecution · Military</div>
+    </div>
   </div>
   <div class="tl2-body">
-    <div class="tl2-spine"></div>
-    {allEvents.map((e) => (
-      <div class:list={['tl2-row', `tl2-${e.side}`]}>
-        <div class="tl2-left">
-          {e.side === 'legal' && (
-            <div>
-              <b class="tl2-title">{e.title}</b>
-              <span class="tl2-desc">{e.desc}</span>
+
+    <!-- Zone 1: dual spines (pre-fusion + fusion row) -->
+    <div class="tl2-zone tl2-zone-pre">
+      <div class="tl2-spine-legal"></div>
+      <div class="tl2-spine-war"></div>
+      {preRows.map((row) => {
+        if (row.type === 'fusion') return (
+          <div class="tl2-fusion-row">
+            <!-- Part 1: Symphonia label -->
+            <div class="tl2-fusion-header">
+              <div class="tl2-left tl2-fusion-left-label">Justinian's</div>
+              <div class="tl2-fusion-center-top">
+                <div class="tl2-center-inner">
+                  <div class="tl2-dot tl2-dot-legal"></div>
+                  <div class="tl2-connector"></div>
+                  <div class="tl2-dot tl2-dot-war"></div>
+                </div>
+                <div class="tl2-fusion-year">{row.label}</div>
+              </div>
+              <div class="tl2-right tl2-fusion-right-label">Symphonia</div>
             </div>
-          )}
-        </div>
-        <div class="tl2-center">
-          <div class="tl2-dot"></div>
-          <div class="tl2-year">{e.label}</div>
-        </div>
-        <div class="tl2-right">
-          {e.side === 'war' && (
-            <div>
-              <b class="tl2-title">{e.title}</b>
-              <span class="tl2-desc">{e.desc}</span>
+            <!-- Part 2: Imperial / Church convergence -->
+            <div class="tl2-fusion-convergence">
+              <div class="tl2-left">
+                <b class="tl2-title tl2-fusion-imperial">Imperial</b>
+                <span class="tl2-desc">sumptuary apparatus</span>
+              </div>
+              <div class="tl2-fusion-center-bottom">
+                <svg viewBox="0 0 76 36" width="76" height="36" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="76" height="36" fill="var(--paper)"/>
+                  <line x1="28" y1="0" x2="38" y2="36" stroke="#b8860b" stroke-width="2"/>
+                  <line x1="48" y1="0" x2="38" y2="36" stroke="#8a2020" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="tl2-right">
+                <b class="tl2-title tl2-fusion-church">Church</b>
+                <span class="tl2-desc">ecclesiastical persecution</span>
+              </div>
             </div>
-          )}
+          </div>
+        );
+        if (row.type === 'dual') return (
+          <div class="tl2-row tl2-dual">
+            <div class="tl2-left"><b class="tl2-title">{row.dual!.legalTitle}</b><span class="tl2-desc">{row.dual!.legalDesc}</span></div>
+            <div class="tl2-center">
+              <div class="tl2-center-inner">
+                <div class="tl2-dot tl2-dot-legal"></div>
+                <div class="tl2-connector"></div>
+                <div class="tl2-dot tl2-dot-war"></div>
+              </div>
+              <div class="tl2-year">{row.label}</div>
+            </div>
+            <div class="tl2-right"><b class="tl2-title">{row.dual!.warTitle}</b><span class="tl2-desc">{row.dual!.warDesc}</span></div>
+          </div>
+        );
+        return (
+          <div class:list={['tl2-row', `tl2-${row.type}`]}>
+            <div class="tl2-left">{row.type === 'legal' && <div><b class="tl2-title">{row.legal!.title}</b><span class="tl2-desc">{row.legal!.desc}</span></div>}</div>
+            <div class="tl2-center">
+              <div class="tl2-center-inner">
+                <div class:list={['tl2-dot', row.type === 'legal' ? 'tl2-dot-legal' : 'tl2-dot-war']}></div>
+              </div>
+              <div class="tl2-year">{row.label}</div>
+            </div>
+            <div class="tl2-right">{row.type === 'war' && <div><b class="tl2-title">{row.war!.title}</b><span class="tl2-desc">{row.war!.desc}</span></div>}</div>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- Zone 2: merged single spine (post-fusion) -->
+    <div class="tl2-zone tl2-zone-post">
+      <div class="tl2-spine-merged"></div>
+      {postRows.map((row) => (
+        <div class="tl2-row tl2-merged-row">
+          <div class="tl2-left"></div>
+          <div class="tl2-center">
+            <div class="tl2-center-inner"><div class="tl2-dot tl2-dot-merged"></div></div>
+            <div class="tl2-year">{row.label}</div>
+          </div>
+          <div class="tl2-right"><b class="tl2-title">{row.merged!.title}</b><span class="tl2-desc">{row.merged!.desc}</span></div>
         </div>
-      </div>
-    ))}
+      ))}
+    </div>
+
   </div>
   <div class="tl2-legend">
     <div class="tl2-leg tl2-legal"><span class="tl2-leg-dot"></span>sumptuary · legal</div>
@@ -81,13 +164,19 @@ const allEvents = [
   }
 
   .tl2-header {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
     margin-bottom: 1rem;
     padding-bottom: 0.6rem;
     border-bottom: 1px solid var(--border);
-    align-items: center;
+  }
+
+  .tl2-header-tracks {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
   }
 
   .tl2-track-label {
@@ -111,16 +200,24 @@ const allEvents = [
     position: relative;
   }
 
-  .tl2-spine {
+  .tl2-zone {
+    position: relative;
+  }
+
+  .tl2-spine-legal,
+  .tl2-spine-war,
+  .tl2-spine-merged {
     position: absolute;
-    left: 50%;
-    top: 8px;
-    bottom: 8px;
-    width: 1px;
-    background: var(--border);
+    top: 0;
+    bottom: 0;
+    width: 2px;
     transform: translateX(-50%);
     z-index: 0;
   }
+
+  .tl2-spine-legal  { left: calc(50% - 10px); background: #b8860b; }
+  .tl2-spine-war    { left: calc(50% + 10px); background: #8a2020; }
+  .tl2-spine-merged { left: 50%;              background: #5a1060; }
 
   .tl2-row {
     display: grid;
@@ -138,15 +235,104 @@ const allEvents = [
     z-index: 1;
   }
 
+  .tl2-center-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+  }
+
   .tl2-dot {
     width: 9px;
     height: 9px;
     border-radius: 50%;
     flex-shrink: 0;
-    margin-top: 1px;
   }
-  .tl2-legal .tl2-dot { background: #b8860b; }
-  .tl2-war   .tl2-dot { background: #8a2020; }
+  .tl2-dot-legal { background: #b8860b; }
+  .tl2-dot-war   { background: #8a2020; }
+
+  /* Single-event rows: shift dot onto its spine line */
+  .tl2-legal .tl2-dot-legal { transform: translateX(-10px); }
+  .tl2-war   .tl2-dot-war   { transform: translateX(10px); }
+
+  .tl2-connector {
+    height: 1.5px;
+    width: 11px;
+    background: #aaa;
+  }
+
+  .tl2-dot-merged {
+    background: linear-gradient(to right, #b8860b, #8a2020);
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+  }
+
+  .tl2-fusion-row {
+    display: block;
+    margin: 0.3rem 0;
+  }
+
+  .tl2-fusion-header,
+  .tl2-fusion-convergence {
+    display: grid;
+    grid-template-columns: 1fr 76px 1fr;
+    align-items: start;
+  }
+
+  .tl2-fusion-center-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .tl2-fusion-center-bottom {
+    position: relative;
+    z-index: 2;
+  }
+
+  .tl2-fusion-imperial { color: #7a5a00; }
+  .tl2-fusion-church   { color: #7a1818; }
+
+  .tl2-fusion-left-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #5a1060;
+    font-style: italic;
+    text-align: right;
+    padding-right: 0.65rem;
+    padding-top: 2px;
+  }
+
+  .tl2-fusion-right-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #5a1060;
+    font-style: italic;
+    text-align: left;
+    padding-left: 0.65rem;
+    padding-top: 2px;
+  }
+
+  .tl2-fusion-year {
+    font-family: 'Courier New', monospace;
+    font-size: 0.56rem;
+    font-weight: 700;
+    color: #5a1060;
+    letter-spacing: 0.1em;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    background: var(--paper);
+    padding: 0 2px;
+  }
+
+  .tl2-merged-row .tl2-title { color: #5a1060; }
+  .tl2-merged-row .tl2-desc  { color: #7a6a88; }
 
   .tl2-year {
     font-family: 'Courier New', monospace;
@@ -154,6 +340,10 @@ const allEvents = [
     color: #6a5a48;
     text-align: center;
     line-height: 1.2;
+    position: relative;
+    z-index: 2;
+    background: var(--paper);
+    padding: 0 2px;
   }
 
   .tl2-left {
