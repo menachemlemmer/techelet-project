@@ -358,6 +358,12 @@
     page-break-inside: avoid !important;
   }
 
+  /* New dual-spine SuppressionTimeline — full width, must not split across pages */
+  .tl2-wrap {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
 }
 
 /* Section heads: keep heading and first content block on the same page.
