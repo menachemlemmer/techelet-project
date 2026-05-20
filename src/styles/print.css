@@ -358,11 +358,18 @@
     page-break-inside: avoid !important;
   }
 
+  /* Julius Caesar bust — smaller in print to keep it alongside the subsection start */
+  #content .lightbox-figure:has(img[src*="julius-caesar"]) {
+    width: 1.4in !important;
+    max-width: 1.4in !important;
+  }
+
   /* New dual-spine SuppressionTimeline — full width, must not split across pages */
   .tl2-wrap {
     break-inside: avoid !important;
     page-break-inside: avoid !important;
   }
+
 
 }
 
