@@ -216,8 +216,31 @@ Planned sections:
 
 ## Cross-Cutting Issues
 
-🔴 **Structural decision: 4 movements → chapters and parts (unresolved)**
-Author is considering reorganizing the work from 4 movements into a structure of chapters and parts. This is a significant architectural decision that affects: sidebar labels, page headers, section numbering, and how internal sub-sections are labeled. No decision has been made. Key question: if the outer structure uses "Parts," do the internal "Part 1–7" labels inside M3 need to be renamed? Decision must precede any restructuring work. Do not begin renaming or reorganizing until author resolves this.
+🔴 **Structural decision: 4 movements → chapters and parts (concept in progress — three corners mapped)**
+Author has developed a new organizational concept: the work mirrors the object it describes. Four major sections ("corners") — one for each of the four elements of the work: theology, physics, history, chemistry. Each corner is further divided into subsections ("threads"), which then contain chapters. The metaphor is the tallit: four corners, each with threads. "Corners" and "threads" are not final terminology — they describe the conceptual architecture. Thread count does not need to be strictly four per corner — it should reflect the natural shape of the material; forcing a count is worse than leaving a corner at three, or leaving it open.
+
+The four corners correspond to the prologue's four elements: theology, physics, chemistry, history — "four white fringes, a single blue thread sanctifies the whole." The structure will be laid out in the prologue and then applied to the full work.
+
+**Corner 1 — Theological Opening (holds at four; narratively earned, not forced):**
+1. The Chain — source text, establishes the hierarchy (sea → sky → throne)
+2. Two Manifestations — the puzzle (Rashi's inversion: sapphire assigned to the lower revelation, sky to the higher) — deliberately left unresolved
+3. The mechanisms — the physics, resolves *why* the hierarchy holds (reflection/scattering vs. pigment absorption)
+4. The Inversion — theological payoff, resolves the puzzle from #2 (body/soul, panim/achorai)
+
+This is a real arc — source, tension, mechanism, resolution — matching content already drafted across current M0 (opening) and M1 (light-and-color), not a forced repackaging.
+
+**Corner 2 — History (multiple clean four-mappings, not yet chosen between):**
+- Ancient World & Color / History of Loss / The Reintroduction (Radziner + Herzog) / [4th TBD]
+
+**Corner 3 — Chemistry (two candidate four-mappings, live options, not decided):**
+- Option A (by source/process): plant indigo / murex indigo / Ptil process / Ziderman process
+- Option B (by argument): indigotin chemistry / bromine shield / modern processes / Talmudic evidence
+- Open question under Option B: where does the plant-vs-murex indigo comparison live — folded into indigotin chemistry, or does it need its own thread (making 5)?
+
+**Corner 4 — Kabbalah / Rupture and Return (left open — not yet narratively developed):**
+Unlike the other corners, nothing here is drafted, so this isn't a sorting problem — it's choosing what the argument's movements even are before writing begins. Source material is rich (see `docs/rupture-and-return-sources.md`: aspaklaria/lens, the prophetic cloak, tekhelet blinding the Sitra Achra, sefiratic identity, Halevi's double displacement, the chromophore/Gevurah convergence, bromine shield as tzimtzum). A candidate shape was floated (instrument → garment → protection → rupture/return) but explicitly not adopted — author wants to leave this corner open rather than force a structure prematurely.
+
+Do not begin renaming or reorganizing the site structure until the author has settled on Corner 2 and Corner 3, and decided whether Corner 4 needs to be resolved before publication or can remain a late addition.
 
 🔴 **Diagram numbering: per-movement vs. continuous (depends on structure decision)**
 Currently diagrams are numbered per-movement (D1–D18 within movements). If the work is restructured into a single continuous sequence of chapters, continuous numbering (D1–D∞ throughout the whole work) may be more appropriate. This decision is blocked on the structure decision above.
